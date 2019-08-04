@@ -1,0 +1,61 @@
+{
+  "name": "@uiw/code-preview",
+  "version": "1.0.0",
+  "description": "React Component Example.",
+  "author": "Kenny Wang <wowohoo@qq.com>",
+  "main": "lib/cjs/index.js",
+  "module": "lib/esm/index.js",
+  "typings": "typings/index.d.ts",
+  "scripts": {
+    "prepare": "npm run build",
+    "watch": "npm run build:types -- --watch & npm run watch:ts -- --env-name esm:dev --env-name cjs",
+    "build": "npm run build:ts && npm run build:types",
+    "build:types": "tsbb types --outDir typings --target ESNEXT",
+    "watch:ts": "tsbb watch --target react",
+    "build:ts": "tsbb build --target react",
+    "build:umd": "tsbb build --target react --env-name umd",
+    "test": "tsbb test --env=jsdom",
+    "coverage": "tsbb test --env=jsdom --coverage",
+    "doc": "kkt start",
+    "doc:build": "kkt build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uiwjs/code-preview"
+  },
+  "files": [
+    "typings",
+    "lib"
+  ],
+  "keywords": [],
+  "license": "MIT",
+  "peerDependencies": {
+    "react": ">=16.7.0",
+    "react-dom": ">=16.7.0",
+    "uiw": "^3.1.1"
+  },
+  "devDependencies": {
+    "@kkt/plugin-less": "^1.2.0",
+    "@types/classnames": "^2.2.7",
+    "@types/react": "^16.8.17",
+    "@types/react-dom": "^16.8.4",
+    "@types/react-test-renderer": "^16.8.1",
+    "@types/react-transition-group": "^4.2.0",
+    "@uiw/reset.css": "^1.0.3",
+    "babel-plugin-transform-remove-imports": "^1.0.8",
+    "babel-plugin-transform-rename-import": "^2.3.0",
+    "kkt": "^4.2.0",
+    "less": "^3.9.0",
+    "raw-loader": "^3.1.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-markdown": "^4.1.0",
+    "react-test-renderer": "^16.8.6",
+    "tsbb": "^1.1.1"
+  },
+  "dependencies": {
+    "@uiw/react-codemirror": "^1.0.23",
+    "classnames": "^2.2.6",
+    "uiw": "^3.2.0"
+  }
+}
