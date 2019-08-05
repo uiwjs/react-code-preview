@@ -14,6 +14,7 @@
     "watch:ts": "tsbb watch --target react",
     "build:ts": "tsbb build --target react",
     "build:css": "compile-less -d src -o lib/esm",
+    "deploy": "gh-pages -d dist",
     "test": "tsbb test --env=jsdom",
     "coverage": "tsbb test --env=jsdom --coverage",
     "doc": "kkt start",
@@ -25,6 +26,7 @@
   },
   "files": [
     "typings",
+    "src",
     "lib"
   ],
   "keywords": [],
