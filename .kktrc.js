@@ -2,7 +2,6 @@ const path = require('path');
 const pkg = require('./package.json');
 
 process.env.APPSRC = path.resolve(process.cwd(), 'website');
-console.log('~~~', path.resolve(process.cwd(), 'src'))
 
 module.exports = {
   plugins: [
