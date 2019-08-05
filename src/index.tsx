@@ -42,6 +42,7 @@ export interface ICodePreviewState {
   fullScreen: boolean;
   width: number | string;
   copied: boolean;
+  showEdit: boolean;
 }
 
 export default class CodePreview extends React.PureComponent<ICodePreviewProps, ICodePreviewState> {
@@ -51,6 +52,7 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
     errorMessage: '',
     fullScreen: false,
     copied: false,
+    showEdit: false,
     width: 1
   }
   public static defaultProps: ICodePreviewProps = {
@@ -125,6 +127,7 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
     const { width } = this.state;
     this.setState({
       width: width === 1 ? '50%' : 1,
+      showEdit: true,
     });
   }
   public render() {
@@ -164,16 +167,18 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
         )}
         {!noCode && (
           <div style={{ overflow: 'hidden', width: this.state.width, }}>
-            <CodeMirror
-              value={code}
-              onChange={(editor) => {
-                this.executeCode(editor.getValue());
-              }}
-              options={{
-                theme: 'monokai',
-                mode: 'jsx',
-              }}
-            />
+            {this.state.showEdit && (
+              <CodeMirror
+                value={code}
+                onChange={(editor) => {
+                  this.executeCode(editor.getValue());
+                }}
+                options={{
+                  theme: 'monokai',
+                  mode: 'jsx',
+                }}
+              />
+            )}
           </div>
         )}
         {!isOneItem && !(noCode && noPreview) && (
@@ -187,7 +192,12 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
             >
               {icon.copy}
             </div>
-            <div className={`${prefixCls}-bar-iconbtns`} onClick={this.onFullScreen.bind(this)}>
+            <div
+              className={classnames(`${prefixCls}-bar-iconbtns`, {
+                [`${prefixCls}-bar-copied`]: this.state.fullScreen,
+              })}
+              onClick={this.onFullScreen.bind(this)}
+            >
               {icon.full}
             </div>
           </div>
