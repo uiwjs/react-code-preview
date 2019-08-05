@@ -1,5 +1,5 @@
 {
-  "name": "@uiw/code-preview",
+  "name": "@uiw/react-code-preview",
   "version": "1.0.0",
   "description": "React Component Example.",
   "author": "Kenny Wang <wowohoo@qq.com>",
@@ -31,12 +31,12 @@
   "license": "MIT",
   "peerDependencies": {
     "react": ">=16.7.0",
-    "react-dom": ">=16.7.0",
-    "uiw": "^3.1.1"
+    "react-dom": ">=16.7.0"
   },
   "devDependencies": {
     "@kkt/plugin-less": "^1.2.0",
     "@types/classnames": "^2.2.7",
+    "@types/codemirror": "0.0.76",
     "@types/react": "^16.8.17",
     "@types/react-dom": "^16.8.4",
     "@types/react-test-renderer": "^16.8.1",
@@ -54,7 +54,9 @@
     "tsbb": "^1.1.1"
   },
   "dependencies": {
-    "@uiw/react-codemirror": "^1.0.23",
+    "@babel/runtime": "^7.5.5",
+    "@babel/standalone": "^7.5.5",
+    "@uiw/react-codemirror": "^1.0.26",
     "classnames": "^2.2.6",
     "uiw": "^3.2.0"
   }

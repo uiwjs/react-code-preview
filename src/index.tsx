@@ -1,34 +1,52 @@
-import React from 'react';
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import classnames from 'classnames';
+import CodeMirror from '@uiw/react-codemirror';
 import { Split } from 'uiw';
 import icon from './icon';
-import CodeMirror from '@uiw/react-codemirror';
+import { BabelTransform } from './transform';
 import './monokai.css';
 import './index.less';
 
 export interface ICodePreviewProps {
   prefixCls?: string;
+  /**
+   * To specify a CSS class, use the className attribute.
+   */
   className?: string;
+  /**
+   * `JSX` source code
+   */
   code?: string;
+  /**
+   * Whether to display the code interface.
+   */
   noCode?: boolean;
   /**
-   * 
+   * Is the background white or plaid?
    */
   bgWhite?: boolean;
+  /**
+   * Whether to display the preview interface.
+   */
   noPreview?: boolean;
+  /**
+   * Dependent component
+   */
+  dependencies?: { [key: string]: any };
 }
 
 export interface ICodePreviewState {
+  errorMessage: string;
   fullScreen: boolean;
-  width: number;
+  width: number | string;
 }
 
-// bgWhite,noCode,noPreview,noScroll,codePen
-
 export default class CodePreview extends React.PureComponent<ICodePreviewProps, ICodePreviewState> {
-  // demoDom = React.createRef();
   public demoDom = React.createRef<HTMLDivElement>();
+  public playerId: string = `${parseInt(String(Math.random() * 1e9), 10).toString(36)}`;
   public state: ICodePreviewState = {
+    errorMessage: '',
     fullScreen: false,
     width: 1
   }
@@ -41,6 +59,37 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
   }
   constructor(props: ICodePreviewProps) {
     super(props);
+  }
+  componentDidMount() {
+    if (!this.props.noPreview) {
+      this.executeCode(this.props.code!);
+    }
+  }
+  async executeCode(codeStr: string) {
+    try {
+      const args = ['context', 'React', 'ReactDOM', 'Component'];
+      const argv = [this, React, ReactDOM, Component];
+      const Elm = this.props.dependencies;
+      for (const key in Elm) {
+        args.push(key);
+        argv.push(Elm[key]);
+      }
+      codeStr = codeStr.replace('_mount_', `document.getElementById('${this.playerId}')`);
+      const input = `${codeStr}`;
+      const { code } = await BabelTransform(input);
+      args.push(code);
+      new Function(...args).apply(null, argv);
+      this.setState({ errorMessage: '' });
+      
+    } catch (err) {
+      let message = '';
+      if (err && err.message) {
+        message = err.message;
+      } else {
+        message = JSON.stringify(err);
+      }
+      this.setState({ errorMessage: message });
+    }
   }
   /**
    * onFullScreen
@@ -58,15 +107,18 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
    * onSwitchSource
    */
   public onSwitchSource() {
-    
+    const { width } = this.state;
+    this.setState({
+      width: width === 1 ? '50%' : 1,
+    });
   }
   public render() {
     const { prefixCls, className, code, noCode, noPreview, bgWhite } = this.props;
     const isOneItem = (!noCode && !noPreview) ? false : (!noCode || !noPreview);
-    console.log('~~', this.props.bgWhite)
+    let visiable = this.state.width === 1 ? false : [isOneItem ? 1 : 2];
     return (
       <Split
-        visiable={[isOneItem ? 1 : 2]}
+        visiable={visiable}
         className={classnames(className, prefixCls, {
           [`${prefixCls}-OneItem`]: isOneItem,
           [`${prefixCls}-fullScreen`]: this.state.fullScreen,
@@ -74,16 +126,34 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
         style={{ flex: 1 }}
       >
         {!noPreview && (
-          <div ref={this.demoDom} className={`${prefixCls}-demo`} style={{ width: isOneItem ? '100%' : '50%', minWidth: 160 }}>
+          <div
+            ref={this.demoDom}
+            className={`${prefixCls}-demo`}
+            style={{
+              flex: 1,
+              ...(this.state.width === 1 ? { width: '100%'} : {})
+            }}
+          >
             {!bgWhite && (
               <div className={`${prefixCls}-bgPlaid`}> {icon.bgPlaid} </div>
             )}
+            {this.state.errorMessage && (
+              <pre className={`${prefixCls}-demo-error`}>
+                <code>{this.state.errorMessage}</code>
+              </pre>
+            )}
+            <div className={classnames(`${prefixCls}-demo-scroll`)}>
+              <div className={`${prefixCls}-demo-source`} id={this.playerId} />
+            </div>
           </div>
         )}
         {!noCode && (
-          <div style={{ overflow: 'hidden', width: `calc(${isOneItem ? '100%' : '50% - 29px'})` }}>
+          <div style={{ overflow: 'hidden', width: this.state.width, }}>
             <CodeMirror
               value={code}
+              onChange={(editor) => {
+                this.executeCode(editor.getValue());
+              }}
               options={{
                 theme: 'monokai',
                 mode: 'jsx',
@@ -91,7 +161,7 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
             />
           </div>
         )}
-        {!isOneItem && (
+        {!isOneItem && !(noCode && noPreview) && (
           <div style={{ flex: 1, width: 29 }} className={`${prefixCls}-bar`}>
             <div className={`${prefixCls}-bar-btn`} onClick={this.onSwitchSource.bind(this)}>{this.state.width === 1 ? '源码' : '隐藏编辑器'}</div>
             <div className={`${prefixCls}-bar-fullScreen`} onClick={this.onFullScreen.bind(this)}>

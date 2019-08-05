@@ -21,10 +21,25 @@
     right: 0;
     z-index: 99;
   }
-  &-demo:not(.noScroll) {
+  &-demo {
     position: relative;
     overflow: auto;
     min-width: 100px;
+    &-scroll {
+      position: relative;
+      padding: 15px;
+      min-height: 80px;
+      height: 100%;
+    }
+    &-error {
+      z-index: 2;
+      background: #fff;
+      width: 100%;
+      height: 100%;
+      margin-bottom: 0 !important;
+      color: #dc3545;
+      background-color: #fbeff0;
+    }
   }
   &-bgPlaid {
     box-sizing: border-box;

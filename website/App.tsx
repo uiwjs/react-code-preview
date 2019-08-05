@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Divider } from "uiw";
+import { Switch, Divider, Button } from "uiw";
 import CodePreview from '../src';
 import './App.less';
 
@@ -25,26 +25,16 @@ export default class App extends React.PureComponent<{}, IAppState> {
     noCode: false,
     noPreview: false,
   }
-  private handleChangeBg(e: React.ChangeEvent<HTMLInputElement>) {
-    this.setState({
-      bgWhite: e.target.checked,
-    });
-  }
-  private handleShowCode(e: React.ChangeEvent<HTMLInputElement>) {
-    this.setState({
-      noCode: e.target.checked,
-    });
-  }
-  private handleShowPreview(e: React.ChangeEvent<HTMLInputElement>) {
-    this.setState({
-      noPreview: e.target.checked,
-    });
+  private handleChange(keyName: string,e: React.ChangeEvent<HTMLInputElement>) {
+    const state = { ...this.state,[`${keyName}`]: e.target.checked }
+    this.setState({ ...state });
   }
   render () {
     return (
       <div className="warpper">
         <CodePreview
           code={code}
+          dependencies={{ Button }}
           bgWhite={this.state.bgWhite}
           noCode={this.state.noCode}
           noPreview={this.state.noPreview}
@@ -56,7 +46,7 @@ export default class App extends React.PureComponent<{}, IAppState> {
             data-checked="格纹"
             data-unchecked="白色"
             checked={this.state.bgWhite}
-            onChange={this.handleChangeBg.bind(this)}
+            onChange={this.handleChange.bind(this, 'bgWhite')}
           >
             背景
           </Switch>
@@ -65,7 +55,7 @@ export default class App extends React.PureComponent<{}, IAppState> {
             data-checked="显示"
             data-unchecked="隐藏"
             checked={this.state.noCode}
-            onChange={this.handleShowCode.bind(this)}
+            onChange={this.handleChange.bind(this, 'noCode')}
           >
             是否显示代码
           </Switch>
@@ -74,7 +64,7 @@ export default class App extends React.PureComponent<{}, IAppState> {
             data-checked="显示"
             data-unchecked="隐藏"
             checked={this.state.noPreview}
-            onChange={this.handleShowPreview.bind(this)}
+            onChange={this.handleChange.bind(this, 'noPreview')}
           >
             是否显示实例预览
           </Switch>
