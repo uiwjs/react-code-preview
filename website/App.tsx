@@ -1,13 +1,21 @@
 import React from 'react';
-import { Switch, Divider, Button } from "uiw";
+import { Switch, Divider, Button } from 'uiw';
+import Markdown from './Markdown';
+import GithubCorner from './GithubCorner';
 import CodePreview from '../src';
-import './App.less';
+import DocumentStr from '../README.md'; // @ts-ignore
+import styles from './App.module.less';
 
 const code = `import { Button, Divider, Icon } from 'uiw';
 
 ReactDOM.render(
   <div>
     <Button type="primary">主要按钮</Button>
+    <Button type="success">成功按钮</Button>
+    <Button type="warning">警告按钮</Button>
+    <Button type="danger">错误按钮</Button>
+    <Button type="light">亮按钮</Button>
+    <Button type="dark">暗按钮</Button>
   </div>,
   _mount_
 );
@@ -30,9 +38,12 @@ export default class App extends React.PureComponent<{}, IAppState> {
     this.setState({ ...state });
   }
   render () {
+    let DocumentStrSource = DocumentStr;
+    if (DocumentStrSource) DocumentStrSource = DocumentStr.replace(/([\s\S]*)<!--dividing-->/, '');
     return (
-      <div className="warpper">
-        <h1 className="title">React Code Preview</h1>
+      <div className={styles.warpper}>
+        <GithubCorner url="https://uiwjs.github.io/react-code-preview" />
+        <h1 className={styles.title}>React Code Preview</h1>
         <CodePreview
           code={code}
           dependencies={{ Button }}
@@ -70,6 +81,7 @@ export default class App extends React.PureComponent<{}, IAppState> {
             是否显示实例预览 `noPreview`
           </Switch>
         </div>
+        <Markdown source={DocumentStrSource} />
       </div>
     )
   }

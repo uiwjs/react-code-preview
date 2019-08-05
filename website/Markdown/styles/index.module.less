@@ -1,0 +1,21 @@
+.markdown {
+  padding: 20px 0 0;
+  max-width: 995px;
+  margin: 0 auto;
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  color: #24292e;
+  & >*:first-child {
+    margin-top: 0 !important
+  }
+
+  & >*:last-child {
+    margin-bottom: 0 !important
+  }
+  :global {
+    @import './default.module.less';
+    @import './javascript.module.less';
+  }
+}

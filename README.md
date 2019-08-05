@@ -1,5 +1,6 @@
 React Code Preview
 ---
+<!--dividing-->
 
 Code editor for React. Preview Demo: https://uiwjs.github.io/react-code-preview
 
@@ -22,6 +23,7 @@ const code = `import { Button, Divider, Icon } from 'uiw';
 ReactDOM.render(
   <div>
     <Button type="primary">主要按钮</Button>
+    <Button type="success">成功按钮</Button>
   </div>,
   _mount_
 );
@@ -43,31 +45,34 @@ class Demo extends React.Component {
 
 ### Props
 
-```jsx
-/**
- * To specify a CSS class, use the className attribute.
- */
-className?: string;
-/**
- * `JSX` source code
- */
-code?: string;
-/**
- * Whether to display the code interface.
- */
-noCode?: boolean;
-/**
- * Is the background white or plaid?
- */
-bgWhite?: boolean;
-/**
- * Whether to display the preview interface.
- */
-noPreview?: boolean;
-/**
- * Dependent component
- */
-dependencies?: { [key: string]: any };
+```ts
+export interface ICodePreviewProps {
+  prefixCls?: string;
+  /**
+   * To specify a CSS class, use the className attribute.
+   */
+  className?: string;
+  /**
+   * `JSX` source code
+   */
+  code?: string;
+  /**
+   * Whether to display the code interface.
+   */
+  noCode?: boolean;
+  /**
+   * Is the background white or plaid?
+   */
+  bgWhite?: boolean;
+  /**
+   * Whether to display the preview interface.
+   */
+  noPreview?: boolean;
+  /**
+   * Dependent component
+   */
+  dependencies?: { [key: string]: any };
+}
 ```
 
 ## Development
