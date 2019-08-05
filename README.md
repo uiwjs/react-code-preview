@@ -2,6 +2,12 @@ React Code Preview
 ---
 <!--dividing-->
 
+[![](https://img.shields.io/github/issues/uiwjs/react-code-preview.svg)](https://github.com/uiwjs/react-code-preview/issues)
+[![](https://img.shields.io/github/forks/uiwjs/react-code-preview.svg)](https://github.com/uiwjs/react-code-preview/network)
+[![](https://img.shields.io/github/stars/uiwjs/react-code-preview.svg)](https://github.com/uiwjs/react-code-preview/stargazers)
+[![](https://img.shields.io/github/release/uiwjs/react-code-preview)](https://github.com/uiwjs/react-code-preview/releases)
+[![](https://img.shields.io/npm/v/@uiw/react-code-preview.svg)](https://www.npmjs.com/package/@uiw/react-code-preview)
+
 Code edit preview for React. Preview Demo: https://uiwjs.github.io/react-code-preview
 
 There are often a lot of sample code in the documentation. We hope that you can run the sample code to view the rendering interface as you read the document.
