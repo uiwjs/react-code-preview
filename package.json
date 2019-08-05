@@ -20,9 +20,10 @@
     "doc": "kkt start",
     "doc:build": "kkt build"
   },
+  "homepage": "https://uiwjs.github.io/react-code-preview",
   "repository": {
     "type": "git",
-    "url": "https://github.com/uiwjs/code-preview"
+    "url": "https://github.com/uiwjs/react-code-preview"
   },
   "files": [
     "typings",
@@ -48,6 +49,7 @@
     "babel-plugin-transform-remove-imports": "^1.0.8",
     "babel-plugin-transform-rename-import": "^2.3.0",
     "compile-less-cli": "^1.1.5",
+    "gh-pages": "^2.1.0",
     "highlight.js": "^9.15.9",
     "kkt": "^4.2.0",
     "raw-loader": "^3.1.0",
