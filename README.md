@@ -2,7 +2,7 @@ React Code Preview
 ---
 <!--dividing-->
 
-Code editor for React. Preview Demo: https://uiwjs.github.io/react-code-preview
+Code edit preview for React. Preview Demo: https://uiwjs.github.io/react-code-preview
 
 There are often a lot of sample code in the documentation. We hope that you can run the sample code to view the rendering interface as you read the document.
 
