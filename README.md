@@ -1,5 +1,9 @@
-React Component Example
+React Code Preview
 ---
+
+Code editor for React. Preview Demo: https://uiwjs.github.io/react-code-preview
+
+There are often a lot of sample code in the documentation. We hope that you can run the sample code to view the rendering interface as you read the document.
 
 ## Install
 
@@ -14,11 +18,20 @@ import React from 'react';
 import { Button } from 'uiw';
 import CodePreview from '@uiw/react-code-preview';
 
+const code = `import { Button, Divider, Icon } from 'uiw';
+ReactDOM.render(
+  <div>
+    <Button type="primary">主要按钮</Button>
+  </div>,
+  _mount_
+);
+`;
+
 class Demo extends React.Component {
   render() {
     return (
       <CodePreview
-        code="const a = 0;"
+        code={code}
         dependencies={{ Button }}
       />
     );
@@ -26,7 +39,9 @@ class Demo extends React.Component {
 }
 ```
 
-### Properties
+- `_mount_` Special strings, the compilation will be replaced.
+
+### Props
 
 ```jsx
 /**
