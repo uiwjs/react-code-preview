@@ -146,23 +146,21 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
         {!noPreview && (
           <div
             ref={this.demoDom}
-            className={`${prefixCls}-demo`}
+            className={classnames(`${prefixCls}-demo`, {
+              [`${prefixCls}-demo-bgPlaid`]: !bgWhite,
+              [`${prefixCls}-demo-error`]: this.state.errorMessage,
+            })}
             style={{
               flex: 1,
               ...(this.state.width === 1 ? { width: '100%'} : {})
             }}
           >
-            {!bgWhite && (
-              <div className={`${prefixCls}-bgPlaid`}> {icon.bgPlaid} </div>
-            )}
             {this.state.errorMessage && (
-              <pre className={`${prefixCls}-demo-error`}>
+              <pre>
                 <code>{this.state.errorMessage}</code>
               </pre>
             )}
-            <div className={classnames(`${prefixCls}-demo-scroll`)}>
-              <div className={`${prefixCls}-demo-source`} id={this.playerId} />
-            </div>
+            <div className={classnames(`${prefixCls}-demo-source`, { ['error']: this.state.errorMessage })} id={this.playerId} />
           </div>
         )}
         {!noCode && (
