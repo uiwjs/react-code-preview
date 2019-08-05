@@ -32,6 +32,7 @@ export default class App extends React.PureComponent<{}, IAppState> {
   render () {
     return (
       <div className="warpper">
+        <h1>React Code Preview</h1>
         <CodePreview
           code={code}
           dependencies={{ Button }}
