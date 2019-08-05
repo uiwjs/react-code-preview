@@ -7,7 +7,7 @@ React Code Preview
 [![](https://img.shields.io/github/stars/uiwjs/react-code-preview.svg)](https://github.com/uiwjs/react-code-preview/stargazers)
 [![](https://img.shields.io/github/release/uiwjs/react-code-preview)](https://github.com/uiwjs/react-code-preview/releases)
 [![](https://img.shields.io/npm/v/@uiw/react-code-preview.svg)](https://www.npmjs.com/package/@uiw/react-code-preview)
-[![](https://jaywcjlove.github.io/sb/ico/gitee.svg)](https://jaywcjlove.gitee.io/react-code-preview/)
+[![](https://jaywcjlove.github.io/sb/ico/gitee.svg)](https://uiw.gitee.io/react-code-preview/)
 
 Code edit preview for React. Preview Demo: https://uiwjs.github.io/react-code-preview
 
