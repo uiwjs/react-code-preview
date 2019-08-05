@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import CodeMirror from '@uiw/react-codemirror';
+import copyTextToClipboard from '@uiw/copy-to-clipboard';
 import { Split } from 'uiw';
 import icon from './icon';
 import { BabelTransform } from './transform';
@@ -40,6 +41,7 @@ export interface ICodePreviewState {
   errorMessage: string;
   fullScreen: boolean;
   width: number | string;
+  copied: boolean;
 }
 
 export default class CodePreview extends React.PureComponent<ICodePreviewProps, ICodePreviewState> {
@@ -48,6 +50,7 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
   public state: ICodePreviewState = {
     errorMessage: '',
     fullScreen: false,
+    copied: false,
     width: 1
   }
   public static defaultProps: ICodePreviewProps = {
@@ -90,6 +93,18 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
       }
       this.setState({ errorMessage: message });
     }
+  }
+  /**
+   * onCopyCode
+   */
+  public onCopyCode() {
+    const { code } = this.props;
+    copyTextToClipboard(code || '', (isCopy) => {
+      this.setState({ copied: isCopy });
+    });
+    setTimeout(() => {
+      this.setState({ copied: false });
+    }, 2000);
   }
   /**
    * onFullScreen
@@ -164,7 +179,15 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
         {!isOneItem && !(noCode && noPreview) && (
           <div style={{ flex: 1, width: 29 }} className={`${prefixCls}-bar`}>
             <div className={`${prefixCls}-bar-btn`} onClick={this.onSwitchSource.bind(this)}>{this.state.width === 1 ? '源码' : '隐藏编辑器'}</div>
-            <div className={`${prefixCls}-bar-fullScreen`} onClick={this.onFullScreen.bind(this)}>
+            <div
+              className={classnames(`${prefixCls}-bar-iconbtns`, {
+                [`${prefixCls}-bar-copied`]: this.state.copied,
+              })}
+              onClick={this.onCopyCode.bind(this)}
+            >
+              {icon.copy}
+            </div>
+            <div className={`${prefixCls}-bar-iconbtns`} onClick={this.onFullScreen.bind(this)}>
               {icon.full}
             </div>
           </div>

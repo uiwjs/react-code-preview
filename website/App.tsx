@@ -11,7 +11,7 @@ ReactDOM.render(
   </div>,
   _mount_
 );
-`
+`;
 
 interface IAppState {
   bgWhite: boolean;
@@ -32,7 +32,7 @@ export default class App extends React.PureComponent<{}, IAppState> {
   render () {
     return (
       <div className="warpper">
-        <h1>React Code Preview</h1>
+        <h1 className="title">React Code Preview</h1>
         <CodePreview
           code={code}
           dependencies={{ Button }}
@@ -49,7 +49,7 @@ export default class App extends React.PureComponent<{}, IAppState> {
             checked={this.state.bgWhite}
             onChange={this.handleChange.bind(this, 'bgWhite')}
           >
-            背景
+            背景 `bgWhite`
           </Switch>
           <Divider type="vertical" />
           <Switch
@@ -58,7 +58,7 @@ export default class App extends React.PureComponent<{}, IAppState> {
             checked={this.state.noCode}
             onChange={this.handleChange.bind(this, 'noCode')}
           >
-            是否显示代码
+            是否显示代码 `noCode`
           </Switch>
           <Divider type="vertical" />
           <Switch
@@ -67,7 +67,7 @@ export default class App extends React.PureComponent<{}, IAppState> {
             checked={this.state.noPreview}
             onChange={this.handleChange.bind(this, 'noPreview')}
           >
-            是否显示实例预览
+            是否显示实例预览 `noPreview`
           </Switch>
         </div>
       </div>
