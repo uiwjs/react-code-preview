@@ -18,6 +18,10 @@ export interface ICodePreviewProps extends ISplitProps {
    */
   className?: string;
   /**
+   * Whether to display the border.
+   */
+  bordered?: boolean;
+  /**
    * `JSX` source code
    */
   code?: string;
@@ -50,25 +54,31 @@ export interface ICodePreviewState {
 export default class CodePreview extends React.PureComponent<ICodePreviewProps, ICodePreviewState> {
   public demoDom = React.createRef<HTMLDivElement>();
   public playerId: string = `${parseInt(String(Math.random() * 1e9), 10).toString(36)}`;
-  public state: ICodePreviewState = {
-    errorMessage: '',
-    fullScreen: false,
-    copied: false,
-    showEdit: false,
-    width: 1
-  }
   public static defaultProps: ICodePreviewProps = {
     prefixCls: 'w-code-preview',
     code: '',
     noCode: false,
     bgWhite: false,
     noPreview: false,
+    bordered: true,
+  }
+  public state: ICodePreviewState = {
+    errorMessage: '',
+    fullScreen: false,
+    copied: false,
+    showEdit: false,
+    width: 1,
   }
   constructor(props: ICodePreviewProps) {
     super(props);
   }
   componentDidMount() {
     if (!this.props.noPreview) {
+      this.executeCode(this.props.code!);
+    }
+  }
+  componentWillReceiveProps(nextProps: ICodePreviewProps) {
+    if (nextProps.noPreview !== this.props.noPreview) {
       this.executeCode(this.props.code!);
     }
   }
@@ -133,7 +143,7 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
     });
   }
   public render() {
-    const { style, prefixCls, className, code, noCode, noPreview, bgWhite, ...otherProps } = this.props;
+    const { style, prefixCls, className, code, dependencies, bordered, noCode, noPreview, bgWhite, ...otherProps } = this.props;
     const isOneItem = (!noCode && !noPreview) ? false : (!noCode || !noPreview);
     let visiable = this.state.width === 1 ? false : [isOneItem ? 1 : 2];
     return (
@@ -141,6 +151,7 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
         visiable={visiable}
         className={classnames(className, prefixCls, {
           [`${prefixCls}-OneItem`]: isOneItem,
+          [`${prefixCls}-bordered`]: bordered,
           [`${prefixCls}-fullScreen`]: this.state.fullScreen,
         })}
         style={{ flex: 1, ...style }}
