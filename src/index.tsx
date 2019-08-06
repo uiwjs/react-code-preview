@@ -4,12 +4,13 @@ import classnames from 'classnames';
 import CodeMirror from '@uiw/react-codemirror';
 import copyTextToClipboard from '@uiw/copy-to-clipboard';
 import { Split } from 'uiw';
+import { ISplitProps } from 'uiw/lib/esm/split';
 import icon from './icon';
 import { BabelTransform } from './transform';
 import './monokai.css';
 import './index.less';
 
-export interface ICodePreviewProps {
+export interface ICodePreviewProps extends ISplitProps {
   prefixCls?: string;
   style?: React.CSSProperties;
   /**
@@ -132,7 +133,7 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
     });
   }
   public render() {
-    const { style, prefixCls, className, code, noCode, noPreview, bgWhite } = this.props;
+    const { style, prefixCls, className, code, noCode, noPreview, bgWhite, ...otherProps } = this.props;
     const isOneItem = (!noCode && !noPreview) ? false : (!noCode || !noPreview);
     let visiable = this.state.width === 1 ? false : [isOneItem ? 1 : 2];
     return (
@@ -143,6 +144,7 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
           [`${prefixCls}-fullScreen`]: this.state.fullScreen,
         })}
         style={{ flex: 1, ...style }}
+        {...otherProps}
       >
         {!noPreview && (
           <div
