@@ -65,6 +65,6 @@
     "@uiw/copy-to-clipboard": "^1.0.10",
     "@uiw/react-codemirror": "^1.0.26",
     "classnames": "^2.2.6",
-    "uiw": "^3.2.0"
+    "uiw": "^3.2.4"
   }
 }
