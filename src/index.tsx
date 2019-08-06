@@ -11,6 +11,7 @@ import './index.less';
 
 export interface ICodePreviewProps {
   prefixCls?: string;
+  style?: React.CSSProperties;
   /**
    * To specify a CSS class, use the className attribute.
    */
@@ -131,7 +132,7 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
     });
   }
   public render() {
-    const { prefixCls, className, code, noCode, noPreview, bgWhite } = this.props;
+    const { style, prefixCls, className, code, noCode, noPreview, bgWhite } = this.props;
     const isOneItem = (!noCode && !noPreview) ? false : (!noCode || !noPreview);
     let visiable = this.state.width === 1 ? false : [isOneItem ? 1 : 2];
     return (
@@ -141,7 +142,7 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
           [`${prefixCls}-OneItem`]: isOneItem,
           [`${prefixCls}-fullScreen`]: this.state.fullScreen,
         })}
-        style={{ flex: 1 }}
+        style={{ flex: 1, ...style }}
       >
         {!noPreview && (
           <div
