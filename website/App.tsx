@@ -11,10 +11,6 @@ const code = `import { Button, Divider, Icon } from 'uiw';
 ReactDOM.render(
   <div>
     <Button type="primary">主要按钮</Button>
-    <Button type="success">成功按钮</Button>
-    <Button type="warning">警告按钮</Button>
-    <Button type="danger">错误按钮</Button>
-    <Button type="light">亮按钮</Button>
     <Button type="dark">暗按钮</Button>
   </div>,
   _mount_
@@ -46,6 +42,7 @@ export default class App extends React.PureComponent<{}, IAppState> {
         <h1 className={styles.title}>React Code Preview</h1>
         <CodePreview
           code={code}
+          // style={{ maxHeight: 230 }}
           dependencies={{ Button }}
           bgWhite={this.state.bgWhite}
           noCode={this.state.noCode}
