@@ -55,10 +55,15 @@ class Demo extends React.Component {
 ```ts
 export interface ICodePreviewProps {
   prefixCls?: string;
+  style?: React.CSSProperties;
   /**
    * To specify a CSS class, use the className attribute.
    */
   className?: string;
+  /**
+   * Whether to display the border.
+   */
+  bordered?: boolean;
   /**
    * `JSX` source code
    */
