@@ -11,7 +11,7 @@ export async function BabelTransform(input: string) {
           visitor: {
             // https://babeljs.io/docs/en/babel-types#importspecifier
             ImportSpecifier(local: any) {
-              if (local.parent && local.parent.source && local.parent.source.extra.rawValue === 'uiw') {
+              if (local.parent && local.parent.source && local.parent.source.extra.rawValue) {
                 if (local.parent.specifiers) {
                   local.parent.specifiers.forEach((item: any) => {
                     specifiers.push(item.imported.name);
