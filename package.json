@@ -9,8 +9,8 @@
   "scripts": {
     "prepare": "npm run build",
     "watch": "npm run build:types -- --watch & npm run watch:ts -- --env-name esm:dev --env-name cjs",
-    "build": "npm run build:ts && npm run build:types && npm run build:css",
-    "build:types": "tsbb types --outDir typings --target ESNEXT",
+    "build": "npm run build:ts && npm run build:types && npm run build:types -- --outDir lib/cjs && npm run build:css",
+    "build:types": "tsbb types --outDir typings --target ESNEXT --project src --outDir lib/esm",
     "watch:ts": "tsbb watch --target react",
     "build:ts": "tsbb build --target react",
     "build:css": "compile-less -d src -o lib/esm",

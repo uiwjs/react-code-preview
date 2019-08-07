@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "importHelpers": true,
+    "declaration": true,
+    "jsx": "react",
+    "target": "esnext",
+    "noImplicitAny": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "strict": true, /* Enable all strict type-checking options. */
+    "baseUrl": "../",
+    "typeRoots": [
+      "node_modules/@types",
+      "test",
+      "types"
+    ],
+    "paths": {
+      "*": [
+        "node_modules/*",
+        "types/*"
+      ]
+    }
+  },
+  "include": [
+    "./**/*"
+  ]
+}
