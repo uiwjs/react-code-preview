@@ -1,25 +1,12 @@
 import { transform } from '@babel/standalone';
+import RemoveImports from 'babel-plugin-transform-remove-imports';
 
 export async function BabelTransform(input: string) {
   const specifiers: any[] = [];
   const code = transform(input, {
     presets: ['es2015', 'react'],
     plugins: [
-      () => {
-        return {
-          name: 'transform-remove-all-import',
-          visitor: {
-            /**
-             * https://babeljs.io/docs/en/babel-types#importdeclaration
-             * @param specifiers
-             * @param source 
-             */
-            ImportDeclaration(specifiers: any, source: string) {
-              specifiers.remove();
-            },
-          },
-        };
-      },
+      [RemoveImports, { removeAll: true }],
     ],
   }).code;
 
