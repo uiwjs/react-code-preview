@@ -1,6 +1,6 @@
 {
   "name": "@uiw/react-code-preview",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Code edit preview for React.",
   "author": "Kenny Wang <wowohoo@qq.com>",
   "main": "lib/cjs/index.js",
@@ -14,7 +14,7 @@
     "watch:ts": "tsbb watch --target react",
     "build:ts": "tsbb build --target react",
     "build:css": "compile-less -d src -o lib/esm",
-    "deploy": "gh-pages -d dist --git git",
+    "deploy": "npm run doc:build && gh-pages -d dist --git git",
     "test": "tsbb test --env=jsdom",
     "coverage": "tsbb test --env=jsdom --coverage",
     "doc": "kkt start",
