@@ -53,7 +53,7 @@ class Demo extends React.Component {
 ### Props
 
 ```ts
-export interface ICodePreviewProps {
+ICodePreviewProps extends ISplitProps {
   prefixCls?: string;
   style?: React.CSSProperties;
   /**
@@ -80,6 +80,10 @@ export interface ICodePreviewProps {
    * Whether to display the preview interface.
    */
   noPreview?: boolean;
+  /**
+   * Preview area does not display scroll bars
+   */
+  noScroll?: boolean;
   /**
    * Dependent component
    */

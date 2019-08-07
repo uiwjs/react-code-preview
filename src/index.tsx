@@ -38,6 +38,10 @@ export interface ICodePreviewProps extends ISplitProps {
    */
   noPreview?: boolean;
   /**
+   * Preview area does not display scroll bars
+   */
+  noScroll?: boolean;
+  /**
    * Dependent component
    */
   dependencies?: { [key: string]: any };
@@ -143,13 +147,14 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
     });
   }
   public render() {
-    const { style, prefixCls, className, code, dependencies, bordered, noCode, noPreview, bgWhite, ...otherProps } = this.props;
+    const { style, prefixCls, className, code, dependencies, bordered, noCode, noPreview, noScroll, bgWhite, ...otherProps } = this.props;
     const isOneItem = (!noCode && !noPreview) ? false : (!noCode || !noPreview);
     let visiable = this.state.width === 1 ? false : [isOneItem ? 1 : 2];
     return (
       <Split
         visiable={visiable}
         className={classnames(className, prefixCls, {
+          [`${prefixCls}-noScroll`]: noScroll,
           [`${prefixCls}-OneItem`]: isOneItem,
           [`${prefixCls}-bordered`]: bordered,
           [`${prefixCls}-fullScreen`]: this.state.fullScreen,
