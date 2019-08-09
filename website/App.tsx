@@ -85,8 +85,8 @@ export default class App extends React.PureComponent<{}, IAppState> {
           </Switch>
           <br />
           <Switch
-            data-checked="显示"
-            data-unchecked="隐藏"
+            data-checked="超出滚动"
+            data-unchecked="高度自适应"
             checked={this.state.noScroll}
             onChange={this.handleChange.bind(this, 'noScroll')}
           >
