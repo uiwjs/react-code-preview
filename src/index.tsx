@@ -57,6 +57,8 @@ export interface ICodePreviewState {
 
 export default class CodePreview extends React.PureComponent<ICodePreviewProps, ICodePreviewState> {
   public demoDom = React.createRef<HTMLDivElement>();
+  public editor = React.createRef<CodeMirror>();
+  public initHeight: number = 3;
   public playerId: string = `${parseInt(String(Math.random() * 1e9), 10).toString(36)}`;
   public static defaultProps: ICodePreviewProps = {
     prefixCls: 'w-code-preview',
@@ -136,14 +138,26 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
       }
     });
   }
+  initOldHeight() {
+    const demo = this.demoDom.current;
+    if (this.initHeight === 3 && demo) {
+      this.initHeight = demo.clientHeight;
+    }
+  }
   /**
    * onSwitchSource
    */
   public onSwitchSource() {
     const { width } = this.state;
+    this.initOldHeight();
     this.setState({
       width: width === 1 ? '50%' : 1,
       showEdit: true,
+    }, () => {
+      const editor = this.editor.current;
+      if (editor) {
+        editor.editor.setSize('100%', width !== 1 ? this.initHeight : '100%');
+      }
     });
   }
   public render() {
@@ -187,6 +201,7 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
             {this.state.showEdit && (
               <CodeMirror
                 value={code}
+                ref={this.editor}
                 onChange={(editor) => {
                   this.executeCode(editor.getValue());
                 }}
