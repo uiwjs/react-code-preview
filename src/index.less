@@ -92,16 +92,22 @@
       }
     }
     &-iconbtns {
-      margin-top: 8px;
+      margin-top: 5px;
+      margin-right: 3px;
       height: 15px;
+      width: 15px;
       line-height: 22px;
     }
     svg {
       transition: all .3s;
       fill: #9c9c9c;
+      display: block;
       &:hover {
         fill: #000;
       }
+    }
+    form svg {
+      display: inline-block;
     }
     &-copied svg, &-copied svg:hover {
       fill: #28a745;
