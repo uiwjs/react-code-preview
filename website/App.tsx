@@ -1,9 +1,9 @@
 import React from 'react';
-import { Switch, Divider, Button } from 'uiw';
+import { Switch, Button } from 'uiw';
 import Markdown from './Markdown';
 import GithubCorner from './GithubCorner';
 import DocumentStr from '../README.md'; // @ts-ignore
-import CodePreview from '../src';
+import CodePreview, { ICodePreviewProps } from '../src';
 import styles from './App.module.less';
 
 const code = `import { Button, Divider, Icon } from 'uiw';
@@ -27,6 +27,8 @@ interface IAppState {
   noScroll: boolean;
   noPreview: boolean;
   bordered: boolean;
+  codePenShow: boolean;
+  codePen: ICodePreviewProps['codePenOption'];
 }
 
 export default class App extends React.PureComponent<{}, IAppState> {
@@ -36,6 +38,14 @@ export default class App extends React.PureComponent<{}, IAppState> {
     noScroll: false,
     noPreview: false,
     bordered: true,
+    codePenShow: true,
+    codePen: {
+      title: 'React Code Preview - demo',
+      html: '<div id="root"></div>',
+      js: code.replace('_mount_', 'document.getElementById("root")'),
+      css_external: 'https://unpkg.com/uiw@3.2.6/dist/uiw.min.css',
+      js_external: `https://unpkg.com/react@16.x/umd/react.development.js;https://unpkg.com/react-dom@16.x/umd/react-dom.development.js;https://unpkg.com/classnames@2.2.6/index.js;https://unpkg.com/uiw@3.2.6/dist/uiw.min.js;https://unpkg.com/@uiw/codepen-require-polyfill@1.0.0/index.js`,
+    },
   }
   private handleChange(keyName: string,e: React.ChangeEvent<HTMLInputElement>) {
     const state = { ...this.state,[`${keyName}`]: e.target.checked }
@@ -56,6 +66,7 @@ export default class App extends React.PureComponent<{}, IAppState> {
           bgWhite={this.state.bgWhite}
           noCode={this.state.noCode}
           noPreview={this.state.noPreview}
+          codePenOption={this.state.codePenShow ? this.state.codePen : undefined}
         >
           {code}
         </CodePreview>
@@ -97,12 +108,17 @@ export default class App extends React.PureComponent<{}, IAppState> {
           </Switch>
           <br />
           <Switch
-            data-checked="显示"
-            data-unchecked="隐藏"
             checked={this.state.bordered}
             onChange={this.handleChange.bind(this, 'bordered')}
           >
             是否显示边框 `bordered={this.state.bordered.toString()}`
+          </Switch>
+          <br />
+          <Switch
+            checked={this.state.codePenShow}
+            onChange={this.handleChange.bind(this, 'codePenShow')}
+          >
+            是否显示边框 `codePenOption={this.state.codePenShow ? '{...}' : 'undefined'}`
           </Switch>
         </div>
         <Markdown source={DocumentStrSource} />

@@ -5,6 +5,7 @@ import CodeMirror from '@uiw/react-codemirror';
 import copyTextToClipboard from '@uiw/copy-to-clipboard';
 import { Split } from 'uiw';
 import { ISplitProps } from 'uiw/lib/esm/split';
+import CodePen, { ICodePenOption } from './CodePen';
 import icon from './icon';
 import { BabelTransform } from './transform';
 import './monokai.css';
@@ -45,6 +46,7 @@ export interface ICodePreviewProps extends ISplitProps {
    * Dependent component
    */
   dependencies?: { [key: string]: any };
+  codePenOption?: ICodePenOption;
 }
 
 export interface ICodePreviewState {
@@ -161,7 +163,7 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
     });
   }
   public render() {
-    const { style, prefixCls, className, code, dependencies, bordered, noCode, noPreview, noScroll, bgWhite, ...otherProps } = this.props;
+    const { style, prefixCls, className, codePenOption, code, dependencies, bordered, noCode, noPreview, noScroll, bgWhite, ...otherProps } = this.props;
     const isOneItem = (!noCode && !noPreview) ? false : (!noCode || !noPreview);
     let visiable = this.state.width === 1 ? false : [isOneItem ? 1 : 2];
     return (
@@ -215,6 +217,7 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
         )}
         {!isOneItem && !(noCode && noPreview) && (
           <div style={{ flex: 1, width: 29 }} className={`${prefixCls}-bar`}>
+            {codePenOption && <CodePen prefixCls={prefixCls} options={codePenOption} />}
             <div className={`${prefixCls}-bar-btn`} onClick={this.onSwitchSource.bind(this)}>{this.state.width === 1 ? '源码' : '隐藏编辑器'}</div>
             <div
               className={classnames(`${prefixCls}-bar-iconbtns`, {

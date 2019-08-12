@@ -53,7 +53,8 @@ class Demo extends React.Component {
 ### Props
 
 ```ts
-ICodePreviewProps extends ISplitProps {
+
+export interface ICodePreviewProps extends ISplitProps {
   prefixCls?: string;
   style?: React.CSSProperties;
   /**
@@ -88,6 +89,20 @@ ICodePreviewProps extends ISplitProps {
    * Dependent component
    */
   dependencies?: { [key: string]: any };
+  codePenOption?: ICodePenOption;
+}
+```
+
+```ts
+interface ICodePenOption {
+  title?: string;
+  html?: string;
+  js?: string;
+  css?: string;
+  editors?: string;
+  css_external?: string;
+  js_external?: string;
+  js_pre_processor?: string;
 }
 ```
 
