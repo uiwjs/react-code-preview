@@ -1,11 +1,11 @@
 {
   "name": "@uiw/react-code-preview",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "Code edit preview for React.",
   "author": "Kenny Wang <wowohoo@qq.com>",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
-  "typings": "typings/index.d.ts",
+  "typings": "lib/cjs/index.d.ts",
   "scripts": {
     "prepare": "npm run build",
     "watch": "npm run build:types -- --watch & npm run watch:ts -- --env-name esm:dev --env-name cjs",
@@ -26,7 +26,6 @@
     "url": "https://github.com/uiwjs/react-code-preview"
   },
   "files": [
-    "typings",
     "src",
     "lib"
   ],
