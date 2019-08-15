@@ -85,7 +85,7 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
       this.executeCode(this.props.code!);
     }
   }
-  componentWillReceiveProps(nextProps: ICodePreviewProps) {
+  UNSAFE_componentWillReceiveProps(nextProps: ICodePreviewProps) {
     if (nextProps.noPreview !== this.props.noPreview) {
       this.executeCode(this.props.code!);
     }
