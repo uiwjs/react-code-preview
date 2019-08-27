@@ -84,6 +84,9 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
     if (!this.props.noPreview) {
       this.executeCode(this.props.code!);
     }
+    window.addEventListener("popstate", function(e) { 
+      document.body.style.overflow = 'inherit';
+    }, false);
   }
   UNSAFE_componentWillReceiveProps(nextProps: ICodePreviewProps) {
     if (nextProps.noPreview !== this.props.noPreview) {
