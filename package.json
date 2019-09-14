@@ -1,6 +1,6 @@
 {
   "name": "@uiw/react-code-preview",
-  "version": "1.4.3",
+  "version": "1.5.0",
   "description": "Code edit preview for React.",
   "author": "Kenny Wang <wowohoo@qq.com>",
   "main": "lib/cjs/index.js",
@@ -58,6 +58,7 @@
     "tsbb": "^1.1.1"
   },
   "dependencies": {
+    "@babel/plugin-transform-classes": "^7.5.5",
     "@babel/runtime": "^7.5.5",
     "@babel/standalone": "^7.5.5",
     "@uiw/copy-to-clipboard": "^1.0.10",
