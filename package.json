@@ -45,6 +45,7 @@
     "@types/react-test-renderer": "^16.8.1",
     "@types/react-transition-group": "^4.2.0",
     "@uiw/reset.css": "^1.0.3",
+    "babel-plugin-transform-remove-imports": "^1.2.0",
     "babel-plugin-transform-rename-import": "^2.3.0",
     "compile-less-cli": "^1.1.5",
     "gh-pages": "^2.1.0",
@@ -63,7 +64,6 @@
     "@babel/standalone": "^7.6.0",
     "@uiw/copy-to-clipboard": "^1.0.10",
     "@uiw/react-codemirror": "^1.0.27",
-    "babel-plugin-transform-remove-imports": "^1.2.0",
     "classnames": "^2.2.6",
     "uiw": "^3.9.0"
   }
