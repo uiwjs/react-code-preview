@@ -13,7 +13,7 @@
     "sourceMap": true,
     "strict": true, /* Enable all strict type-checking options. */
     "outDir": "lib",
-    "baseUrl": "../",
+    "baseUrl": ".",
     "paths": {
       "*": [
         "node_modules/*",

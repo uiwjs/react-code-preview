@@ -4,14 +4,14 @@ import classnames from 'classnames';
 import CodeMirror from '@uiw/react-codemirror';
 import copyTextToClipboard from '@uiw/copy-to-clipboard';
 import { Split } from 'uiw';
-import { ISplitProps } from 'uiw/lib/esm/split';
+import { SplitProps } from 'uiw/lib/esm/split';
 import CodePen, { ICodePenOption } from './CodePen';
 import icon from './icon';
 import { BabelTransform } from './transform';
 import './monokai.css';
 import './index.less';
 
-export interface ICodePreviewProps extends ISplitProps {
+export interface ICodePreviewProps extends SplitProps {
   prefixCls?: string;
   style?: React.CSSProperties;
   /**
