@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import classnames from 'classnames';
-import CodeMirror from '@uiw/react-codemirror';
+import CodeMirror, { IReactCodemirror } from '@uiw/react-codemirror';
 import copyTextToClipboard from '@uiw/copy-to-clipboard';
 import { Split } from 'uiw';
 import { SplitProps } from 'uiw/lib/esm/split';
@@ -42,6 +42,10 @@ export interface ICodePreviewProps extends SplitProps {
    */
   bgWhite?: boolean;
   /**
+   * Only show Edit
+   */
+  onlyEdit?: boolean;
+  /**
    * Whether to display the preview interface.
    */
   noPreview?: boolean;
@@ -67,6 +71,7 @@ export interface ICodePreviewState {
 export default class CodePreview extends React.PureComponent<ICodePreviewProps, ICodePreviewState> {
   public demoDom = React.createRef<HTMLDivElement>();
   public editor = React.createRef<CodeMirror>();
+  public language: string = '';
   public initHeight: number = 3;
   public playerId: string = `${parseInt(String(Math.random() * 1e9), 10).toString(36)}`;
   public static defaultProps: ICodePreviewProps = {
@@ -75,6 +80,7 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
     code: '',
     noCode: false,
     bgWhite: false,
+    onlyEdit: false,
     noPreview: false,
     bordered: true,
   }
@@ -90,8 +96,8 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
   }
   componentDidMount() {
     const { language } = this.props;
-    const lang = typeof language === 'string' ? language : (language ? (language.name || ''): '');
-    if (!this.props.noPreview && /(jsx|js)/.test(lang)) {
+    this.language = typeof language === 'string' ? language : (language ? (language.name || ''): '');
+    if (!this.props.noPreview) {
       this.executeCode(this.props.code!);
     }
     window.addEventListener("popstate", function(e) { 
@@ -100,12 +106,15 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
   }
   UNSAFE_componentWillReceiveProps(nextProps: ICodePreviewProps) {
     const { language } = nextProps;
-    const lang = typeof language === 'string' ? language : (language ? (language.name || ''): '');
-    if (nextProps.noPreview !== this.props.noPreview && /(jsx|js)/.test(lang)) {
+    this.language = typeof language === 'string' ? language : (language ? (language.name || ''): '');
+    if (nextProps.noPreview !== this.props.noPreview) {
       this.executeCode(this.props.code!);
     }
   }
   async executeCode(codeStr: string) {
+    if (!/(jsx|js)/.test(this.language)) {
+      return;
+    }
     try {
       const args = ['context', 'React', 'ReactDOM', 'Component'];
       const argv = [this, React, ReactDOM, Component];
@@ -178,7 +187,7 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
     });
   }
   public render() {
-    const { style, prefixCls, language, className, codePenOption, code, dependencies, bordered, noCode, noPreview, noScroll, bgWhite, ...otherProps } = this.props;
+    const { style, prefixCls, language, className, codePenOption, code, dependencies, onlyEdit, bordered, noCode, noPreview, noScroll, bgWhite, ...otherProps } = this.props;
     const isOneItem = (!noCode && !noPreview) ? false : (!noCode || !noPreview);
     let visiable = this.state.width === 1 ? false : [isOneItem ? 1 : 2];
     return (
@@ -193,7 +202,7 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
         style={{ flex: 1, ...style }}
         {...otherProps}
       >
-        {!noPreview && (
+        {!noPreview && !onlyEdit && (
           <div
             ref={this.demoDom}
             className={classnames(`${prefixCls}-demo`, {
@@ -213,24 +222,24 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
             <div className={classnames(`${prefixCls}-demo-source`, { ['error']: this.state.errorMessage })} id={this.playerId} />
           </div>
         )}
-        {!noCode && (
-          <div style={{ overflow: 'hidden', width: this.state.width, }}>
-            {this.state.showEdit && (
+        {(!noCode || onlyEdit) && (
+          <div style={{ overflow: 'hidden', width: onlyEdit ? '100%' : this.state.width, }}>
+            {(this.state.showEdit || onlyEdit) && (
               <CodeMirror
-                value={code}
+                value={(code || '').replace(/\n$/, '')}
                 ref={this.editor}
-                onChange={(editor) => {
-                  this.executeCode(editor.getValue());
-                }}
                 options={{
                   theme: 'monokai',
                   mode: language,
+                }}
+                onChange={(editor) => {
+                  this.executeCode(editor.getValue());
                 }}
               />
             )}
           </div>
         )}
-        {!isOneItem && !(noCode && noPreview) && (
+        {!isOneItem && !(noCode && noPreview) && !onlyEdit && (
           <div style={{ flex: 1, width: 29 }} className={`${prefixCls}-bar`}>
             {codePenOption && <CodePen prefixCls={prefixCls} options={codePenOption} />}
             <div className={`${prefixCls}-bar-btn`} onClick={this.onSwitchSource.bind(this)}>{this.state.width === 1 ? '源码' : '隐藏编辑器'}</div>
