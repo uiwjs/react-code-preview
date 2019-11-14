@@ -53,7 +53,8 @@ class Demo extends React.Component {
 ### Props
 
 ```ts
-export interface ICodePreviewProps extends ISplitProps {
+
+export interface ICodePreviewProps extends SplitProps {
   prefixCls?: string;
   style?: React.CSSProperties;
   /**
@@ -66,7 +67,7 @@ export interface ICodePreviewProps extends ISplitProps {
    * Alternatively, it may be an object containing configuration options for the mode,
    * with a name property that names the mode (for example `{name: "javascript", json: true}` ).
    */
-  language?: string;
+  language?: string | { name: string, json: boolean };
   /**
    * Whether to display the border.
    */
@@ -84,6 +85,10 @@ export interface ICodePreviewProps extends ISplitProps {
    */
   bgWhite?: boolean;
   /**
+   * Only show Edit
+   */
+  onlyEdit?: boolean;
+  /**
    * Whether to display the preview interface.
    */
   noPreview?: boolean;
@@ -91,6 +96,10 @@ export interface ICodePreviewProps extends ISplitProps {
    * Preview area does not display scroll bars
    */
   noScroll?: boolean;
+  /**
+   * Modify ReactCodemirror props.
+   */
+  editProps?: IReactCodemirror;
   /**
    * Dependent component
    */

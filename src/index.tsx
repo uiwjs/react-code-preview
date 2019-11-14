@@ -54,6 +54,10 @@ export interface ICodePreviewProps extends SplitProps {
    */
   noScroll?: boolean;
   /**
+   * Modify ReactCodemirror props.
+   */
+  editProps?: IReactCodemirror;
+  /**
    * Dependent component
    */
   dependencies?: { [key: string]: any };
@@ -78,6 +82,7 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
     prefixCls: 'w-code-preview',
     language: 'jsx',
     code: '',
+    editProps: {},
     noCode: false,
     bgWhite: false,
     onlyEdit: false,
@@ -187,7 +192,7 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
     });
   }
   public render() {
-    const { style, prefixCls, language, className, codePenOption, code, dependencies, onlyEdit, bordered, noCode, noPreview, noScroll, bgWhite, ...otherProps } = this.props;
+    const { style, prefixCls, language, className, editProps, codePenOption, code, dependencies, onlyEdit, bordered, noCode, noPreview, noScroll, bgWhite, ...otherProps } = this.props;
     const isOneItem = (!noCode && !noPreview) ? false : (!noCode || !noPreview);
     let visiable = this.state.width === 1 ? false : [isOneItem ? 1 : 2];
     return (
@@ -232,6 +237,7 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
                   theme: 'monokai',
                   mode: language,
                 }}
+                {...editProps}
                 onChange={(editor) => {
                   this.executeCode(editor.getValue());
                 }}
