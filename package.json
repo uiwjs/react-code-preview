@@ -1,6 +1,6 @@
 {
   "name": "@uiw/react-code-preview",
-  "version": "1.8.1",
+  "version": "1.9.0",
   "description": "Code edit preview for React.",
   "author": "Kenny Wang <wowohoo@qq.com>",
   "main": "lib/cjs/index.js",
