@@ -53,7 +53,6 @@ class Demo extends React.Component {
 ### Props
 
 ```ts
-
 export interface ICodePreviewProps extends ISplitProps {
   prefixCls?: string;
   style?: React.CSSProperties;
@@ -61,6 +60,13 @@ export interface ICodePreviewProps extends ISplitProps {
    * To specify a CSS class, use the className attribute.
    */
   className?: string;
+  /**
+   * string|object. The mode to use. When not given, this will default to the first mode that was loaded.
+   * It may be a string, which either simply names the mode or is a MIME type associated with the mode.
+   * Alternatively, it may be an object containing configuration options for the mode,
+   * with a name property that names the mode (for example `{name: "javascript", json: true}` ).
+   */
+  language?: string;
   /**
    * Whether to display the border.
    */

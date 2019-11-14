@@ -19,6 +19,13 @@ export interface ICodePreviewProps extends SplitProps {
    */
   className?: string;
   /**
+   * string|object. The mode to use. When not given, this will default to the first mode that was loaded.
+   * It may be a string, which either simply names the mode or is a MIME type associated with the mode.
+   * Alternatively, it may be an object containing configuration options for the mode,
+   * with a name property that names the mode (for example `{name: "javascript", json: true}` ).
+   */
+  language?: string | { name: string, json: boolean };
+  /**
    * Whether to display the border.
    */
   bordered?: boolean;
@@ -64,6 +71,7 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
   public playerId: string = `${parseInt(String(Math.random() * 1e9), 10).toString(36)}`;
   public static defaultProps: ICodePreviewProps = {
     prefixCls: 'w-code-preview',
+    language: 'jsx',
     code: '',
     noCode: false,
     bgWhite: false,
@@ -166,7 +174,7 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
     });
   }
   public render() {
-    const { style, prefixCls, className, codePenOption, code, dependencies, bordered, noCode, noPreview, noScroll, bgWhite, ...otherProps } = this.props;
+    const { style, prefixCls, language, className, codePenOption, code, dependencies, bordered, noCode, noPreview, noScroll, bgWhite, ...otherProps } = this.props;
     const isOneItem = (!noCode && !noPreview) ? false : (!noCode || !noPreview);
     let visiable = this.state.width === 1 ? false : [isOneItem ? 1 : 2];
     return (
@@ -212,7 +220,7 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
                 }}
                 options={{
                   theme: 'monokai',
-                  mode: 'jsx',
+                  mode: language,
                 }}
               />
             )}
