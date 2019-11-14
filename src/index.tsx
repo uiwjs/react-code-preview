@@ -89,7 +89,9 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
     super(props);
   }
   componentDidMount() {
-    if (!this.props.noPreview) {
+    const { language } = this.props;
+    const lang = typeof language === 'string' ? language : (language?.name || '');
+    if (!this.props.noPreview && /(jsx|js)/.test(lang)) {
       this.executeCode(this.props.code!);
     }
     window.addEventListener("popstate", function(e) { 
@@ -97,7 +99,9 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
     }, false);
   }
   UNSAFE_componentWillReceiveProps(nextProps: ICodePreviewProps) {
-    if (nextProps.noPreview !== this.props.noPreview) {
+    const { language } = nextProps;
+    const lang = typeof language === 'string' ? language : (language?.name || '');
+    if (nextProps.noPreview !== this.props.noPreview && /(jsx|js)/.test(lang)) {
       this.executeCode(this.props.code!);
     }
   }
