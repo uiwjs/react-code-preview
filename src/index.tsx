@@ -90,7 +90,7 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
   }
   componentDidMount() {
     const { language } = this.props;
-    const lang = typeof language === 'string' ? language : (language?.name || '');
+    const lang = typeof language === 'string' ? language : (language ? (language.name || ''): '');
     if (!this.props.noPreview && /(jsx|js)/.test(lang)) {
       this.executeCode(this.props.code!);
     }
