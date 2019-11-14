@@ -100,7 +100,7 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
   }
   UNSAFE_componentWillReceiveProps(nextProps: ICodePreviewProps) {
     const { language } = nextProps;
-    const lang = typeof language === 'string' ? language : (language?.name || '');
+    const lang = typeof language === 'string' ? language : (language ? (language.name || ''): '');
     if (nextProps.noPreview !== this.props.noPreview && /(jsx|js)/.test(lang)) {
       this.executeCode(this.props.code!);
     }
