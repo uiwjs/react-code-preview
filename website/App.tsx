@@ -3,7 +3,8 @@ import { Switch, Button } from 'uiw';
 import Markdown from './Markdown';
 import GithubCorner from './GithubCorner';
 import DocumentStr from '../README.md'; // @ts-ignore
-import CodePreview, { ICodePreviewProps } from '../src';
+import CodePreview from '../';
+import { ICodePreviewProps } from '../';
 import styles from './App.module.less';
 
 const code = `import { Button, Divider, Icon } from 'uiw';

@@ -8,17 +8,19 @@
   "typings": "lib/cjs/index.d.ts",
   "scripts": {
     "prepare": "npm run build",
-    "watch": "npm run build:types -- --watch & npm run watch:ts -- --env-name esm:dev --env-name cjs",
-    "build": "npm run build:ts && npm run build:types && npm run build:types -- --outDir lib/cjs && npm run build:css",
-    "build:types": "tsbb types --outDir typings --target ESNEXT --project src --outDir lib/esm",
-    "watch:ts": "tsbb watch --target react",
-    "build:ts": "tsbb build --target react",
-    "build:css": "compile-less -d src -o lib/esm",
-    "deploy": "npm run doc:build && gh-pages -d dist --git git",
-    "test": "tsbb test --env=jsdom",
-    "coverage": "tsbb test --env=jsdom --coverage",
-    "doc": "kkt start",
-    "doc:build": "kkt build"
+    "released": "npm run build && npm run doc",
+    "predeploy": "npm run released",
+    "deploy": "gh-pages -d build",
+    "doc": "ENTRYDIR=website kkt build",
+    "doc:dev": "ENTRYDIR=website kkt start",
+    "build": "npm run ts:build && npm run types:esm && npm run types:cjs && npm run css:build",
+    "types:build": "tsbb types --sourceRoot src --target ESNEXT",
+    "types:watch": "npm run types:esm -- --watch & npm run types:cjs -- --watch",
+    "types:esm": "npm run types:build -- --outDir ../lib/esm",
+    "types:cjs": "npm run types:build -- --outDir ../lib/cjs",
+    "css:build": "compile-less -d src -o lib/esm",
+    "ts:watch": "tsbb watch --env-name esm:dev --env-name cjs --target react",
+    "ts:build": "tsbb build --target react"
   },
   "homepage": "https://uiwjs.github.io/react-code-preview",
   "repository": {
@@ -36,7 +38,7 @@
     "react-dom": ">=16.7.0"
   },
   "devDependencies": {
-    "@kkt/plugin-less": "^1.2.0",
+    "@kkt/loader-less": "^1.0.3",
     "@types/classnames": "^2.2.7",
     "@types/codemirror": "0.0.76",
     "@types/highlight.js": "^9.12.3",
@@ -45,18 +47,16 @@
     "@types/react-test-renderer": "^16.8.1",
     "@types/react-transition-group": "^4.2.0",
     "@uiw/reset.css": "^1.0.3",
-    "babel-plugin-transform-remove-imports": "^1.2.0",
-    "babel-plugin-transform-rename-import": "^2.3.0",
     "compile-less-cli": "^1.1.5",
-    "gh-pages": "^2.1.0",
+    "gh-pages": "^2.1.1",
     "highlight.js": "^9.15.9",
-    "kkt": "^4.2.0",
+    "kkt": "^5.0.0-alpha.11",
     "raw-loader": "^3.1.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-markdown": "^4.1.0",
     "react-test-renderer": "^16.8.6",
-    "tsbb": "^1.1.1"
+    "tsbb": "^1.3.4"
   },
   "dependencies": {
     "@babel/plugin-transform-classes": "^7.5.5",
@@ -64,7 +64,20 @@
     "@babel/standalone": "^7.6.0",
     "@uiw/copy-to-clipboard": "^1.0.10",
     "@uiw/react-codemirror": "^1.0.27",
+    "babel-plugin-transform-remove-imports": "^1.2.0",
     "classnames": "^2.2.6",
     "uiw": "^3.9.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

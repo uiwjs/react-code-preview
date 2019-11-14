@@ -1,26 +1,27 @@
 {
-  "compilerOptions": {
-    "module": "commonjs",
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "importHelpers": true,
-    "declaration": true,
-    "jsx": "react",
-    "target": "esnext",
-    "noImplicitAny": true,
-    "resolveJsonModule": true,
-    "moduleResolution": "node",
-    "sourceMap": true,
-    "strict": true, /* Enable all strict type-checking options. */
-    "outDir": "lib",
-    "baseUrl": ".",
-    "typeRoots": [
-      "types"
-    ],
-    "paths": {
-      "*": [
-        "types/*"
-      ]
-    }
-  }
+	"compilerOptions": {
+		"target": "es5",
+		"lib": [
+			"dom",
+			"dom.iterable",
+			"esnext"
+		],
+		"allowJs": true,
+		"skipLibCheck": true,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"strict": true,
+		"forceConsistentCasingInFileNames": true,
+		"module": "esnext",
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"declaration": true,
+		"baseUrl": ".",
+		"jsx": "react"
+	},
+	"include": ["../src"],
+	"typeRoots": [
+		"../node_modules/@types"
+	]
 }
