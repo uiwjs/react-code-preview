@@ -63,7 +63,7 @@
     "@babel/runtime": "^7.7.2",
     "@babel/standalone": "^7.7.3",
     "@uiw/copy-to-clipboard": "^1.0.10",
-    "@uiw/react-codemirror": "^1.1.0",
+    "@uiw/react-codemirror": "^2.0.0",
     "babel-plugin-transform-remove-imports": "^1.2.0",
     "classnames": "^2.2.6",
     "uiw": "^3.9.0"
