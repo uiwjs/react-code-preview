@@ -1,6 +1,6 @@
 {
   "name": "@uiw/react-code-preview",
-  "version": "1.10.0",
+  "version": "1.11.0",
   "description": "Code edit preview for React.",
   "author": "Kenny Wang <wowohoo@qq.com>",
   "main": "lib/cjs/index.js",
@@ -9,8 +9,6 @@
   "scripts": {
     "prepare": "npm run build",
     "released": "npm run build && npm run doc",
-    "predeploy": "npm run released",
-    "deploy": "gh-pages -d build",
     "doc": "ENTRYDIR=website kkt build",
     "doc:dev": "ENTRYDIR=website kkt start",
     "build": "npm run ts:build && npm run types:esm && npm run types:cjs && npm run css:build",
@@ -48,7 +46,6 @@
     "@types/react-transition-group": "^4.2.0",
     "@uiw/reset.css": "^1.0.3",
     "compile-less-cli": "^1.1.5",
-    "gh-pages": "^2.1.1",
     "highlight.js": "^9.15.9",
     "kkt": "^5.0.0-alpha.11",
     "raw-loader": "^3.1.0",
