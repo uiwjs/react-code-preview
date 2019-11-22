@@ -17,8 +17,10 @@ export default class CodeBlock extends Component<ICodeBlockProps> {
     this.highlightCode()
   }
 
-  componentDidUpdate() {
-    this.highlightCode()
+  componentDidUpdate(prevProps: ICodeBlockProps) {
+    if (this.props.value !== prevProps.value) {
+      this.highlightCode()
+    }
   }
 
   highlightCode() {
