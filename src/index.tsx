@@ -96,9 +96,6 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
     showEdit: false,
     width: 1,
   }
-  constructor(props: ICodePreviewProps) {
-    super(props);
-  }
   componentDidMount() {
     const { language } = this.props;
     this.language = typeof language === 'string' ? language : (language ? (language.name || ''): '');
@@ -132,6 +129,7 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
       const input = `${codeStr}`;
       const { code } = await BabelTransform(input);
       args.push(code);
+      // eslint-disable-next-line no-new-func
       new Function(...args).apply(null, argv);
       this.setState({ errorMessage: '' });
       
@@ -224,7 +222,7 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
                 <code>{this.state.errorMessage}</code>
               </pre>
             )}
-            <div className={classnames(`${prefixCls}-demo-source`, { ['error']: this.state.errorMessage })} id={this.playerId} />
+            <div className={classnames(`${prefixCls}-demo-source`, { 'error': this.state.errorMessage })} id={this.playerId} />
           </div>
         )}
         {(!noCode || onlyEdit) && (
