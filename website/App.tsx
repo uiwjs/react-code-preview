@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Button } from 'uiw';
+import GitHubCorners from '@uiw/react-github-corners';
 import Markdown from './Markdown';
-import GithubCorner from './GithubCorner';
 import DocumentStr from '../README.md'; // @ts-ignore
 import CodePreview from '../';
 import { ICodePreviewProps } from '../';
@@ -57,7 +57,7 @@ export default class App extends React.PureComponent<{}, IAppState> {
     if (DocumentStrSource) DocumentStrSource = DocumentStr.replace(/([\s\S]*)<!--dividing-->/, '');
     return (
       <div className={styles.warpper}>
-        <GithubCorner url="https://uiwjs.github.io/react-code-preview" />
+        <GitHubCorners fixed href="https://uiwjs.github.io/react-code-preview" target="__blank" />
         <h1 className={styles.title}>React Code Preview</h1>
         <CodePreview
           code={code}
