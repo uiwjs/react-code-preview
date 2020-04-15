@@ -52,8 +52,7 @@ class Demo extends React.Component {
 
 ### Props
 
-```ts
-
+```typescript
 export interface ICodePreviewProps extends SplitProps {
   prefixCls?: string;
   style?: React.CSSProperties;
@@ -108,7 +107,7 @@ export interface ICodePreviewProps extends SplitProps {
 }
 ```
 
-```ts
+```typescript
 interface ICodePenOption {
   title?: string;
   html?: string;

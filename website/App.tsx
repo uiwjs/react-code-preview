@@ -1,7 +1,9 @@
 import React from 'react';
 import { Switch, Button } from 'uiw';
 import GitHubCorners from '@uiw/react-github-corners';
-import Markdown from './Markdown';
+import Markdown from '@uiw/react-md-editor/lib/esm/components/Markdown';
+import '@uiw/react-md-editor/lib/esm/markdown.css';
+import '@uiw/react-md-editor/lib/esm/markdowncolor.css';
 import DocumentStr from '../README.md'; // @ts-ignore
 import CodePreview from '../';
 import { ICodePreviewProps } from '../';
@@ -122,7 +124,7 @@ export default class App extends React.PureComponent<{}, IAppState> {
             是否显示边框 `codePenOption={this.state.codePenShow ? '{...}' : 'undefined'}`
           </Switch>
         </div>
-        <Markdown source={DocumentStrSource} />
+        <Markdown style={{ paddingTop: 25 }} source={DocumentStrSource} />
       </div>
     )
   }
