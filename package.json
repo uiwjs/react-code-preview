@@ -43,7 +43,7 @@
     "@types/highlight.js": "9.12.3",
     "@types/react": "16.9.17",
     "@types/react-dom": "16.9.4",
-    "@types/react-test-renderer": "16.9.1",
+    "@types/react-test-renderer": "16.9.2",
     "@types/react-transition-group": "4.2.3",
     "@uiw/react-github-corners": "1.1.2",
     "@uiw/react-md-editor": "1.13.3",
