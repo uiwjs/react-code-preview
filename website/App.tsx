@@ -59,7 +59,7 @@ export default class App extends React.PureComponent<{}, IAppState> {
     if (DocumentStrSource) DocumentStrSource = DocumentStr.replace(/([\s\S]*)<!--dividing-->/, '');
     return (
       <div className={styles.warpper}>
-        <GitHubCorners fixed href="https://uiwjs.github.io/react-code-preview" target="__blank" />
+        <GitHubCorners fixed href="https://github.com/uiwjs/react-code-preview" target="__blank" />
         <h1 className={styles.title}>React Code Preview</h1>
         <CodePreview
           code={code}
