@@ -15,7 +15,7 @@ export const loaderOneOf = [
 
 export default (conf: webpack.Configuration, opts: OptionConf, webpack: Webpack) => {
   const pkg = require(path.resolve(process.cwd(), 'package.json'));
-  conf.module.rules.map((item) => {
+  conf.module!.rules.map((item) => {
     if (item.oneOf) {
       item.oneOf.unshift({
         test: /\.md$/,
@@ -25,7 +25,7 @@ export default (conf: webpack.Configuration, opts: OptionConf, webpack: Webpack)
     return item;
   });
   // 获取 React CodeMirror 版本
-  conf.plugins.push(
+  conf.plugins!.push(
     new webpack.DefinePlugin({
       VERSION: JSON.stringify(pkg.version),
     })
