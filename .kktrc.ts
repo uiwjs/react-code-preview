@@ -30,5 +30,6 @@ export default (conf: webpack.Configuration, opts: OptionConf, webpack: Webpack)
       VERSION: JSON.stringify(pkg.version),
     })
   );
+  conf.output = { ...conf.output, publicPath: './' }
   return conf;
 }
