@@ -1,9 +1,7 @@
 import React from 'react';
 import { Switch, Button } from 'uiw';
 import GitHubCorners from '@uiw/react-github-corners';
-import Markdown from '@uiw/react-md-editor/lib/esm/components/Markdown';
-import '@uiw/react-md-editor/lib/esm/markdown.css';
-import '@uiw/react-md-editor/lib/esm/markdowncolor.css';
+import Markdown from '@uiw/react-markdown-preview';
 import DocumentStr from '../README.md'; // @ts-ignore
 import CodePreview from '../';
 import { ICodePreviewProps } from '../';
