@@ -54,7 +54,7 @@
     "react-dom": "16.12.0",
     "react-test-renderer": "16.12.0",
     "tsbb": "1.7.1",
-    "uiw": "3.10.9"
+    "uiw": "4.2.0"
   },
   "dependencies": {
     "@babel/plugin-transform-classes": "^7.7.4",
