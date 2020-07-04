@@ -1,2 +1,0 @@
-(this["webpackJsonp@uiw/react-code-preview"]=this["webpackJsonp@uiw/react-code-preview"]||[]).push([[378],{612:function(e,a){Prism.languages["t4-vb"]=Prism.languages["t4-templating"].createT4("visual-basic")}}]);
-//# sourceMappingURL=378.95fb7043.chunk.js.map
