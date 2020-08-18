@@ -49,7 +49,7 @@
     "@uiw/react-markdown-preview": "1.0.9",
     "@uiw/reset.css": "1.0.4",
     "compile-less-cli": "1.4.0",
-    "kkt": "5.8.0",
+    "kkt": "5.10.3",
     "react": "16.12.0",
     "react-dom": "16.12.0",
     "react-test-renderer": "16.12.0",
