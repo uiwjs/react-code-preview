@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import classnames from 'classnames';
 import CodeMirror, { IReactCodemirror } from '@uiw/react-codemirror';
 import copyTextToClipboard from '@uiw/copy-to-clipboard';
 import Split, { SplitProps } from '@uiw/react-split';
@@ -195,22 +194,24 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
     return (
       <Split
         visiable={visiable}
-        className={classnames(className, prefixCls, {
-          [`${prefixCls}-noScroll`]: noScroll,
-          [`${prefixCls}-OneItem`]: isOneItem,
-          [`${prefixCls}-bordered`]: bordered,
-          [`${prefixCls}-fullScreen`]: this.state.fullScreen,
-        })}
+        className={[
+          className, prefixCls,
+          noScroll ? `${prefixCls}-noScroll` : null,
+          isOneItem ? `${prefixCls}-OneItem` : null,
+          bordered ? `${prefixCls}-bordered` : null,
+          this.state.fullScreen ? `${prefixCls}-fullScreen` : null,
+          ].filter(Boolean).join(' ').trim()}
         style={{ flex: 1, ...style }}
         {...otherProps}
       >
         {!noPreview && !onlyEdit && (
           <div
             ref={this.demoDom}
-            className={classnames(`${prefixCls}-demo`, {
-              [`${prefixCls}-demo-bgPlaid`]: !bgWhite,
-              [`${prefixCls}-demo-error`]: this.state.errorMessage,
-            })}
+            className={[
+              `${prefixCls}-demo`,
+              !bgWhite ? `${prefixCls}-demo-bgPlaid` : null,
+              this.state.errorMessage ? `${prefixCls}-demo-error` : null,
+            ].filter(Boolean).join(' ').trim()}
             style={{
               flex: 1,
               ...(this.state.width === 1 ? { width: '100%'} : {})
@@ -221,7 +222,7 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
                 <code>{this.state.errorMessage}</code>
               </pre>
             )}
-            <div className={classnames(`${prefixCls}-demo-source`, { 'error': this.state.errorMessage })} id={this.playerId} />
+            <div className={[`${prefixCls}-demo-source`, this.state.errorMessage ? 'error' : null].filter(Boolean).join(' ').trim()} id={this.playerId} />
           </div>
         )}
         {(!noCode || onlyEdit) && (
@@ -247,17 +248,13 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
             {codePenOption && <CodePen prefixCls={prefixCls} options={codePenOption} />}
             <div className={`${prefixCls}-bar-btn`} onClick={this.onSwitchSource.bind(this)}>{this.state.width === 1 ? '源码' : '隐藏编辑器'}</div>
             <div
-              className={classnames(`${prefixCls}-bar-iconbtns`, {
-                [`${prefixCls}-bar-copied`]: this.state.copied,
-              })}
+              className={[`${prefixCls}-bar-iconbtns`, this.state.copied ? `${prefixCls}-bar-copied` : null].filter(Boolean).join(' ').trim()}
               onClick={this.onCopyCode.bind(this)}
             >
               {icon.copy}
             </div>
             <div
-              className={classnames(`${prefixCls}-bar-iconbtns`, {
-                [`${prefixCls}-bar-copied`]: this.state.fullScreen,
-              })}
+              className={[`${prefixCls}-bar-iconbtns`, this.state.fullScreen ? `${prefixCls}-bar-copied` : null].filter(Boolean).join(' ').trim()}
               onClick={this.onFullScreen.bind(this)}
             >
               {icon.full}
