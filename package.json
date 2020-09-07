@@ -67,7 +67,7 @@
     "@babel/runtime": "7.11.2",
     "@babel/standalone": "7.11.6",
     "@uiw/copy-to-clipboard": "1.0.11",
-    "@uiw/react-codemirror": "2.3.3",
+    "@uiw/react-codemirror": "2.3.5",
     "@uiw/react-split": "5.6.5",
     "babel-plugin-transform-remove-imports": "1.4.1"
   },
