@@ -181,9 +181,8 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
       width: width === 1 ? '50%' : 1,
       showEdit: true,
     }, () => {
-      const editor = this.editor.current;
-      if (editor) {
-        editor.editor.setSize('100%', width !== 1 ? this.initHeight : '100%');
+      if (this.editor && this.editor.current && this.editor.current.editor) {
+        this.editor.current.editor.setSize('100%', width !== 1 ? this.initHeight : '100%');
       }
     });
   }
