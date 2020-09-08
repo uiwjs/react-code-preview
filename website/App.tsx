@@ -1,5 +1,6 @@
 import React from 'react';
-import { Switch, Button } from 'uiw';
+import { Switch } from 'uiw';
+import * as UIW from 'uiw';
 import GitHubCorners from '@uiw/react-github-corners';
 import Markdown from '@uiw/react-markdown-preview';
 import DocumentStr from '../README.md'; // @ts-ignore
@@ -61,7 +62,7 @@ export default class App extends React.PureComponent<{}, IAppState> {
         <h1 className={styles.title}>React Code Preview</h1>
         <CodePreview
           code={code}
-          dependencies={{ Button }}
+          dependencies={{ ...UIW }}
           bordered={this.state.bordered}
           noScroll={this.state.noScroll}
           bgWhite={this.state.bgWhite}
