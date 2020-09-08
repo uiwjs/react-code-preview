@@ -26,9 +26,9 @@ jobs:
 
     - run: npm install
     - run: npm run build
-    - run: |
-      node -i -e "console.log('NODE_OPTIONS =', process.env.NODE_OPTIONS); process.exit();"
-      node --max_old_space_size=8192 ./node_modules/.bin/kkt build
+    - run: npm run doc
+      env:
+        NODE_OPTIONS: --max_old_space_size=8192
 
     - name: Build and Deploy
       uses: peaceiris/actions-gh-pages@v2.5.0

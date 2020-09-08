@@ -9,7 +9,7 @@
   "scripts": {
     "prepare": "npm run build",
     "released": "npm run build && npm run doc",
-    "doc": "ENTRYDIR=website NODE_OPTIONS='--max_old_space_size=8192' kkt build",
+    "doc": "ENTRYDIR=website kkt build",
     "doc:dev": "ENTRYDIR=website kkt start",
     "watch": "npm run ts:watch & npm run types:watch & npm run css:watch",
     "build": "npm run ts:build && npm run types:esm && npm run types:cjs && npm run css:build",
