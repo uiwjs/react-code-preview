@@ -26,7 +26,10 @@ jobs:
 
     - run: npm install
     - run: npm run build
-    - run: npm run doc
+    - run: |
+      node -i -e "console.log('NODE_OPTIONS =', process.env.NODE_OPTIONS); process.exit();"
+      NODE_OPTIONS = --max-old-space-size=8192
+      npm run doc
 
     - name: Build and Deploy
       uses: peaceiris/actions-gh-pages@v2.5.0
