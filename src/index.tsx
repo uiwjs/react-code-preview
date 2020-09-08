@@ -104,10 +104,10 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
       document.body.style.overflow = 'inherit';
     }, false);
   }
-  UNSAFE_componentWillReceiveProps(nextProps: ICodePreviewProps) {
-    const { language } = nextProps;
+  componentDidUpdate(prevProps: ICodePreviewProps) {
+    const { language } = this.props;
     this.language = typeof language === 'string' ? language : (language ? (language.name || ''): '');
-    if (nextProps.noPreview !== this.props.noPreview) {
+    if (prevProps.noPreview !== this.props.noPreview) {
       this.executeCode(this.props.code!);
     }
   }
