@@ -45,7 +45,7 @@
   },
   "devDependencies": {
     "@kkt/loader-less": "5.10.3",
-    "@kkt/loader-raw": "5.10.3",
+    "@kkt/loader-raw": "5.11.1",
     "@types/codemirror": "0.0.98",
     "@types/react": "16.9.34",
     "@types/react-dom": "16.9.6",
