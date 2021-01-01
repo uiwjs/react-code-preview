@@ -1,70 +1,26 @@
 import path from 'path';
-import { OptionConf } from 'kkt';
-import webpack from 'webpack';
-import WorkboxWebpackPlugin from 'workbox-webpack-plugin';
+import webpack, {Configuration} from 'webpack';
+import { LoaderConfOptions } from 'kkt';
+import lessModules from '@kkt/less-modules';
+import rawModules from '@kkt/raw-modules';
+import scopePluginOptions from '@kkt/scope-plugin-options';
+import pkg from './package.json';
 
-type Webpack = typeof webpack;
-
-export const moduleScopePluginOpts = [
-  path.resolve(process.cwd(), 'README.md'),
-  path.resolve(process.cwd(), 'src'),
-];
-
-export const loaderOneOf = [
-  require.resolve('@kkt/loader-less'),
-  require.resolve('@kkt/loader-raw')
-];
-
-export default (conf: webpack.Configuration, opts: OptionConf, webpack: Webpack) => {
-  const pkg = require(path.resolve(process.cwd(), 'package.json'));
-  conf.module!.rules.map((item) => {
-    if (item.oneOf) {
-      item.oneOf.unshift({
-        test: /\.md$/,
-        use: require.resolve('raw-loader'),
-      });
-    }
-    return item;
+export default (conf: Configuration, env: string, options: LoaderConfOptions) => {
+  conf = rawModules(conf, env, { ...options });
+  conf = lessModules(conf, env, options);
+  conf = scopePluginOptions(conf, env, {
+    ...options,
+    allowedFiles: [
+      path.resolve(process.cwd(), 'README.md'),
+      path.resolve(process.cwd(), 'src'),
+    ]
   });
+  // Get the project version.
+  conf.plugins!.push(new webpack.DefinePlugin({
+    VERSION: JSON.stringify(pkg.version),
+  }));
 
-  /**
-   * Fix `.chunk.js is 5.38 MB, and won't be precached. Configure maximumFileSizeToCacheInBytes to change this limit.`
-   */
-  if (conf.plugins) {
-    conf.plugins = conf.plugins.map((item) => {
-      if (item.constructor && item.constructor.name && /(GenerateSW)/.test(item.constructor.name)) {
-        return null;
-      }
-      return item;
-    }).filter(Boolean) as webpack.Plugin[];
-    // Generate a service worker script that will precache, and keep up to date,
-    // the HTML & assets that are part of the Webpack build.
-    if (opts.isEnvProduction) {
-      conf.plugins.push(new WorkboxWebpackPlugin.GenerateSW({
-        maximumFileSizeToCacheInBytes: 1024 * 1024 * 8,
-        clientsClaim: true,
-        exclude: [/\.map$/, /asset-manifest\.json$/],
-        navigateFallback: opts.publicUrlOrPath + '/index.html',
-        navigateFallbackDenylist: [
-          // Exclude URLs starting with /_, as they're likely an API call
-          new RegExp('^/_'),
-          // Exclude any URLs whose last part seems to be a file extension
-          // as they're likely a resource and not a SPA route.
-          // URLs containing a "?" character won't be blacklisted as they're likely
-          // a route with query params (e.g. auth callbacks).
-          new RegExp('/[^/?]+\\.[^/]+$'),
-        ],
-      }))
-    }
-  }
-
-
-  // 获取 React CodeMirror 版本
-  conf.plugins!.push(
-    new webpack.DefinePlugin({
-      VERSION: JSON.stringify(pkg.version),
-    })
-  );
   conf.optimization = {
     ...conf.optimization,
     splitChunks: {
@@ -110,6 +66,5 @@ export default (conf: webpack.Configuration, opts: OptionConf, webpack: Webpack)
       }
     }
   }
-  conf.output = { ...conf.output, publicPath: './' }
   return conf;
 }

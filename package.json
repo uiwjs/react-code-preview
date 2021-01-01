@@ -9,8 +9,8 @@
   "scripts": {
     "prepare": "npm run build",
     "released": "npm run build && npm run doc",
-    "doc": "ENTRYDIR=website kkt build",
-    "start": "ENTRYDIR=website kkt start",
+    "doc": "kkt build --app-src ./website",
+    "start": "kkt start --app-src ./website",
     "watch": "npm run ts:watch & npm run types:watch & npm run css:watch",
     "build": "npm run ts:build && npm run types:esm && npm run types:cjs && npm run css:build",
     "types:build": "tsbb types --sourceRoot src --target ESNEXT",
@@ -40,39 +40,43 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
+    "react": ">=16.9.0",
+    "react-dom": ">=16.9.0"
   },
   "devDependencies": {
-    "@kkt/loader-less": "5.10.3",
-    "@kkt/loader-raw": "5.10.3",
+    "@kkt/less-modules": "6.0.11",
+    "@kkt/raw-modules": "6.0.11",
+    "@kkt/scope-plugin-options": "6.0.11",
     "@types/codemirror": "0.0.98",
     "@types/react": "16.9.34",
     "@types/react-dom": "16.9.6",
     "@types/react-test-renderer": "16.9.2",
     "@types/react-transition-group": "4.2.4",
     "@uiw/react-github-corners": "1.2.0",
-    "@uiw/react-markdown-preview": "1.0.9",
+    "@uiw/react-markdown-preview": "2.1.1",
     "@uiw/reset.css": "1.0.4",
-    "compile-less-cli": "1.5.1",
-    "kkt": "5.10.3",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
-    "react-test-renderer": "16.13.1",
-    "tsbb": "1.7.6",
-    "uiw": "4.6.9"
+    "compile-less-cli": "1.6.0",
+    "kkt": "6.0.11",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "react-test-renderer": "17.0.1",
+    "tsbb": "1.7.8",
+    "uiw": "4.7.2"
   },
   "dependencies": {
-    "@babel/plugin-transform-classes": "7.10.4",
-    "@babel/runtime": "7.11.2",
-    "@babel/standalone": "7.11.6",
+    "@babel/plugin-transform-classes": "7.12.1",
+    "@babel/runtime": "7.12.5",
+    "@babel/standalone": "7.12.12",
     "@uiw/copy-to-clipboard": "1.0.11",
-    "@uiw/react-codemirror": "3.0.1",
-    "@uiw/react-split": "5.6.5",
-    "babel-plugin-transform-remove-imports": "1.4.1"
+    "@uiw/react-codemirror": "3.0.2",
+    "@uiw/react-split": "5.6.6",
+    "babel-plugin-transform-remove-imports": "1.5.2"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "browserslist": {
     "production": [
