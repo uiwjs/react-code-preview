@@ -46,7 +46,7 @@ export default class App extends React.PureComponent<{}, IAppState> {
       html: '<div id="root"></div>',
       js: code.replace('_mount_', 'document.getElementById("root")'),
       css_external: 'https://unpkg.com/uiw@3.2.6/dist/uiw.min.css',
-      js_external: `https://unpkg.com/react@16.x/umd/react.development.js;https://unpkg.com/react-dom@16.x/umd/react-dom.development.js;https://unpkg.com/classnames@2.2.6/index.js;https://unpkg.com/uiw@3.2.6/dist/uiw.min.js;https://unpkg.com/@uiw/codepen-require-polyfill@1.0.0/index.js`,
+      js_external: `https://unpkg.com/react@16.x/umd/react.development.js;https://unpkg.com/react-dom@16.x/umd/react-dom.development.js;https://unpkg.com/classnames@2.2.6/index.js;https://unpkg.com/uiw@3.2.6/dist/uiw.min.js;https://unpkg.com/@uiw/codepen-require-polyfill@1.0.2/index.js`,
     },
   }
   private handleChange(keyName: string,e: React.ChangeEvent<HTMLInputElement>) {

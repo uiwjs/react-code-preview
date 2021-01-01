@@ -58,8 +58,10 @@ export interface ICodePreviewProps extends SplitProps {
   /**
    * Dependent component
    */
-  dependencies?: { [key: string]: any };
+  dependencies?: Record<string, any>;
   codePenOption?: ICodePenOption;
+  btnText?: string;
+  btnHideText?: string;
 }
 
 export interface ICodePreviewState {
@@ -80,6 +82,8 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
     prefixCls: 'w-code-preview',
     language: 'jsx',
     code: '',
+    btnText: 'Code',
+    btnHideText: 'Hide Editor',
     editProps: {},
     noCode: false,
     bgWhite: false,
@@ -187,7 +191,7 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
     });
   }
   public render() {
-    const { style, prefixCls, language, className, editProps, codePenOption, code, dependencies, onlyEdit, bordered, noCode, noPreview, noScroll, bgWhite, ...otherProps } = this.props;
+    const { style, prefixCls, language, className, editProps, codePenOption, code, dependencies, btnText, btnHideText, onlyEdit, bordered, noCode, noPreview, noScroll, bgWhite, ...otherProps } = this.props;
     const isOneItem = (!noCode && !noPreview) ? false : (!noCode || !noPreview);
     let visiable = this.state.width === 1 ? false : [isOneItem ? 1 : 2];
     return (
@@ -245,7 +249,7 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
         {!isOneItem && !(noCode && noPreview) && !onlyEdit && (
           <div style={{ flex: 1, width: 29 }} className={`${prefixCls}-bar`}>
             {codePenOption && <CodePen prefixCls={prefixCls} options={codePenOption} />}
-            <div className={`${prefixCls}-bar-btn`} onClick={this.onSwitchSource.bind(this)}>{this.state.width === 1 ? '源码' : '隐藏编辑器'}</div>
+            <div className={`${prefixCls}-bar-btn`} onClick={this.onSwitchSource.bind(this)}>{this.state.width === 1 ? btnText : btnHideText}</div>
             <div
               className={[`${prefixCls}-bar-iconbtns`, this.state.copied ? `${prefixCls}-bar-copied` : null].filter(Boolean).join(' ').trim()}
               onClick={this.onCopyCode.bind(this)}

@@ -9,14 +9,17 @@
     z-index: 2;
     right: 0;
     top: -23px;
+    svg {
+      display: block;
+    }
     button {
       border: 0;
       outline: 0;
       cursor: pointer;
-      padding: 0px 3px 2px 3px;
+      padding: 3px 4px 3px 4px;
       border-radius: 3px;
-      transition: all .3s;
-      color: #d4d4d4;
+      transition: color .3s;
+      color: #b5b5b5;
       background: rgba(234, 234, 234, 0.85);
       &:hover {
         background-color: #e0e0e0;
@@ -26,8 +29,7 @@
         background-color: #ececec;
       }
       svg {
-        width: 1em;
-        height: 1em;
+        height: 12px;
         fill: currentColor;
       }
       svg:not(:root) {
