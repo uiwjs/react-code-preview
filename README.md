@@ -104,6 +104,10 @@ export interface ICodePreviewProps extends SplitProps {
    */
   dependencies?: { [key: string]: any };
   codePenOption?: ICodePenOption;
+  /** @default 'Code' */
+  btnText?: string;
+  /** @default 'Hide Editor' */
+  btnHideText?: string;
 }
 ```
 
