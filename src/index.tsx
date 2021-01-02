@@ -250,8 +250,11 @@ export default class CodePreview extends React.PureComponent<CodePreviewProps, I
                   mode: language,
                 }}
                 {...editProps}
-                onChange={(editor) => {
+                onChange={(editor, change) => {
                   this.executeCode(editor.getValue());
+                  if (editProps && editProps.onChange) {
+                    editProps.onChange(editor, change)
+                  }
                 }}
               />
             )}

@@ -91,7 +91,6 @@ const Example = () => {
     const newstate = { ...state, [`${keyName}`]: e.target.checked };
     setState({ ...newstate });
   }
-  console.log('code:', code)
   return (
     <Fragment>
       <CodePreview
@@ -101,8 +100,29 @@ const Example = () => {
         noScroll={state.noScroll}
         bgWhite={state.bgWhite}
         noCode={state.noCode}
+        editProps={{
+          onChange: (editor) => {
+            setCode(editor.getValue())
+            setState({
+              ...state,
+              codeSandbox: {
+                ...state.codeSandbox,
+                files: {
+                  ...state.codeSandbox.files,
+                  "src/index.js": {
+                    content: editor.getValue()
+                  },
+                }
+              },
+              codePen: {
+                ...state.codePen,
+                js: editor.getValue()
+              }
+            })
+          }
+        }}
         noPreview={state.noPreview}
-        codeSandboxOptions={state.codeSandbox}
+        codeSandboxOptions={state.codeSandboxShow ? state.codeSandbox : undefined}
         codePenOption={state.codePenShow ? state.codePen : undefined}
       />
       <div>
