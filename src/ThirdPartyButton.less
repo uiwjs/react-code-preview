@@ -1,7 +1,10 @@
 @w-code-preview: ~"w-code-preview";
 
 .@{w-code-preview} {
-  &-form {
+  &-thirdparty + &-thirdparty {
+    margin-left: 10px;
+  }
+  &-thirdparty {
     display: inline-block;
     position: absolute;
     white-space: nowrap;
@@ -9,8 +12,11 @@
     z-index: 2;
     right: 0;
     top: -23px;
-    svg {
+    form {
       display: block;
+    }
+    form + form {
+      margin-right: 5px;
     }
     button {
       border: 0;
@@ -19,27 +25,15 @@
       padding: 3px 4px 3px 4px;
       border-radius: 3px;
       transition: color .3s;
-      color: #b5b5b5;
-      background: rgba(234, 234, 234, 0.85);
+      color: rgba(0, 0, 0, .45);
       &:hover {
-        background-color: #e0e0e0;
-        color: #333;
-      }
-      &:active {
-        background-color: #ececec;
+        color: rgba(0, 0, 0, .85);
       }
       svg {
-        height: 12px;
         fill: currentColor;
       }
       svg:not(:root) {
         overflow: hidden;
-      }
-      & > svg + span {
-        margin-left: 3px;
-      }
-      > * {
-        vertical-align: middle;
       }
     }
   }

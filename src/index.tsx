@@ -2,14 +2,16 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import CodeMirror, { IReactCodemirror } from '@uiw/react-codemirror';
 import copyTextToClipboard from '@uiw/copy-to-clipboard';
+import { CodeSandboxProps } from '@uiw/react-codesandbox';
+import { CodepenProps } from '@uiw/react-codepen';
 import Split, { SplitProps } from '@uiw/react-split';
-import CodePen, { ICodePenOption } from './CodePen';
+import ThirdPartyButton from './ThirdPartyButton';
 import icon from './icon';
 import { BabelTransform } from './transform';
 import './monokai.css';
 import './index.less';
 
-export interface ICodePreviewProps extends SplitProps {
+export interface CodePreviewProps extends SplitProps {
   prefixCls?: string;
   style?: React.CSSProperties;
   /**
@@ -59,7 +61,14 @@ export interface ICodePreviewProps extends SplitProps {
    * Dependent component
    */
   dependencies?: Record<string, any>;
-  codePenOption?: ICodePenOption;
+  codePenOption?: CodepenProps & {
+    /**
+     * Packages that do not require comments.
+     * @example ['uiw']
+     */
+    includeModule?: string[];
+  };
+  codeSandboxOptions?: CodeSandboxProps;
   /** @default 'Code' */
   btnText?: string;
   /** @default 'Hide Editor' */
@@ -74,13 +83,13 @@ export interface ICodePreviewState {
   showEdit: boolean;
 }
 
-export default class CodePreview extends React.PureComponent<ICodePreviewProps, ICodePreviewState> {
+export default class CodePreview extends React.PureComponent<CodePreviewProps, ICodePreviewState> {
   public demoDom = React.createRef<HTMLDivElement>();
   public editor = React.createRef<CodeMirror>();
   public language: string = '';
   public initHeight: number = 3;
   public playerId: string = `${parseInt(String(Math.random() * 1e9), 10).toString(36)}`;
-  public static defaultProps: ICodePreviewProps = {
+  public static defaultProps: CodePreviewProps = {
     prefixCls: 'w-code-preview',
     language: 'jsx',
     code: '',
@@ -110,7 +119,7 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
       document.body.style.overflow = 'inherit';
     }, false);
   }
-  componentDidUpdate(prevProps: ICodePreviewProps) {
+  componentDidUpdate(prevProps: CodePreviewProps) {
     const { language } = this.props;
     this.language = typeof language === 'string' ? language : (language ? (language.name || ''): '');
     if (prevProps.noPreview !== this.props.noPreview) {
@@ -193,7 +202,7 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
     });
   }
   public render() {
-    const { style, prefixCls, language, className, editProps, codePenOption, code, dependencies, btnText, btnHideText, onlyEdit, bordered, noCode, noPreview, noScroll, bgWhite, ...otherProps } = this.props;
+    const { style, prefixCls, language, className, editProps, codePenOption, codeSandboxOptions, code, dependencies, btnText, btnHideText, onlyEdit, bordered, noCode, noPreview, noScroll, bgWhite, ...otherProps } = this.props;
     const isOneItem = (!noCode && !noPreview) ? false : (!noCode || !noPreview);
     let visiable = this.state.width === 1 ? false : [isOneItem ? 1 : 2];
     return (
@@ -250,7 +259,11 @@ export default class CodePreview extends React.PureComponent<ICodePreviewProps, 
         )}
         {!isOneItem && !(noCode && noPreview) && !onlyEdit && (
           <div style={{ flex: 1, width: 29 }} className={`${prefixCls}-bar`}>
-            {codePenOption && <CodePen prefixCls={prefixCls} options={codePenOption} />}
+            <ThirdPartyButton
+              prefixCls={prefixCls}
+              codePenOption={codePenOption}
+              codeSandboxOptions={codeSandboxOptions}
+            />
             <div className={`${prefixCls}-bar-btn`} onClick={this.onSwitchSource.bind(this)}>{this.state.width === 1 ? btnText : btnHideText}</div>
             <div
               className={[`${prefixCls}-bar-iconbtns`, this.state.copied ? `${prefixCls}-bar-copied` : null].filter(Boolean).join(' ').trim()}
