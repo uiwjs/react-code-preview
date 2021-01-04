@@ -122,7 +122,7 @@ const Example = () => {
           }
         }}
         noPreview={state.noPreview}
-        codeSandboxOptions={state.codeSandboxShow ? state.codeSandbox : undefined}
+        codeSandboxOption={state.codeSandboxShow ? state.codeSandbox : undefined}
         codePenOption={state.codePenShow ? state.codePen : undefined}
       />
       <div>

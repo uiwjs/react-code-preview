@@ -7,11 +7,11 @@ import './ThirdPartyButton.less';
 type ThirdPartyButtonProps = {
   prefixCls?: string;
   codePenOption?: CodePreviewProps['codePenOption'];
-  codeSandboxOptions?: CodeSandboxProps;
+  codeSandboxOption?: CodeSandboxProps;
 }
 
 const ThirdPartyButton: React.FC<ThirdPartyButtonProps> = (props) => {
-  const { codePenOption, codeSandboxOptions, prefixCls } = props || {};
+  const { codePenOption, codeSandboxOption, prefixCls } = props || {};
   const { includeModule, ...otherCodePenOptions } = codePenOption || {};
   if (otherCodePenOptions && otherCodePenOptions.js) {
     let include = (includeModule || []).join('|');
@@ -31,8 +31,8 @@ const ThirdPartyButton: React.FC<ThirdPartyButtonProps> = (props) => {
           </svg>
         </Codepen>
       )}
-      {codeSandboxOptions && (
-        <CodeSandbox {...codeSandboxOptions}>
+      {codeSandboxOption && (
+        <CodeSandbox {...codeSandboxOption}>
           <svg height="12" fill="currentColor" viewBox="0 0 69 69">
             <path d="M32,38.2764838 L11,24 L11,35.7160031 L22.0526316,43.2306536 L22.0526316,54.3200601 L32,60 L32,38.2764838 Z M38,38.2764838 L38,60 L47.9473684,54.3200601 L47.9473684,43.2306536 L59,35.7160031 L59,24 L38,38.2764838 Z M46.296506,13 L35.5021904,21.0761293 L24.7078748,13.004586 L15,18.6913552 L35.5021904,33 L56,18.6913552 L46.296506,13.004586 L46.296506,13 Z M37.1676303,0.571217481 L63.7371606,15.5989936 C65.1342563,16.3900364 66,17.8813846 66,19.4990592 L66,49.4964682 C66.0011469,51.1157433 65.1356391,52.6091811 63.7371606,53.4010064 L37.1676303,68.4287825 C35.8224939,69.1904058 34.1819333,69.1904058 32.8367968,68.4287825 L6.26726663,53.4010064 C4.86707992,52.6103421 4,51.1166819 4,49.4964682 L4,19.4990592 C4,17.8813846 4.86574257,16.3900364 6.26283836,15.5989936 L32.8323686,0.571217481 C34.1775051,-0.190405827 35.8180656,-0.190405827 37.1632021,0.571217481 L37.1676303,0.571217481 Z"/>
           </svg>

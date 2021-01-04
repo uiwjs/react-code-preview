@@ -68,7 +68,7 @@ export interface CodePreviewProps extends SplitProps {
      */
     includeModule?: string[];
   };
-  codeSandboxOptions?: CodeSandboxProps;
+  codeSandboxOption?: CodeSandboxProps;
   /** @default 'Code' */
   btnText?: string;
   /** @default 'Hide Editor' */
@@ -202,7 +202,7 @@ export default class CodePreview extends React.PureComponent<CodePreviewProps, I
     });
   }
   public render() {
-    const { style, prefixCls, language, className, editProps, codePenOption, codeSandboxOptions, code, dependencies, btnText, btnHideText, onlyEdit, bordered, noCode, noPreview, noScroll, bgWhite, ...otherProps } = this.props;
+    const { style, prefixCls, language, className, editProps, codePenOption, codeSandboxOption, code, dependencies, btnText, btnHideText, onlyEdit, bordered, noCode, noPreview, noScroll, bgWhite, ...otherProps } = this.props;
     const isOneItem = (!noCode && !noPreview) ? false : (!noCode || !noPreview);
     let visiable = this.state.width === 1 ? false : [isOneItem ? 1 : 2];
     return (
@@ -265,7 +265,7 @@ export default class CodePreview extends React.PureComponent<CodePreviewProps, I
             <ThirdPartyButton
               prefixCls={prefixCls}
               codePenOption={codePenOption}
-              codeSandboxOptions={codeSandboxOptions}
+              codeSandboxOption={codeSandboxOption}
             />
             <div className={`${prefixCls}-bar-btn`} onClick={this.onSwitchSource.bind(this)}>{this.state.width === 1 ? btnText : btnHideText}</div>
             <div
