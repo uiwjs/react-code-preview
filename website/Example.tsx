@@ -180,7 +180,7 @@ const Example = () => {
           checked={state.codeSandboxShow}
           onChange={handleChange.bind(this, 'codeSandboxShow')}
         >
-          是否显示 CodeSandbox 按钮 `codeSandboxShow={state.codeSandboxShow ? '{...}' : 'undefined'}`
+          是否显示 CodeSandbox 按钮 `codeSandboxOption={state.codeSandboxShow ? '{...}' : 'undefined'}`
         </Switch>
       </div>
     </Fragment>
