@@ -2,6 +2,7 @@ React Code Preview
 ---
 <!--dividing-->
 
+[![Build & Deploy](https://github.com/uiwjs/react-code-preview/workflows/Build%20&%20Deploy/badge.svg)](https://github.com/uiwjs/react-code-preview/actions)
 [![Issues](https://img.shields.io/github/issues/uiwjs/react-code-preview.svg)](https://github.com/uiwjs/react-code-preview/issues)
 [![Forks](https://img.shields.io/github/forks/uiwjs/react-code-preview.svg)](https://github.com/uiwjs/react-code-preview/network)
 [![Stars](https://img.shields.io/github/stars/uiwjs/react-code-preview.svg)](https://github.com/uiwjs/react-code-preview/stargazers)
