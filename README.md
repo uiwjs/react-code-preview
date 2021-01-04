@@ -54,7 +54,7 @@ class Demo extends React.Component {
 ### Props
 
 ```typescript
-export interface ICodePreviewProps extends SplitProps {
+interface CodePreviewProps extends SplitProps {
   prefixCls?: string;
   style?: React.CSSProperties;
   /**
@@ -103,8 +103,15 @@ export interface ICodePreviewProps extends SplitProps {
   /**
    * Dependent component
    */
-  dependencies?: { [key: string]: any };
-  codePenOption?: ICodePenOption;
+  dependencies?: Record<string, any>;
+  codePenOption?: CodepenProps & {
+    /**
+     * Packages that do not require comments.
+     * @example ['uiw']
+     */
+    includeModule?: string[];
+  };
+  codeSandboxOption?: CodeSandboxProps;
   /** @default 'Code' */
   btnText?: string;
   /** @default 'Hide Editor' */
@@ -113,7 +120,7 @@ export interface ICodePreviewProps extends SplitProps {
 ```
 
 ```typescript
-interface ICodePenOption {
+type CodePenOption = {
   title?: string;
   html?: string;
   js?: string;
@@ -122,6 +129,33 @@ interface ICodePenOption {
   css_external?: string;
   js_external?: string;
   js_pre_processor?: string;
+};
+type CodepenProps = CodePenOption & React.FormHTMLAttributes<HTMLFormElement>;
+```
+
+```typescript
+type CodeSandboxProps = React.FormHTMLAttributes<HTMLFormElement> & {
+  /**
+   * Whether we should redirect to the embed instead of the editor.
+   */
+  embed?: boolean;
+  /**
+   * The query that will be used in the redirect url. `embed` must be equal to `true`, `embed=true`.
+   * [CodeSandbox Embed Options](https://codesandbox.io/docs/embedding#embed-options)
+   * @example `view=preview&runonclick=1`
+   */
+  query?: string;
+  /**
+   * Instead of redirecting we will send a JSON reponse with `{"sandbox_id": sandboxId}`.
+   */
+  json?: boolean;
+  /**
+   * Parameters used to define how the sandbox should be created.
+   */
+  files?: Record<string, {
+    content?: string | Record<string, any>;
+    isBinary?: boolean;
+  }>;
 }
 ```
 
