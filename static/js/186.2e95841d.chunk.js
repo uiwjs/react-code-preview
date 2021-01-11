@@ -1,2 +1,0 @@
-(this["webpackJsonp@uiw/react-code-preview"]=this["webpackJsonp@uiw/react-code-preview"]||[]).push([[186],{533:function(t,e){Prism.languages.ini={comment:/^[ \t]*[;#].*$/m,selector:/^[ \t]*\[.*?\]/m,constant:/^[ \t]*[^\s=]+?(?=[ \t]*=)/m,"attr-value":{pattern:/=.*/,inside:{punctuation:/^[=]/}}}}}]);
-//# sourceMappingURL=186.2e95841d.chunk.js.map

@@ -1,0 +1,2 @@
+(this["webpackJsonp@uiw/react-code-preview"]=this["webpackJsonp@uiw/react-code-preview"]||[]).push([[422],{767:function(e,s){var i=Prism.util.clone(Prism.languages.typescript);Prism.languages.tsx=Prism.languages.extend("jsx",i)}}]);
+//# sourceMappingURL=422.e0d910fe.chunk.js.map
