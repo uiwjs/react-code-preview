@@ -56,7 +56,7 @@
     "@uiw/react-markdown-preview": "2.1.1",
     "@uiw/reset.css": "1.0.4",
     "compile-less-cli": "1.6.0",
-    "kkt": "6.0.11",
+    "kkt": "6.8.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-test-renderer": "17.0.1",
