@@ -66,7 +66,7 @@
   "dependencies": {
     "@babel/plugin-transform-classes": "7.13.0",
     "@babel/runtime": "7.13.10",
-    "@babel/standalone": "7.13.13",
+    "@babel/standalone": "7.13.14",
     "@uiw/copy-to-clipboard": "1.0.11",
     "@uiw/react-codemirror": "3.0.6",
     "@uiw/react-split": "5.7.0",
