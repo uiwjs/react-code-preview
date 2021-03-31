@@ -5,8 +5,9 @@ import lessModules from '@kkt/less-modules';
 import rawModules from '@kkt/raw-modules';
 import scopePluginOptions from '@kkt/scope-plugin-options';
 import pkg from './package.json';
+import nodeExternals from 'webpack-node-externals';
 
-export default (conf: Configuration, env: string, options: LoaderConfOptions) => {
+export default (conf: Configuration, env: 'production' | 'development', options: LoaderConfOptions) => {
   conf = rawModules(conf, env, { ...options });
   conf = lessModules(conf, env, options);
   conf = scopePluginOptions(conf, env, {
@@ -57,6 +58,11 @@ export default (conf: Configuration, env: string, options: LoaderConfOptions) =>
           test: /[\\/]node_modules[\\/](@babel\/standalone)[\\/]/,
           priority: -5,
         },
+        prismjs: {
+          test: /[\\/]node_modules[\\/](prismjs)[\\/]/,
+          name: 'prismjs-vendor',
+          chunks: 'async',
+        },
         babel_runtime: {
           name: 'vendors-runtime',
           chunks: 'all',
@@ -66,6 +72,12 @@ export default (conf: Configuration, env: string, options: LoaderConfOptions) =>
       }
     }
   }
-  conf.output = { ...conf.output, publicPath: './' }
+
+  if (env === 'production') {
+    conf.output = { ...conf.output, publicPath: './' };
+  }
+  conf.externals = [
+    nodeExternals()
+  ]
   return conf;
 }

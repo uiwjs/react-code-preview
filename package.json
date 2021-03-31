@@ -52,6 +52,7 @@
     "@types/react-dom": "17.0.3",
     "@types/react-test-renderer": "17.0.1",
     "@types/react-transition-group": "4.4.1",
+    "@types/webpack-node-externals": "2.5.1",
     "@uiw/react-github-corners": "1.2.0",
     "@uiw/react-markdown-preview": "2.1.1",
     "@uiw/reset.css": "1.0.4",
@@ -60,13 +61,14 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-test-renderer": "17.0.2",
+    "webpack-node-externals": "2.5.2",
     "tsbb": "2.1.2",
     "uiw": "4.7.12"
   },
   "dependencies": {
     "@babel/plugin-transform-classes": "7.13.0",
     "@babel/runtime": "7.13.10",
-    "@babel/standalone": "7.13.13",
+    "@babel/standalone": "7.13.14",
     "@uiw/copy-to-clipboard": "1.0.11",
     "@uiw/react-codemirror": "3.0.6",
     "@uiw/react-split": "5.7.0",
