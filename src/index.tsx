@@ -6,7 +6,7 @@ import { CodeSandboxProps } from '@uiw/react-codesandbox';
 import { CodepenProps } from '@uiw/react-codepen';
 import Split, { SplitProps } from '@uiw/react-split';
 import ThirdPartyButton from './ThirdPartyButton';
-import icon from './icon';
+import * as icon from './icon';
 import { BabelTransform } from './transform';
 import './monokai.css';
 import './index.less';

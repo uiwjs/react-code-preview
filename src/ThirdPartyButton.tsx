@@ -16,6 +16,7 @@ const ThirdPartyButton: React.FC<ThirdPartyButtonProps> = (props) => {
   if (otherCodePenOptions && otherCodePenOptions.js) {
     let include = (includeModule || []).join('|');
     otherCodePenOptions.js = otherCodePenOptions.js.replace(/import([\s\S]*?)(?=['"])['"].*['"]( *;|;)?/gm, (str) => {
+      // eslint-disable-next-line no-useless-escape
       if(include && (new RegExp(`from\\s+['"](${include})['"](\s.+)?;?`)).test(str)) {
         return str;
       }
