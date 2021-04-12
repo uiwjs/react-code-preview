@@ -1,4 +1,7 @@
 /* Based on Sublime Text's Monokai theme */
+.CodeMirror {
+  overflow: initial !important;
+}
 .CodeMirror pre {
   font-family: inherit !important;
   font-size: inherit !important;
