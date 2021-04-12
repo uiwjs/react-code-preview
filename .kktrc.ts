@@ -5,7 +5,6 @@ import lessModules from '@kkt/less-modules';
 import rawModules from '@kkt/raw-modules';
 import scopePluginOptions from '@kkt/scope-plugin-options';
 import pkg from './package.json';
-import nodeExternals from 'webpack-node-externals';
 
 export default (conf: Configuration, env: 'production' | 'development', options: LoaderConfOptions) => {
   conf = rawModules(conf, env, { ...options });
@@ -76,8 +75,5 @@ export default (conf: Configuration, env: 'production' | 'development', options:
   if (env === 'production') {
     conf.output = { ...conf.output, publicPath: './' };
   }
-  conf.externals = [
-    nodeExternals()
-  ]
   return conf;
 }
