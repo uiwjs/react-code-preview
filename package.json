@@ -65,9 +65,9 @@
     "uiw": "4.7.12"
   },
   "dependencies": {
-    "@babel/plugin-transform-classes": "7.13.0",
-    "@babel/runtime": "7.13.10",
-    "@babel/standalone": "7.12.18",
+    "@babel/plugin-transform-classes": "7.14.2",
+    "@babel/runtime": "7.14.0",
+    "@babel/standalone": "7.14.2",
     "@uiw/copy-to-clipboard": "1.0.11",
     "@uiw/react-codemirror": "3.0.6",
     "@uiw/react-split": "5.7.0",
