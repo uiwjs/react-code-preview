@@ -1,0 +1,2 @@
+(this["webpackJsonp@uiw/react-code-preview"]=this["webpackJsonp@uiw/react-code-preview"]||[]).push([[44],{972:function(e,i,t){!function(e){"use strict";e.defineMode("diff",(function(){var e={"+":"positive","-":"negative","@":"meta"};return{token:function(i){var t=i.string.search(/[\t ]+?$/);if(!i.sol()||0===t)return i.skipToEnd(),("error "+(e[i.string.charAt(0)]||"")).replace(/ $/,"");var n=e[i.peek()]||i.skipToEnd();return-1===t?i.skipToEnd():i.pos=t,n}}})),e.defineMIME("text/x-diff","diff")}(t(78))}}]);
+//# sourceMappingURL=44.7dcf949f.chunk.js.map
