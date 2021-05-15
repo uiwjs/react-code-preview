@@ -141,7 +141,7 @@ export default class CodePreview extends React.PureComponent<CodePreviewProps, I
       codeStr = codeStr.replace('_mount_', `document.getElementById('${this.playerId}')`);
       const input = `${codeStr}`;
       const { code } = await BabelTransform(input);
-      args.push(code);
+      args.push(code || '');
       // eslint-disable-next-line no-new-func
       new Function(...args).apply(null, argv);
       this.setState({ errorMessage: '' });
