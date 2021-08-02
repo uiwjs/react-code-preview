@@ -62,7 +62,7 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-test-renderer": "17.0.2",
-    "tsbb": "2.1.2",
+    "tsbb": "2.3.1",
     "uiw": "4.7.14"
   },
   "dependencies": {
