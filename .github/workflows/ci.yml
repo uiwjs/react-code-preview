@@ -16,6 +16,7 @@ jobs:
     - run: npm install
     - run: npm run build
     - run: npm run coverage
+    - run: npm run doc
 
     - run: npm install @jsdevtools/npm-publish -g
     - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./package.json
@@ -57,10 +58,6 @@ jobs:
           ${{ steps.changelog.outputs.changelog }}
         draft: false
         prerelease: false
-
-    - run: npm run doc
-      # env:
-      #   NODE_OPTIONS: --max_old_space_size=8192
 
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
