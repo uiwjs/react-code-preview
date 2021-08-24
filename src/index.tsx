@@ -85,6 +85,7 @@ export interface ICodePreviewState {
 
 export default class CodePreview extends React.PureComponent<CodePreviewProps, ICodePreviewState> {
   public demoDom = React.createRef<HTMLDivElement>();
+  // @ts-ignore
   public editor = React.createRef<CodeMirror>();
   public language: string = '';
   public initHeight: number = 3;
@@ -140,7 +141,7 @@ export default class CodePreview extends React.PureComponent<CodePreviewProps, I
       }
       codeStr = codeStr.replace('_mount_', `document.getElementById('${this.playerId}')`);
       const input = `${codeStr}`;
-      const { code } = await BabelTransform(input);
+      const { code } = BabelTransform(input);
       args.push(code || '');
       // eslint-disable-next-line no-new-func
       new Function(...args).apply(null, argv);

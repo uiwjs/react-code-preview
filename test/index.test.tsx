@@ -1,22 +1,19 @@
+/**
+ * @jest-environment jsdom
+ */
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
-import Button from '../src';
+import CodePreview from '../';
 
-describe('<Button />', () => {
+describe('<CodePreview />', () => {
   it('Should output a Button', () => {
     const component = TestRenderer.create(
-      <Button type="danger">BUTTON</Button>
+      <CodePreview />
     );
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
     if (tree) {
-      expect(tree.type).toBe('button');
-      expect(tree.props.className).toBe('w-btn w-btn-size-default w-btn-danger');
-      expect(tree.children).toHaveLength(1);
-      if (tree.children) {
-        expect(tree.children[0].type).toBe('span');
-        expect(tree.children[0].children).toEqual(['BUTTON']);
-      }
+      // expect(tree.type).toBe('button');
     }
   });
 });
