@@ -132,12 +132,18 @@ export default class CodePreview extends React.PureComponent<CodePreviewProps, I
       return;
     }
     try {
-      const args = ['context', 'React', 'ReactDOM', 'Component'];
-      const argv = [this, React, ReactDOM, Component];
-      const Elm = this.props.dependencies;
-      for (const key in Elm) {
+      const obj = { context: this, React, ReactDOM, Component } as any;
+      const deps = this.props.dependencies;
+      // const args = ['context', 'React', 'ReactDOM', 'Component'];
+      const args = [];
+      // const argv = [this, React, ReactDOM, Component];
+      const argv: any = [];
+      for (const key in deps) {
+        obj[key] = deps[key];
+      }
+      for (const key in obj) {
         args.push(key);
-        argv.push(Elm[key]);
+        argv.push(obj[key]);
       }
       codeStr = codeStr.replace('_mount_', `document.getElementById('${this.playerId}')`);
       const input = `${codeStr}`;
