@@ -50,7 +50,7 @@
     "@types/react-test-renderer": "17.0.1",
     "@types/react-transition-group": "4.4.2",
     "@types/webpack-node-externals": "2.5.2",
-    "@uiw/react-github-corners": "1.4.0",
+    "@uiw/react-github-corners": "1.5.1",
     "@uiw/react-markdown-preview": "3.2.2",
     "@uiw/reset.css": "1.0.5",
     "compile-less-cli": "1.8.1",
