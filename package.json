@@ -11,11 +11,12 @@
     "doc": "kkt build --app-src ./website",
     "start": "kkt start --app-src ./website",
     "watch": "tsbb watch & npm run css:watch",
-    "build": "tsbb build && npm run css:build",
+    "build": "tsbb build && npm run css:build && npm run css:build:dist",
     "test": "tsbb test --env=jsdom",
     "coverage": "tsbb test --env=jsdom --coverage",
     "css:build": "compile-less -d src -o esm",
-    "css:watch": "compile-less -d src -o esm --watch"
+    "css:watch": "compile-less -d src -o esm --watch",
+    "css:build:dist": "compile-less -d src --combine dist.css --rm-global"
   },
   "homepage": "https://uiwjs.github.io/react-code-preview",
   "repository": {
@@ -50,16 +51,16 @@
     "@types/react-test-renderer": "17.0.1",
     "@types/react-transition-group": "4.4.2",
     "@types/webpack-node-externals": "2.5.2",
-    "@uiw/react-github-corners": "1.4.0",
-    "@uiw/react-markdown-preview": "3.2.2",
+    "@uiw/react-github-corners": "1.5.1",
+    "@uiw/react-markdown-preview": "3.3.0",
     "@uiw/reset.css": "1.0.5",
     "compile-less-cli": "1.8.1",
-    "jest-environment-jsdom": "27.0.6",
+    "jest-environment-jsdom": "27.1.0",
     "kkt": "6.11.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-test-renderer": "17.0.2",
-    "tsbb": "3.0.0-rc.13",
+    "tsbb": "3.0.0",
     "uiw": "4.7.14"
   },
   "dependencies": {

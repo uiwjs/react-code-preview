@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import CodeMirror, { IReactCodemirror } from '@uiw/react-codemirror';
 import copyTextToClipboard from '@uiw/copy-to-clipboard';
@@ -97,6 +97,7 @@ export default class CodePreview extends React.PureComponent<CodePreviewProps, I
     btnText: 'Code',
     btnHideText: 'Hide Editor',
     editProps: {},
+    dependencies: {},
     noCode: false,
     bgWhite: false,
     onlyEdit: false,
@@ -128,22 +129,25 @@ export default class CodePreview extends React.PureComponent<CodePreviewProps, I
     }
   }
   async executeCode(codeStr: string) {
+    const { dependencies = {} } = this.props;
+    const { React: _React, ReactDOM: _ReactDOM, ...otherDeps } = dependencies
     if (!/(jsx|js)/.test(this.language)) {
       return;
     }
     try {
-      const obj = { context: this, React, ReactDOM, Component } as any;
-      const deps = this.props.dependencies;
+      const deps = {
+        context: this,
+        React: _React || React,
+        ReactDOM: _ReactDOM || ReactDOM,
+        ...otherDeps,
+      } as any;
       // const args = ['context', 'React', 'ReactDOM', 'Component'];
       const args = [];
       // const argv = [this, React, ReactDOM, Component];
       const argv: any = [];
       for (const key in deps) {
-        obj[key] = deps[key];
-      }
-      for (const key in obj) {
         args.push(key);
-        argv.push(obj[key]);
+        argv.push(deps[key]);
       }
       codeStr = codeStr.replace('_mount_', `document.getElementById('${this.playerId}')`);
       const input = `${codeStr}`;
