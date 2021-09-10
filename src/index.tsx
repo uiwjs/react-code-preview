@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import CodeMirror, { IReactCodemirror } from '@uiw/react-codemirror';
+import CodeMirror, { ReactCodeMirrorProps, ReactCodeMirrorRef, ViewUpdate } from '@uiw/react-codemirror';
 import copyTextToClipboard from '@uiw/copy-to-clipboard';
+import { javascript } from '@codemirror/lang-javascript';
 import { CodeSandboxProps } from '@uiw/react-codesandbox';
 import { CodepenProps } from '@uiw/react-codepen';
 import Split, { SplitProps } from '@uiw/react-split';
 import ThirdPartyButton from './ThirdPartyButton';
 import * as icon from './icon';
 import { BabelTransform } from './transform';
+import { ErrorMessage } from './ErrorMessage';
 import './monokai.css';
 import './index.less';
 
@@ -18,13 +20,6 @@ export interface CodePreviewProps extends SplitProps {
    * To specify a CSS class, use the className attribute.
    */
   className?: string;
-  /**
-   * string|object. The mode to use. When not given, this will default to the first mode that was loaded.
-   * It may be a string, which either simply names the mode or is a MIME type associated with the mode.
-   * Alternatively, it may be an object containing configuration options for the mode,
-   * with a name property that names the mode (for example `{name: "javascript", json: true}` ).
-   */
-  language?: string | { name: string, json: boolean };
   /**
    * Whether to display the border.
    */
@@ -56,7 +51,7 @@ export interface CodePreviewProps extends SplitProps {
   /**
    * Modify ReactCodemirror props.
    */
-  editProps?: IReactCodemirror;
+  editProps?: ReactCodeMirrorProps;
   /**
    * Dependent component
    */
@@ -75,7 +70,7 @@ export interface CodePreviewProps extends SplitProps {
   btnHideText?: string;
 }
 
-export interface ICodePreviewState {
+export interface CodePreviewState {
   errorMessage: string;
   fullScreen: boolean;
   width: number | string;
@@ -83,16 +78,13 @@ export interface ICodePreviewState {
   showEdit: boolean;
 }
 
-export default class CodePreview extends React.PureComponent<CodePreviewProps, ICodePreviewState> {
+export default class CodePreview extends React.PureComponent<CodePreviewProps, CodePreviewState> {
   public demoDom = React.createRef<HTMLDivElement>();
-  // @ts-ignore
-  public editor = React.createRef<CodeMirror>();
-  public language: string = '';
+  public editor = React.createRef<ReactCodeMirrorRef>();
   public initHeight: number = 3;
   public playerId: string = `${parseInt(String(Math.random() * 1e9), 10).toString(36)}`;
   public static defaultProps: CodePreviewProps = {
     prefixCls: 'w-code-preview',
-    language: 'jsx',
     code: '',
     btnText: 'Code',
     btnHideText: 'Hide Editor',
@@ -104,36 +96,32 @@ export default class CodePreview extends React.PureComponent<CodePreviewProps, I
     noPreview: false,
     bordered: true,
   }
-  public state: ICodePreviewState = {
-    errorMessage: '',
-    fullScreen: false,
-    copied: false,
-    showEdit: false,
-    width: 1,
+  constructor(props: CodePreviewProps) {
+    super(props);
+    this.state = {
+      errorMessage: '',
+      fullScreen: false,
+      copied: false,
+      showEdit: false,
+      width: 1,
+    }
   }
   componentDidMount() {
-    const { language } = this.props;
-    this.language = typeof language === 'string' ? language : (language ? (language.name || ''): '');
     if (!this.props.noPreview) {
       this.executeCode(this.props.code!);
     }
-    window.addEventListener("popstate", function(e) { 
+    window.addEventListener("popstate", (e) => { 
       document.body.style.overflow = 'inherit';
     }, false);
   }
   componentDidUpdate(prevProps: CodePreviewProps) {
-    const { language } = this.props;
-    this.language = typeof language === 'string' ? language : (language ? (language.name || ''): '');
     if (prevProps.noPreview !== this.props.noPreview) {
-      this.executeCode(this.props.code!);
+      this.executeCode(prevProps.code!);
     }
   }
   async executeCode(codeStr: string) {
     const { dependencies = {} } = this.props;
-    const { React: _React, ReactDOM: _ReactDOM, ...otherDeps } = dependencies
-    if (!/(jsx|js)/.test(this.language)) {
-      return;
-    }
+    const { React: _React, ReactDOM: _ReactDOM, ...otherDeps } = dependencies;
     try {
       const deps = {
         context: this,
@@ -153,11 +141,11 @@ export default class CodePreview extends React.PureComponent<CodePreviewProps, I
       const input = `${codeStr}`;
       const { code } = BabelTransform(input);
       args.push(code || '');
+      // console.log('code:', argv)
       // eslint-disable-next-line no-new-func
       new Function(...args).apply(null, argv);
       this.setState({ errorMessage: '' });
-      
-    } catch (err) {
+    } catch (err: any) {
       let message = '';
       if (err && err.message) {
         message = err.message;
@@ -197,6 +185,13 @@ export default class CodePreview extends React.PureComponent<CodePreviewProps, I
       this.initHeight = demo.clientHeight;
     }
   }
+  handleChange(value: string, viewUpdate: ViewUpdate) {
+    const { editProps } = this.props;
+    this.executeCode(value);
+    if (editProps && editProps.onChange) {
+      editProps.onChange(value, viewUpdate);
+    }
+  }
   /**
    * onSwitchSource
    */
@@ -206,14 +201,10 @@ export default class CodePreview extends React.PureComponent<CodePreviewProps, I
     this.setState({
       width: width === 1 ? '50%' : 1,
       showEdit: true,
-    }, () => {
-      if (this.editor && this.editor.current && this.editor.current.editor) {
-        this.editor.current.editor.setSize('100%', width !== 1 ? this.initHeight : '100%');
-      }
     });
   }
   public render() {
-    const { style, prefixCls, language, className, editProps, codePenOption, codeSandboxOption, code, dependencies, btnText, btnHideText, onlyEdit, bordered, noCode, noPreview, noScroll, bgWhite, ...otherProps } = this.props;
+    const { style, prefixCls, className, editProps, codePenOption, codeSandboxOption, code, dependencies, btnText, btnHideText, onlyEdit, bordered, noCode, noPreview, noScroll, bgWhite, ...otherProps } = this.props;
     const isOneItem = (!noCode && !noPreview) ? false : (!noCode || !noPreview);
     let visiable = this.state.width === 1 ? false : [isOneItem ? 1 : 2];
     return (
@@ -242,31 +233,21 @@ export default class CodePreview extends React.PureComponent<CodePreviewProps, I
               ...(this.state.width === 1 ? { width: '100%'} : {})
             }}
           >
-            {this.state.errorMessage && (
-              <pre>
-                <code>{this.state.errorMessage}</code>
-              </pre>
-            )}
+            <ErrorMessage message={this.state.errorMessage} />
             <div className={[`${prefixCls}-demo-source`, this.state.errorMessage ? 'error' : null].filter(Boolean).join(' ').trim()} id={this.playerId} />
           </div>
         )}
         {(!noCode || onlyEdit) && (
-          <div style={{ overflow: 'hidden', width: onlyEdit ? '100%' : this.state.width, }}>
+          <div style={{ overflow: 'hidden', width: onlyEdit ? '100%' : this.state.width }}>
             {(this.state.showEdit || onlyEdit) && (
               <CodeMirror
-                value={(code || '').replace(/\n$/, '')}
+                value={(this.props.code || '').replace(/\n$/, '')}
                 ref={this.editor}
-                options={{
-                  theme: 'monokai',
-                  mode: language,
-                }}
+                extensions={[javascript({ jsx: true })]}
                 {...editProps}
-                onChange={(editor, change) => {
-                  this.executeCode(editor.getValue());
-                  if (editProps && editProps.onChange) {
-                    editProps.onChange(editor, change)
-                  }
-                }}
+                style={{ height: '100%' }}
+                height="100%"
+                onChange={this.handleChange.bind(this)}
               />
             )}
           </div>

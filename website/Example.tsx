@@ -19,7 +19,7 @@ ReactDOM.render(
 );`;
 
 const Example = () => {
-  const [code, setCode] = useState(defaultCode);
+  const [code] = useState(defaultCode);
   const [state, setState] = useState({
     bgWhite: false,
     noCode: false,
@@ -94,15 +94,14 @@ const Example = () => {
   return (
     <Fragment>
       <CodePreview
-        code={code}
+        code={defaultCode}
         dependencies={{ ...UIW }}
         bordered={state.bordered}
         noScroll={state.noScroll}
         bgWhite={state.bgWhite}
         noCode={state.noCode}
         editProps={{
-          onChange: (editor) => {
-            setCode(editor.getValue())
+          onChange: (value) => {
             setState({
               ...state,
               codeSandbox: {
@@ -110,13 +109,13 @@ const Example = () => {
                 files: {
                   ...state.codeSandbox.files,
                   "src/index.js": {
-                    content: editor.getValue()
+                    content: value
                   },
                 }
               },
               codePen: {
                 ...state.codePen,
-                js: editor.getValue()
+                js: value
               }
             })
           }
