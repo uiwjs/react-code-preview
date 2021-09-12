@@ -68,7 +68,7 @@
     "@babel/runtime": "7.15.3",
     "@babel/standalone": "7.12.18",
     "@uiw/copy-to-clipboard": "1.0.12",
-    "@uiw/react-codemirror": "4.0.0-rc.10",
+    "@uiw/react-codemirror": "4.0.0-rc.12",
     "@codemirror/lang-javascript": "0.19.1",
     "@uiw/react-split": "5.8.1",
     "@uiw/react-codesandbox": "1.1.0",
