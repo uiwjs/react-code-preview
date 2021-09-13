@@ -22,12 +22,13 @@ npm install @uiw/react-code-preview --save
 
 ## Usage
 
-```jsx
-import React from 'react';
-import { Button } from 'uiw';
-import CodePreview from '@uiw/react-code-preview';
+[![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?logo=codesandbox)](https://codesandbox.io/embed/polished-surf-t6ro9?fontsize=14&hidenavigation=1&theme=dark)
 
-const code = `import { Button, Divider, Icon } from 'uiw';
+```jsx
+import Button from "@uiw/react-button";
+import CodePreview from "@uiw/react-code-preview";
+
+const code = `import Button from '@uiw/react-button';
 ReactDOM.render(
   <div>
     <Button type="primary">主要按钮</Button>
@@ -37,15 +38,8 @@ ReactDOM.render(
 );
 `;
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <CodePreview
-        code={code}
-        dependencies={{ Button }}
-      />
-    );
-  }
+export default function App() {
+  return <CodePreview code={code} dependencies={{ Button }} />;
 }
 ```
 
