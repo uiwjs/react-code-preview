@@ -73,7 +73,7 @@
     "@codemirror/lang-javascript": "0.19.1",
     "@uiw/react-split": "5.8.1",
     "@uiw/react-codesandbox": "1.1.0",
-    "@uiw/react-codepen": "1.0.1",
+    "@uiw/react-codepen": "1.0.2",
     "babel-plugin-transform-remove-imports": "1.5.5"
   },
   "eslintConfig": {
