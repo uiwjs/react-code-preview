@@ -73,7 +73,7 @@
     "@uiw/react-split": "5.8.3",
     "@uiw/react-codesandbox": "1.1.0",
     "@uiw/react-codepen": "1.0.2",
-    "babel-plugin-transform-remove-imports": "1.5.5"
+    "babel-plugin-transform-remove-imports": "1.7.0"
   },
   "eslintConfig": {
     "extends": [
