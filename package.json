@@ -16,7 +16,8 @@
     "coverage": "tsbb test --env=jsdom --coverage",
     "css:build": "compile-less -d src -o esm",
     "css:watch": "compile-less -d src -o esm --watch",
-    "css:build:dist": "compile-less -d src --combine dist.css --rm-global"
+    "css:build:dist": "compile-less -d src --combine dist.css --rm-global",
+    "map": "source-map-explorer build/static/js/*.js --html build/website-result.html"
   },
   "homepage": "https://uiwjs.github.io/react-code-preview",
   "repository": {
@@ -48,8 +49,6 @@
     "@types/react": "17.0.34",
     "@types/react-dom": "17.0.11",
     "@types/react-test-renderer": "17.0.1",
-    "@types/react-transition-group": "4.4.4",
-    "@types/webpack-node-externals": "2.5.2",
     "@uiw/react-github-corners": "1.5.3",
     "@uiw/react-markdown-preview": "3.4.1",
     "@uiw/reset.css": "1.0.5",
@@ -59,13 +58,14 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-test-renderer": "17.0.2",
+    "source-map-explorer": "2.5.2",
     "tsbb": "3.4.4",
     "uiw": "4.9.7"
   },
   "dependencies": {
     "@babel/plugin-transform-classes": "7.16.0",
     "@babel/runtime": "7.16.0",
-    "@babel/standalone": "7.12.18",
+    "@babel/standalone": "7.16.2",
     "@babel/core": "7.16.0",
     "@codemirror/lang-javascript": "0.19.2",
     "@uiw/copy-to-clipboard": "1.0.12",
