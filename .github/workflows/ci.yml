@@ -22,8 +22,14 @@ jobs:
     - run: npm run doc
     - run: npm run map
 
-    - run: npm install @jsdevtools/npm-publish -g
-    - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./package.json
+    # - run: npm install @jsdevtools/npm-publish -g
+    # - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./package.json
+
+    - name: 📦 📦 @uiw/react-code-preview 📦 📦
+      uses: JS-DevTools/npm-publish@v1
+      with:
+        token: ${{ secrets.NPM_TOKEN }}
+        package: package.json
 
     - name: Create Tag
       id: create_tag
