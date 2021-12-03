@@ -10,7 +10,6 @@ import ThirdPartyButton from './ThirdPartyButton';
 import * as icon from './icon';
 import { BabelTransform } from './transform';
 import { ErrorMessage } from './ErrorMessage';
-import './monokai.css';
 import './index.less';
 
 export interface CodePreviewProps extends SplitProps {
