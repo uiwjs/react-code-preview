@@ -8,7 +8,7 @@ import { CodepenProps } from '@uiw/react-codepen';
 import Split, { SplitProps } from '@uiw/react-split';
 import ThirdPartyButton from './ThirdPartyButton';
 import * as icon from './icon';
-import { BabelTransform } from './transform';
+import { babelTransform } from './transform';
 import { ErrorMessage } from './ErrorMessage';
 import './index.less';
 
@@ -138,7 +138,7 @@ export default class CodePreview extends React.PureComponent<CodePreviewProps, C
       }
       codeStr = codeStr.replace('_mount_', `document.getElementById('${this.playerId}')`);
       const input = `${codeStr}`;
-      const { code } = BabelTransform(input);
+      const { code } = babelTransform(input);
       args.push(code || '');
       // console.log('code:', argv)
       // eslint-disable-next-line no-new-func

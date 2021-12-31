@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
 import '@uiw/reset.css/reset.less';
 import App from './App';
