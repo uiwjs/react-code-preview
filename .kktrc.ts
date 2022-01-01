@@ -21,16 +21,6 @@ export default (conf: Configuration, env: 'production' | 'development', options:
   conf.plugins!.push(new webpack.DefinePlugin({
     VERSION: JSON.stringify(pkg.version),
   }));
-
-  /**
-   * https://github.com/kktjs/kkt/issues/198#issuecomment-1003244164
-   */
-  if (conf.module && conf.module.rules && conf.module.rules[0]) {
-    const rules = conf.module.rules[0];
-    if (typeof rules === 'object' && typeof rules.loader === 'string' && /source-map-loader/.test(rules.loader)) {
-      ;(conf.module.rules[0] as any).exclude = /((@babel(?:\/|\\{1,2})runtime)|codesandbox-import-utils)/;
-    }
-  }
   
   if (env === 'production') {
     conf.optimization = {
