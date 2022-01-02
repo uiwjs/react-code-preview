@@ -1,37 +1,37 @@
 {
   "files": {
     "main.css": "/react-code-preview/static/css/main.5e487ec5.css",
-    "main.js": "/react-code-preview/static/js/main.466d9c73.js",
+    "main.js": "/react-code-preview/static/js/main.8d524075.js",
     "prismjs-vendor.js": "/react-code-preview/static/js/prismjs-vendor.7e754cda.js",
-    "vendors-refractor.js": "/react-code-preview/static/js/vendors-refractor.90b75077.js",
-    "vendors-codemirror.js": "/react-code-preview/static/js/vendors-codemirror.09e2a771.js",
+    "vendors-refractor.js": "/react-code-preview/static/js/vendors-refractor.e67eb20e.js",
+    "vendors-codemirror.js": "/react-code-preview/static/js/vendors-codemirror.704cd167.js",
     "vendors-standalone.js": "/react-code-preview/static/js/vendors-standalone.45ef4875.js",
     "vendors-uiwjs.css": "/react-code-preview/static/css/vendors-uiwjs.25211183.css",
-    "vendors-uiwjs.js": "/react-code-preview/static/js/vendors-uiwjs.73571c4e.js",
+    "vendors-uiwjs.js": "/react-code-preview/static/js/vendors-uiwjs.36bb3107.js",
     "vendors-react.js": "/react-code-preview/static/js/vendors-react.0f172a1d.js",
-    "static/js/854.db04f30e.js": "/react-code-preview/static/js/854.db04f30e.js",
+    "static/js/610.c7e45d2f.js": "/react-code-preview/static/js/610.c7e45d2f.js",
     "index.html": "/react-code-preview/index.html",
     "main.5e487ec5.css.map": "/react-code-preview/static/css/main.5e487ec5.css.map",
-    "main.466d9c73.js.map": "/react-code-preview/static/js/main.466d9c73.js.map",
+    "main.8d524075.js.map": "/react-code-preview/static/js/main.8d524075.js.map",
     "prismjs-vendor.7e754cda.js.map": "/react-code-preview/static/js/prismjs-vendor.7e754cda.js.map",
-    "vendors-refractor.90b75077.js.map": "/react-code-preview/static/js/vendors-refractor.90b75077.js.map",
-    "vendors-codemirror.09e2a771.js.map": "/react-code-preview/static/js/vendors-codemirror.09e2a771.js.map",
+    "vendors-refractor.e67eb20e.js.map": "/react-code-preview/static/js/vendors-refractor.e67eb20e.js.map",
+    "vendors-codemirror.704cd167.js.map": "/react-code-preview/static/js/vendors-codemirror.704cd167.js.map",
     "vendors-standalone.45ef4875.js.map": "/react-code-preview/static/js/vendors-standalone.45ef4875.js.map",
     "vendors-uiwjs.25211183.css.map": "/react-code-preview/static/css/vendors-uiwjs.25211183.css.map",
-    "vendors-uiwjs.73571c4e.js.map": "/react-code-preview/static/js/vendors-uiwjs.73571c4e.js.map",
+    "vendors-uiwjs.36bb3107.js.map": "/react-code-preview/static/js/vendors-uiwjs.36bb3107.js.map",
     "vendors-react.0f172a1d.js.map": "/react-code-preview/static/js/vendors-react.0f172a1d.js.map",
-    "854.db04f30e.js.map": "/react-code-preview/static/js/854.db04f30e.js.map"
+    "610.c7e45d2f.js.map": "/react-code-preview/static/js/610.c7e45d2f.js.map"
   },
   "entrypoints": [
     "static/js/prismjs-vendor.7e754cda.js",
-    "static/js/vendors-refractor.90b75077.js",
-    "static/js/vendors-codemirror.09e2a771.js",
+    "static/js/vendors-refractor.e67eb20e.js",
+    "static/js/vendors-codemirror.704cd167.js",
     "static/js/vendors-standalone.45ef4875.js",
     "static/css/vendors-uiwjs.25211183.css",
-    "static/js/vendors-uiwjs.73571c4e.js",
+    "static/js/vendors-uiwjs.36bb3107.js",
     "static/js/vendors-react.0f172a1d.js",
-    "static/js/854.db04f30e.js",
+    "static/js/610.c7e45d2f.js",
     "static/css/main.5e487ec5.css",
-    "static/js/main.466d9c73.js"
+    "static/js/main.8d524075.js"
   ]
 }
