@@ -68,7 +68,7 @@
     "@babel/core": "7.16.7",
     "@codemirror/lang-javascript": "0.19.3",
     "@uiw/copy-to-clipboard": "1.0.12",
-    "@uiw/react-codemirror": "4.3.1",
+    "@uiw/react-codemirror": "4.3.2",
     "@uiw/react-split": "5.8.4",
     "@uiw/react-codesandbox": "1.1.4",
     "@uiw/react-codepen": "1.0.2",
