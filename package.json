@@ -64,7 +64,7 @@
   "dependencies": {
     "@babel/plugin-transform-classes": "7.16.7",
     "@babel/runtime": "7.16.7",
-    "@babel/standalone": "7.16.7",
+    "@babel/standalone": "7.16.8",
     "@babel/core": "7.16.7",
     "@codemirror/lang-javascript": "0.19.3",
     "@uiw/copy-to-clipboard": "1.0.12",
