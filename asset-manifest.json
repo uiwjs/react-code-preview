@@ -2,7 +2,7 @@
   "files": {
     "main.css": "/react-code-preview/static/css/main.ce757dde.css",
     "main.js": "/react-code-preview/static/js/main.be3d916b.js",
-    "babel_vendors.js": "/react-code-preview/static/js/babel_vendors.44789205.js",
+    "babel_vendors.js": "/react-code-preview/static/js/babel_vendors.d9cef174.js",
     "prismjs-vendor.js": "/react-code-preview/static/js/prismjs-vendor.1d932df2.js",
     "vendors-refractor.js": "/react-code-preview/static/js/vendors-refractor.13d3fc26.js",
     "vendors-codemirror.js": "/react-code-preview/static/js/vendors-codemirror.7818a4a5.js",
@@ -13,7 +13,7 @@
     "index.html": "/react-code-preview/index.html",
     "main.ce757dde.css.map": "/react-code-preview/static/css/main.ce757dde.css.map",
     "main.be3d916b.js.map": "/react-code-preview/static/js/main.be3d916b.js.map",
-    "babel_vendors.44789205.js.map": "/react-code-preview/static/js/babel_vendors.44789205.js.map",
+    "babel_vendors.d9cef174.js.map": "/react-code-preview/static/js/babel_vendors.d9cef174.js.map",
     "prismjs-vendor.1d932df2.js.map": "/react-code-preview/static/js/prismjs-vendor.1d932df2.js.map",
     "vendors-refractor.13d3fc26.js.map": "/react-code-preview/static/js/vendors-refractor.13d3fc26.js.map",
     "vendors-codemirror.7818a4a5.js.map": "/react-code-preview/static/js/vendors-codemirror.7818a4a5.js.map",
@@ -23,7 +23,7 @@
     "506.74f2cec7.js.map": "/react-code-preview/static/js/506.74f2cec7.js.map"
   },
   "entrypoints": [
-    "static/js/babel_vendors.44789205.js",
+    "static/js/babel_vendors.d9cef174.js",
     "static/js/prismjs-vendor.1d932df2.js",
     "static/js/vendors-refractor.13d3fc26.js",
     "static/js/vendors-codemirror.7818a4a5.js",
