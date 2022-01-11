@@ -6,7 +6,7 @@
   "main": "cjs/index.js",
   "module": "esm/index.js",
   "scripts": {
-    "prepare": "npm run build",
+    "prepare": "husky install && npm run build",
     "released": "npm run build && npm run doc",
     "doc": "kkt build --app-src ./website",
     "start": "kkt start --app-src ./website",
@@ -17,6 +17,7 @@
     "css:build": "compile-less -d src -o esm",
     "css:watch": "compile-less -d src -o esm --watch",
     "css:build:dist": "compile-less -d src --combine dist.css --rm-global",
+    "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,html,less,md,json}'",
     "map": "source-map-explorer build/static/js/*.js --html build/website-result.html"
   },
   "homepage": "https://uiwjs.github.io/react-code-preview",
@@ -37,6 +38,11 @@
     "react-code-preview"
   ],
   "license": "MIT",
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,html,less,md,json}": [
+      "prettier --write"
+    ]
+  },
   "peerDependencies": {
     "react": ">=16.9.0",
     "react-dom": ">=16.9.0"
@@ -53,7 +59,10 @@
     "@uiw/react-markdown-preview": "3.4.7",
     "@uiw/reset.css": "1.0.5",
     "compile-less-cli": "1.8.11",
+    "husky": "7.0.4",
     "kkt": "7.0.3",
+    "lint-staged": "12.1.7",
+    "prettier": "2.5.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-test-renderer": "17.0.2",
