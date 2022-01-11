@@ -33,31 +33,31 @@ export default (conf: Configuration, env: 'production' | 'development', options:
         automaticNameDelimiter: '~', // 缓存组和生成文件名称之间的连接符
         cacheGroups: {
           codemirror: {
-            name: 'vendors-codemirror',
+            name: 'codemirror-vendors',
             chunks: 'all',
             test: /[\\/]node_modules[\\/](@codemirror)[\\/]/,
             priority: -2,
           },
           refractor: {
-            name: 'vendors-refractor',
+            name: 'refractor-vendors',
             chunks: 'all',
             test: /[\\/]node_modules[\\/](refractor)[\\/]/,
             priority: -2,
           },
           uiwjs: {
-            name: 'vendors-uiwjs',
+            name: 'uiwjs-vendors',
             chunks: 'all',
             test: /[\\/]node_modules[\\/]@uiw[\\/]/,
             priority: -4, // 优先级，先打包到哪个组里面，值越大，优先级越高
           },
           react: {
-            name: 'vendors-react',
+            name: 'react-vendors',
             chunks: 'all',
             test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
             priority: -5,
           },
           babel_standalone: {
-            name: 'vendors-standalone',
+            name: 'standalone-vendors',
             chunks: 'all',
             test: /[\\/]node_modules[\\/](@babel\/standalone)[\\/]/,
             priority: -2,
@@ -75,7 +75,7 @@ export default (conf: Configuration, env: 'production' | 'development', options:
           babel_runtime: {
             name: 'vendors-runtime',
             chunks: 'all',
-            test: /[\\/]node_modules[\\/](@babel\/runtime|@babel\/plugin-transform-classes|babel-plugin-transform-remove-imports)[\\/]/,
+            test: /[\\/]node_modules[\\/](@babel|babel-plugin-transform-remove-imports)[\\/]/,
             priority: -5,
           },
         },
