@@ -15,7 +15,7 @@ describe('<CodePreview />', () => {
       expect(tree.type).toEqual('div');
       expect(tree.props.className).toEqual('w-split w-code-preview w-code-preview-bordered w-split-horizontal');
       expect(tree.props.style).toEqual({
-        flex: 1
+        flex: 1,
       });
       expect(tree.children!.length).toEqual(3);
     }

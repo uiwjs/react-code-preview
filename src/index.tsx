@@ -94,7 +94,7 @@ export default class CodePreview extends React.PureComponent<CodePreviewProps, C
     onlyEdit: false,
     noPreview: false,
     bordered: true,
-  }
+  };
   constructor(props: CodePreviewProps) {
     super(props);
     this.state = {
@@ -103,15 +103,19 @@ export default class CodePreview extends React.PureComponent<CodePreviewProps, C
       copied: false,
       showEdit: false,
       width: 1,
-    }
+    };
   }
   componentDidMount() {
     if (!this.props.noPreview) {
       this.executeCode(this.props.code!);
     }
-    window.addEventListener("popstate", (e) => { 
-      document.body.style.overflow = 'inherit';
-    }, false);
+    window.addEventListener(
+      'popstate',
+      (e) => {
+        document.body.style.overflow = 'inherit';
+      },
+      false,
+    );
   }
   componentDidUpdate(prevProps: CodePreviewProps) {
     if (prevProps.noPreview !== this.props.noPreview) {
@@ -203,19 +207,41 @@ export default class CodePreview extends React.PureComponent<CodePreviewProps, C
     });
   }
   public render() {
-    const { style, prefixCls, className, editProps, codePenOption, codeSandboxOption, code, dependencies, btnText, btnHideText, onlyEdit, bordered, noCode, noPreview, noScroll, bgWhite, ...otherProps } = this.props;
-    const isOneItem = (!noCode && !noPreview) ? false : (!noCode || !noPreview);
+    const {
+      style,
+      prefixCls,
+      className,
+      editProps,
+      codePenOption,
+      codeSandboxOption,
+      code,
+      dependencies,
+      btnText,
+      btnHideText,
+      onlyEdit,
+      bordered,
+      noCode,
+      noPreview,
+      noScroll,
+      bgWhite,
+      ...otherProps
+    } = this.props;
+    const isOneItem = !noCode && !noPreview ? false : !noCode || !noPreview;
     let visiable = this.state.width === 1 ? false : [isOneItem ? 1 : 2];
     return (
       <Split
         visiable={visiable}
         className={[
-          className, prefixCls,
+          className,
+          prefixCls,
           noScroll ? `${prefixCls}-noScroll` : null,
           isOneItem ? `${prefixCls}-OneItem` : null,
           bordered ? `${prefixCls}-bordered` : null,
           this.state.fullScreen ? `${prefixCls}-fullScreen` : null,
-          ].filter(Boolean).join(' ').trim()}
+        ]
+          .filter(Boolean)
+          .join(' ')
+          .trim()}
         style={{ flex: 1, ...style }}
         {...otherProps}
       >
@@ -226,14 +252,23 @@ export default class CodePreview extends React.PureComponent<CodePreviewProps, C
               `${prefixCls}-demo`,
               !bgWhite ? `${prefixCls}-demo-bgPlaid` : null,
               this.state.errorMessage ? `${prefixCls}-demo-error` : null,
-            ].filter(Boolean).join(' ').trim()}
+            ]
+              .filter(Boolean)
+              .join(' ')
+              .trim()}
             style={{
               flex: 1,
-              ...(this.state.width === 1 ? { width: '100%'} : {})
+              ...(this.state.width === 1 ? { width: '100%' } : {}),
             }}
           >
             <ErrorMessage message={this.state.errorMessage} />
-            <div className={[`${prefixCls}-demo-source`, this.state.errorMessage ? 'error' : null].filter(Boolean).join(' ').trim()} id={this.playerId} />
+            <div
+              className={[`${prefixCls}-demo-source`, this.state.errorMessage ? 'error' : null]
+                .filter(Boolean)
+                .join(' ')
+                .trim()}
+              id={this.playerId}
+            />
           </div>
         )}
         {(!noCode || onlyEdit) && (
@@ -258,15 +293,23 @@ export default class CodePreview extends React.PureComponent<CodePreviewProps, C
               codePenOption={codePenOption}
               codeSandboxOption={codeSandboxOption}
             />
-            <div className={`${prefixCls}-bar-btn`} onClick={this.onSwitchSource.bind(this)}>{this.state.width === 1 ? btnText : btnHideText}</div>
+            <div className={`${prefixCls}-bar-btn`} onClick={this.onSwitchSource.bind(this)}>
+              {this.state.width === 1 ? btnText : btnHideText}
+            </div>
             <div
-              className={[`${prefixCls}-bar-iconbtns`, this.state.copied ? `${prefixCls}-bar-copied` : null].filter(Boolean).join(' ').trim()}
+              className={[`${prefixCls}-bar-iconbtns`, this.state.copied ? `${prefixCls}-bar-copied` : null]
+                .filter(Boolean)
+                .join(' ')
+                .trim()}
               onClick={this.onCopyCode.bind(this)}
             >
               {icon.copy}
             </div>
             <div
-              className={[`${prefixCls}-bar-iconbtns`, this.state.fullScreen ? `${prefixCls}-bar-copied` : null].filter(Boolean).join(' ').trim()}
+              className={[`${prefixCls}-bar-iconbtns`, this.state.fullScreen ? `${prefixCls}-bar-copied` : null]
+                .filter(Boolean)
+                .join(' ')
+                .trim()}
               onClick={this.onFullScreen.bind(this)}
             >
               {icon.full}
@@ -274,6 +317,6 @@ export default class CodePreview extends React.PureComponent<CodePreviewProps, C
           </div>
         )}
       </Split>
-    )
+    );
   }
 }

@@ -6,7 +6,7 @@ import styles from './App.module.less';
 import Example from './Example';
 
 export default class App extends React.PureComponent<{}, {}> {
-  render () {
+  render() {
     let DocumentStrSource = DocumentStr;
     if (DocumentStrSource) DocumentStrSource = DocumentStr.replace(/([\s\S]*)<!--dividing-->/, '');
     return (
@@ -16,6 +16,6 @@ export default class App extends React.PureComponent<{}, {}> {
         <Example />
         <Markdown style={{ paddingTop: 25 }} source={DocumentStrSource} />
       </div>
-    )
+    );
   }
 }

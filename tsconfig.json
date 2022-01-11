@@ -2,11 +2,7 @@
   "compilerOptions": {
     "sourceMap": false,
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "module": "esnext",
     "moduleResolution": "node",
     "strict": true,
@@ -26,8 +22,5 @@
     "noEmit": true,
     "esModuleInterop": true
   },
-  "include": [
-    "src",
-    ".kktrc.ts"
-  ]
+  "include": ["src", ".kktrc.ts"]
 }

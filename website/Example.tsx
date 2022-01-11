@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState } from 'react';
 import CodePreview from '../';
 import { Switch } from 'uiw';
 import * as UIW from 'uiw';
@@ -28,53 +28,48 @@ const Example = () => {
     bordered: true,
     codeSandbox: {
       files: {
-        "sandbox.config.json": {
+        'sandbox.config.json': {
           content: `{
             "template": "node",
             "container": {
               "startScript": "start",
               "node": "14"
             }
-          }`
+          }`,
         },
-        "public/index.html": {
-          content: `<div id="root"></div>`
+        'public/index.html': {
+          content: `<div id="root"></div>`,
         },
-        "src/index.js": {
-          content: code.replace('_mount_', 'document.getElementById("root")')
+        'src/index.js': {
+          content: code.replace('_mount_', 'document.getElementById("root")'),
         },
-        "src/index.less": {
-          content: ''
+        'src/index.less': {
+          content: '',
         },
-        ".kktrc.js": {
-          content: `import webpack from "webpack";\nimport lessModules from "@kkt/less-modules";\nexport default (conf, env, options) => {\nconf = lessModules(conf, env, options);\nreturn conf;\n};`
+        '.kktrc.js': {
+          content: `import webpack from "webpack";\nimport lessModules from "@kkt/less-modules";\nexport default (conf, env, options) => {\nconf = lessModules(conf, env, options);\nreturn conf;\n};`,
         },
-        "package.json": {
+        'package.json': {
           content: {
             dependencies: {
-              react: "latest",
-              "react-dom": "latest",
-              uiw: 'latest'
+              react: 'latest',
+              'react-dom': 'latest',
+              uiw: 'latest',
             },
             devDependencies: {
-              "@kkt/less-modules": "6.0.11",
-              kkt: "6.0.11",
-              typescript: "4.1.3"
+              '@kkt/less-modules': '6.0.11',
+              kkt: '6.0.11',
+              typescript: '4.1.3',
             },
-            "scripts": {
-              "start": "kkt start",
-              "build": "kkt build",
-              "test": "kkt test --env=jsdom"
+            scripts: {
+              start: 'kkt start',
+              build: 'kkt build',
+              test: 'kkt test --env=jsdom',
             },
-            "browserslist": [
-              ">0.2%",
-              "not dead",
-              "not ie <= 11",
-              "not op_mini all"
-            ]
-          }
-        }
-      }
+            browserslist: ['>0.2%', 'not dead', 'not ie <= 11', 'not op_mini all'],
+          },
+        },
+      },
     },
     codeSandboxShow: true,
     codePenShow: true,
@@ -87,7 +82,7 @@ const Example = () => {
       js_external: `https://unpkg.com/react@16.x/umd/react.development.js;https://unpkg.com/react-dom@16.x/umd/react-dom.development.js;https://unpkg.com/uiw@4.7.2/dist/uiw.min.js;https://unpkg.com/@uiw/codepen-require-polyfill@1.0.12/index.js`,
     },
   });
-  function handleChange(keyName: string,e: React.ChangeEvent<HTMLInputElement>) {
+  function handleChange(keyName: string, e: React.ChangeEvent<HTMLInputElement>) {
     const newstate = { ...state, [`${keyName}`]: e.target.checked };
     setState({ ...newstate });
   }
@@ -108,17 +103,17 @@ const Example = () => {
                 ...state.codeSandbox,
                 files: {
                   ...state.codeSandbox.files,
-                  "src/index.js": {
-                    content: value
+                  'src/index.js': {
+                    content: value,
                   },
-                }
+                },
               },
               codePen: {
                 ...state.codePen,
-                js: value
-              }
-            })
-          }
+                js: value,
+              },
+            });
+          },
         }}
         noPreview={state.noPreview}
         codeSandboxOption={state.codeSandboxShow ? state.codeSandbox : undefined}
@@ -161,29 +156,20 @@ const Example = () => {
           是否显示滚动条 `noScroll={state.noScroll.toString()}`
         </Switch>
         <br />
-        <Switch
-          checked={state.bordered}
-          onChange={handleChange.bind(this, 'bordered')}
-        >
+        <Switch checked={state.bordered} onChange={handleChange.bind(this, 'bordered')}>
           是否显示边框 `bordered={state.bordered.toString()}`
         </Switch>
         <br />
-        <Switch
-          checked={state.codePenShow}
-          onChange={handleChange.bind(this, 'codePenShow')}
-        >
+        <Switch checked={state.codePenShow} onChange={handleChange.bind(this, 'codePenShow')}>
           是否显示 CodePen 按钮 `codePenOption={state.codePenShow ? '{...}' : 'undefined'}`
         </Switch>
         <br />
-        <Switch
-          checked={state.codeSandboxShow}
-          onChange={handleChange.bind(this, 'codeSandboxShow')}
-        >
+        <Switch checked={state.codeSandboxShow} onChange={handleChange.bind(this, 'codeSandboxShow')}>
           是否显示 CodeSandbox 按钮 `codeSandboxOption={state.codeSandboxShow ? '{...}' : 'undefined'}`
         </Switch>
       </div>
     </Fragment>
   );
-}
+};
 
 export default Example;

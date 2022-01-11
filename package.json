@@ -13,7 +13,7 @@
     "watch": "tsbb watch & npm run css:watch",
     "build": "tsbb build && npm run css:build && npm run css:build:dist",
     "test": "tsbb test --env=jsdom",
-    "coverage": "tsbb test --env=jsdom --coverage",
+    "coverage": "tsbb test --env=jsdom --coverage --bail",
     "css:build": "compile-less -d src -o esm",
     "css:watch": "compile-less -d src -o esm --watch",
     "css:build:dist": "compile-less -d src --combine dist.css --rm-global",

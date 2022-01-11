@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo } from 'react';
 
 interface ErrorMessageProps {
   message?: string;
@@ -12,6 +12,6 @@ export function ErrorMessage(props: ErrorMessageProps) {
       <pre>
         <code>{message}</code>
       </pre>
-    )
+    );
   }, [message]);
 }

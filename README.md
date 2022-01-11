@@ -1,5 +1,5 @@
-React Code Preview
----
+## React Code Preview
+
 <!--dividing-->
 
 [![Build & Deploy](https://github.com/uiwjs/react-code-preview/workflows/Build%20&%20Deploy/badge.svg)](https://github.com/uiwjs/react-code-preview/actions)
@@ -25,8 +25,8 @@ npm install @uiw/react-code-preview --save
 [![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?logo=codesandbox)](https://codesandbox.io/embed/polished-surf-t6ro9?fontsize=14&hidenavigation=1&theme=dark)
 
 ```jsx
-import Button from "@uiw/react-button";
-import CodePreview from "@uiw/react-code-preview";
+import Button from '@uiw/react-button';
+import CodePreview from '@uiw/react-code-preview';
 
 const code = `import Button from '@uiw/react-button';
 ReactDOM.render(
@@ -139,11 +139,14 @@ type CodeSandboxProps = React.FormHTMLAttributes<HTMLFormElement> & {
   /**
    * Parameters used to define how the sandbox should be created.
    */
-  files?: Record<string, {
-    content?: string | Record<string, any>;
-    isBinary?: boolean;
-  }>;
-}
+  files?: Record<
+    string,
+    {
+      content?: string | Record<string, any>;
+      isBinary?: boolean;
+    }
+  >;
+};
 ```
 
 ## Development

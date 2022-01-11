@@ -15,7 +15,7 @@ export const bgPlaid = (
     </pattern>
     <rect fill="url(#pattern)" x="0" y="0" width="100%" height="100%" />
   </svg>
-)
+);
 
 export const copy = (
   <svg viewBox="0 0 1024 1024">
