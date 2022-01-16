@@ -89,7 +89,7 @@ const Example = () => {
   return (
     <Fragment>
       <CodePreview
-        code={defaultCode}
+        code={code}
         dependencies={{ ...UIW }}
         bordered={state.bordered}
         noScroll={state.noScroll}
