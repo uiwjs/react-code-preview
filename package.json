@@ -68,7 +68,7 @@
     "react-test-renderer": "17.0.2",
     "source-map-explorer": "2.5.2",
     "tsbb": "3.5.4",
-    "uiw": "4.9.7"
+    "uiw": "4.9.9"
   },
   "dependencies": {
     "@babel/plugin-transform-classes": "7.16.7",
