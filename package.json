@@ -75,7 +75,7 @@
     "@babel/runtime": "7.16.7",
     "@babel/standalone": "7.16.9",
     "@babel/core": "7.16.7",
-    "@codemirror/lang-javascript": "0.19.4",
+    "@codemirror/lang-javascript": "0.19.6",
     "@uiw/copy-to-clipboard": "1.0.12",
     "@uiw/react-codemirror": "4.3.3",
     "@uiw/react-split": "5.8.5",
