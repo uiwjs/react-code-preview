@@ -62,6 +62,7 @@
     "husky": "7.0.4",
     "kkt": "7.0.5",
     "lint-staged": "12.1.7",
+    "mini-css-extract-plugin": "^2.4.5",
     "prettier": "2.5.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
@@ -71,16 +72,16 @@
     "uiw": "4.9.9"
   },
   "dependencies": {
+    "@babel/core": "7.16.7",
     "@babel/plugin-transform-classes": "7.16.7",
     "@babel/runtime": "7.16.7",
     "@babel/standalone": "7.16.9",
-    "@babel/core": "7.16.7",
     "@codemirror/lang-javascript": "0.19.6",
     "@uiw/copy-to-clipboard": "1.0.12",
     "@uiw/react-codemirror": "4.3.3",
-    "@uiw/react-split": "5.8.5",
-    "@uiw/react-codesandbox": "1.1.4",
     "@uiw/react-codepen": "1.0.2",
+    "@uiw/react-codesandbox": "1.1.4",
+    "@uiw/react-split": "5.8.5",
     "babel-plugin-transform-remove-imports": "1.7.0"
   },
   "eslintConfig": {
