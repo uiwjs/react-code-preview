@@ -39,6 +39,9 @@ export function useCodePreview(props: CodePreviewProps) {
       // eslint-disable-next-line no-new-func
       new Function(...args).apply(null, argv);
       setErrorMessage('');
+      if (demoDom && !initHeight) {
+        setInitHeight(demoDom.clientHeight);
+      }
     } catch (err: any) {
       let message = '';
       if (err && err.message) {
@@ -49,13 +52,8 @@ export function useCodePreview(props: CodePreviewProps) {
       setErrorMessage(message);
     }
   };
-  useEffect(() => {
-    if (demoDom && !initHeight) {
-      setInitHeight(demoDom.clientHeight);
-    }
-  }, [demoDom, initHeight]);
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => executeCode(code), [code]);
+  useEffect(() => executeCode(code), [code, props.noPreview, demoDom]);
   return {
     playerId,
     demoDom,

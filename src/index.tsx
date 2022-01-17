@@ -173,7 +173,7 @@ const CodePreview = React.forwardRef<CodePreviewRef, CodePreviewProps>((props, r
     <Split
       visiable={visiable}
       className={cls}
-      style={{ flex: 1, ...style, height: width === 1 && !noScroll ? initHeight : '' }}
+      style={{ flex: 1, ...style, height: width === 1 ? initHeight : '' }}
       {...otherProps}
     >
       {!noPreview && !onlyEdit && (
