@@ -5,7 +5,6 @@ import { babelTransform } from './transform';
 import { CodePreviewProps } from './';
 
 export function useCodePreview(props: CodePreviewProps) {
-  const [initHeight, setInitHeight] = useState<number>();
   const [demoDom, setDemoDom] = useState<HTMLDivElement>();
   const playerId = useRef(`${parseInt(String(Math.random() * 1e9), 10).toString(36)}`);
   const [fullScreen, setFullScreen] = useState(false);
@@ -39,9 +38,6 @@ export function useCodePreview(props: CodePreviewProps) {
       // eslint-disable-next-line no-new-func
       new Function(...args).apply(null, argv);
       setErrorMessage('');
-      if (demoDom && !initHeight) {
-        setInitHeight(demoDom.clientHeight);
-      }
     } catch (err: any) {
       let message = '';
       if (err && err.message) {
@@ -58,8 +54,6 @@ export function useCodePreview(props: CodePreviewProps) {
     playerId,
     demoDom,
     setDemoDom,
-    initHeight,
-    setInitHeight,
     fullScreen,
     setFullScreen,
     errorMessage,

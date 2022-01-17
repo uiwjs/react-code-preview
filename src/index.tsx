@@ -104,7 +104,6 @@ const CodePreview = React.forwardRef<CodePreviewRef, CodePreviewProps>((props, r
   const {
     playerId,
     setDemoDom,
-    initHeight,
     code,
     setCode,
     fullScreen,
@@ -148,6 +147,22 @@ const CodePreview = React.forwardRef<CodePreviewRef, CodePreviewProps>((props, r
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const transitionend = () => setShowEdit(width !== 1);
+
+  useEffect(() => {
+    const dom = demoRef.current;
+    if (dom) {
+      dom.addEventListener('transitionend', transitionend);
+    }
+    return () => {
+      if (dom) {
+        dom.removeEventListener('transitionend', transitionend);
+      }
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [width]);
+
   const handleChange = (value: string, viewUpdate: ViewUpdate) => {
     setCode(value);
     if (editProps && editProps.onChange) {
@@ -170,12 +185,7 @@ const CodePreview = React.forwardRef<CodePreviewRef, CodePreviewProps>((props, r
     }
   };
   return (
-    <Split
-      visiable={visiable}
-      className={cls}
-      style={{ flex: 1, ...style, height: width === 1 ? initHeight : '' }}
-      {...otherProps}
-    >
+    <Split visiable={visiable} className={cls} style={{ flex: 1, ...style }} {...otherProps}>
       {!noPreview && !onlyEdit && (
         <div
           className={[
