@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/react-code-preview/static/css/main.ce757dde.css",
-    "main.js": "/react-code-preview/static/js/main.02047d06.js",
+    "main.js": "/react-code-preview/static/js/main.72a47479.js",
     "babel_vendors.js": "/react-code-preview/static/js/babel_vendors.8d5861d0.js",
     "prismjs-vendor.js": "/react-code-preview/static/js/prismjs-vendor.1d932df2.js",
     "refractor-vendors.js": "/react-code-preview/static/js/refractor-vendors.1c7f29f4.js",
@@ -12,7 +12,7 @@
     "static/js/506.8f3705f6.js": "/react-code-preview/static/js/506.8f3705f6.js",
     "index.html": "/react-code-preview/index.html",
     "main.ce757dde.css.map": "/react-code-preview/static/css/main.ce757dde.css.map",
-    "main.02047d06.js.map": "/react-code-preview/static/js/main.02047d06.js.map",
+    "main.72a47479.js.map": "/react-code-preview/static/js/main.72a47479.js.map",
     "babel_vendors.8d5861d0.js.map": "/react-code-preview/static/js/babel_vendors.8d5861d0.js.map",
     "prismjs-vendor.1d932df2.js.map": "/react-code-preview/static/js/prismjs-vendor.1d932df2.js.map",
     "refractor-vendors.1c7f29f4.js.map": "/react-code-preview/static/js/refractor-vendors.1c7f29f4.js.map",
@@ -32,6 +32,6 @@
     "static/js/react-vendors.21c591e3.js",
     "static/js/506.8f3705f6.js",
     "static/css/main.ce757dde.css",
-    "static/js/main.02047d06.js"
+    "static/js/main.72a47479.js"
   ]
 }
