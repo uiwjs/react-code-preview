@@ -121,21 +121,23 @@
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.03);
     box-shadow: inset 1px 0 0 0 #d5d5d5;
-    padding: 3px 3px 8px 2px;
+    padding: 3px 0 8px 0;
     margin: 0 auto;
     color: rgba(0, 0, 0, 0.45);
     writing-mode: tb-rl;
     position: relative;
     display: flex;
+    align-items: center;
     width: 29px;
     line-height: 24px;
-    font-size: 14px;
+    font-size: 12px;
     max-width: 29px;
     min-width: 29px;
     min-height: 29px;
     &-btn {
       overflow: hidden;
-      padding: 5px 0;
+      padding: 5px 0 10px 0;
+      display: flex;
       transition: all 0.3s;
       user-select: none;
       flex: 1;
@@ -144,10 +146,9 @@
       }
     }
     &-iconbtns {
-      margin-top: 5px;
-      margin-right: 3px;
-      height: 15px;
-      width: 15px;
+      margin-top: 6px;
+      height: 14px;
+      width: 14px;
       line-height: 22px;
     }
     svg {

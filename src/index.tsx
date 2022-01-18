@@ -236,7 +236,7 @@ const CodePreview = React.forwardRef<CodePreviewRef, CodePreviewProps>((props, r
               .trim()}
             onClick={onCopyCode}
           >
-            {icon.copy}
+            {copied ? icon.copyOk : icon.copy}
           </div>
           <div
             className={[`${prefixCls}-bar-iconbtns`, fullScreen ? `${prefixCls}-bar-copied` : null]
