@@ -75,7 +75,7 @@
     "@babel/plugin-transform-classes": "~7.16.7",
     "@babel/runtime": "~7.17.2",
     "@babel/standalone": "~7.17.6",
-    "@codemirror/lang-javascript": "~0.19.7",
+    "@codemirror/lang-javascript": "~0.20.0",
     "@uiw/copy-to-clipboard": "~1.0.12",
     "@uiw/react-codemirror": "~4.5.1",
     "@uiw/react-codepen": "~1.0.2",
