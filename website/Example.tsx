@@ -3,10 +3,11 @@ import CodePreview from '../';
 import { Switch } from 'uiw';
 import * as UIW from 'uiw';
 
-const defaultCode = `import ReactDOM from 'react-dom';
+const defaultCode = `
 import { Button, Divider, Icon } from 'uiw';
+import ReactDOMClient from 'react-dom/client';
 
-ReactDOM.render(
+ReactDOMClient.createRoot(_mount_).render(
   <div>
     <Button type="primary">主要按钮</Button>
     <Button type="success">成功按钮</Button>
@@ -15,7 +16,6 @@ ReactDOM.render(
     <Button type="light">亮按钮</Button>
     <Button type="dark">暗按钮</Button>
   </div>,
-  _mount_
 );`;
 
 const Example = () => {
