@@ -191,7 +191,7 @@ const CodePreview = React.forwardRef<CodePreviewRef, CodePreviewProps>((props, r
     }
   };
   return (
-    <Split visiable={visiable} className={cls} style={{ flex: 1, ...style }} {...otherProps}>
+    <Split data-color-mode={theme} visiable={visiable} className={cls} style={{ flex: 1, ...style }} {...otherProps}>
       {!noPreview && !onlyEdit && (
         <div
           className={[
