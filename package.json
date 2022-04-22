@@ -52,7 +52,7 @@
     "@kkt/raw-modules": "~7.1.1",
     "@kkt/scope-plugin-options": "~7.1.1",
     "@types/babel__standalone": "~7.1.4",
-    "@types/react": "18.0.5",
+    "@types/react": "18.0.6",
     "@types/react-dom": "18.0.1",
     "@types/react-test-renderer": "~17.0.1",
     "@uiw/react-github-corners": "~1.5.3",
