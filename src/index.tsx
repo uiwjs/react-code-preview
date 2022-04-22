@@ -66,6 +66,11 @@ export interface CodePreviewProps extends SplitProps {
   btnText?: string;
   /** @default 'Hide Editor' */
   btnHideText?: string;
+  /**
+   * `light` / `dark` / `Extension` Defaults to `light`.
+   * @default light
+   */
+  theme?: ReactCodeMirrorProps['theme'];
 }
 
 export interface CodePreviewState {
@@ -86,6 +91,7 @@ const CodePreview = React.forwardRef<CodePreviewRef, CodePreviewProps>((props, r
     style,
     prefixCls = 'w-code-preview',
     className,
+    theme = 'light',
     editProps = {},
     codePenOption,
     codeSandboxOption,
@@ -214,6 +220,7 @@ const CodePreview = React.forwardRef<CodePreviewRef, CodePreviewProps>((props, r
             <CodeMirror
               value={(code || '').replace(/\n$/, '')}
               ref={editor}
+              theme={theme}
               extensions={[javascript({ jsx: true })]}
               {...editProps}
               style={{ height: '100%' }}

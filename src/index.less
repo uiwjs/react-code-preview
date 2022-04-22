@@ -1,14 +1,35 @@
 @w-code-preview:~ "w-code-preview";
 
+[data-color-mode*='light'],
+[data-color-mode*='light'] body {
+  --color-code-preview-bg: #fff3;
+  --color-code-preview-border: #d5d5d5;
+  --color-code-preview-hover: #838383;
+  --code-preview-text: #d5d5d5;
+}
+
+[data-color-mode*='dark'],
+[data-color-mode*='dark'] body {
+  --color-code-preview-border: #ffffff1a;
+  --color-code-preview-bg: #282c34;
+  --color-code-preview-hover: #9c9c9c;
+  --code-preview-text: #c9d1d9;
+}
+
 .@{w-code-preview} {
   &.w-split-horizontal > .w-split-bar {
     height: initial;
   }
+  > .w-split-bar {
+    background-color: var(--color-code-preview-bg) !important;
+    box-shadow: inset 1px 0 0 0 var(--color-code-preview-border), 1px 0 0 0 var(--color-code-preview-border) !important;
+  }
 }
+
 .@{w-code-preview} {
   border-radius: 3px;
   margin-bottom: 16px;
-  background-color: #fff;
+  background-color: var(--color-code-preview-bg);
   max-height: 420px;
   min-height: 12px;
   z-index: 10;
@@ -18,7 +39,6 @@
   }
   &-fullScreen {
     position: fixed;
-    background-color: #fff;
     border-radius: 0;
     border: 0;
     top: 0 !important;
@@ -87,7 +107,7 @@
     min-height: 80px;
     &-error {
       z-index: 2;
-      background: #fff;
+      background-color: var(--color-code-preview-bg);
       width: 100%;
       height: 100%;
       margin-bottom: 0 !important;
@@ -119,11 +139,9 @@
   }
   &-bar {
     cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.03);
-    box-shadow: inset 1px 0 0 0 #d5d5d5;
+    box-shadow: inset 1px 0 0 0 var(--color-code-preview-border);
     padding: 3px 0 8px 0;
     margin: 0 auto;
-    color: rgba(0, 0, 0, 0.45);
     writing-mode: tb-rl;
     position: relative;
     display: flex;
@@ -141,9 +159,10 @@
       transition: all 0.3s;
       font-weight: bold;
       user-select: none;
+      color: var(--code-preview-text);
       flex: 1;
       &:hover {
-        color: #000;
+        color: var(--color-code-preview-hover);
       }
     }
     &-iconbtns {
@@ -154,10 +173,10 @@
     }
     svg {
       transition: all 0.3s;
-      fill: #9c9c9c;
+      fill: var(--code-preview-text);
       display: block;
       &:hover {
-        fill: #000;
+        fill: var(--color-code-preview-hover);
       }
     }
     &-copied svg,
@@ -167,5 +186,44 @@
   }
   &-OneItem &-bar {
     cursor: inherit;
+  }
+}
+
+.@{w-code-preview} {
+  &-thirdparty + &-thirdparty {
+    margin-left: 10px;
+  }
+  &-thirdparty {
+    display: inline-block;
+    position: absolute;
+    white-space: nowrap;
+    line-height: 1;
+    z-index: 2;
+    right: 0;
+    top: -23px;
+    form {
+      display: block;
+    }
+    form + form {
+      margin-right: 5px;
+    }
+    button {
+      border: 0;
+      outline: 0;
+      cursor: pointer;
+      padding: 3px 4px 3px 4px;
+      border-radius: 3px;
+      transition: color 0.3s;
+      color: rgba(0, 0, 0, 0.45);
+      &:hover {
+        color: rgba(0, 0, 0, 0.85);
+      }
+      svg {
+        fill: var(--code-preview-text);
+      }
+      svg:not(:root) {
+        overflow: hidden;
+      }
+    }
   }
 }

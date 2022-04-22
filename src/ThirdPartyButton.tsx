@@ -2,7 +2,6 @@ import React from 'react';
 import CodeSandbox, { CodeSandboxProps } from '@uiw/react-codesandbox';
 import Codepen from '@uiw/react-codepen';
 import { CodePreviewProps } from './';
-import './ThirdPartyButton.less';
 
 type ThirdPartyButtonProps = {
   prefixCls?: string;

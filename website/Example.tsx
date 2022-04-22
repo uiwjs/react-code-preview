@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react';
+import { Fragment, useState, useEffect } from 'react';
 import CodePreview from '../';
 import { Switch } from 'uiw';
 import * as UIW from 'uiw';
@@ -20,6 +20,7 @@ ReactDOM.render(
 );`;
 
 const Example = () => {
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
   const [code] = useState(defaultCode);
   const [state, setState] = useState({
     bgWhite: false,
@@ -87,10 +88,19 @@ const Example = () => {
     const newstate = { ...state, [`${keyName}`]: e.target.checked };
     setState({ ...newstate });
   }
+
+  useEffect(() => {
+    setTheme(document.documentElement.getAttribute('data-color-mode') === 'dark' ? 'dark' : 'light');
+    document.addEventListener('colorschemechange', (e: any) => {
+      setTheme(e.detail.colorScheme);
+    });
+  }, []);
+
   return (
     <Fragment>
       <CodePreview
         code={code}
+        theme={theme}
         dependencies={{ ...UIW }}
         bordered={state.bordered}
         noScroll={state.noScroll}
