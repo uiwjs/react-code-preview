@@ -7,7 +7,7 @@ const defaultCode = `
 import { Button, Divider, Icon } from 'uiw';
 import ReactDOMClient from 'react-dom/client';
 
-ReactDOMClient.createRoot(_mount_).render(
+ReactDOM.render(
   <div>
     <Button type="primary">主要按钮</Button>
     <Button type="success">成功按钮</Button>
@@ -16,6 +16,7 @@ ReactDOMClient.createRoot(_mount_).render(
     <Button type="light">亮按钮</Button>
     <Button type="dark">暗按钮</Button>
   </div>,
+  _mount_
 );`;
 
 const Example = () => {
