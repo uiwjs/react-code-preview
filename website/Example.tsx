@@ -3,8 +3,9 @@ import CodePreview from '../';
 import { Switch } from 'uiw';
 import * as UIW from 'uiw';
 
-const defaultCode = `import ReactDOM from 'react-dom';
+const defaultCode = `
 import { Button, Divider, Icon } from 'uiw';
+import ReactDOMClient from 'react-dom/client';
 
 ReactDOM.render(
   <div>
