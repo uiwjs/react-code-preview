@@ -21,19 +21,44 @@ npm install @uiw/react-code-preview --save
 
 [![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?logo=codesandbox)](https://codesandbox.io/embed/polished-surf-t6ro9?fontsize=14&hidenavigation=1&theme=dark)
 
+### In React 18
+
 ```jsx
 import Button from '@uiw/react-button';
 import CodePreview from '@uiw/react-code-preview';
 
 const code = `import Button from '@uiw/react-button';
+import ReactDOMClient from 'react-dom/client';
+
 ReactDOM.render(
   <div>
     <Button type="primary">主要按钮</Button>
     <Button type="success">成功按钮</Button>
   </div>,
   _mount_
-);
-`;
+);`;
+
+export default function App() {
+  return <CodePreview code={code} dependencies={{ Button }} />;
+}
+```
+
+### In React 17
+
+```jsx
+import Button from '@uiw/react-button';
+import CodePreview from '@uiw/react-code-preview';
+
+const code = `import Button from '@uiw/react-button';
+import ReactDOM from 'react-dom';
+
+ReactDOM.render(
+  <div>
+    <Button type="primary">主要按钮</Button>
+    <Button type="success">成功按钮</Button>
+  </div>,
+  _mount_
+);`;
 
 export default function App() {
   return <CodePreview code={code} dependencies={{ Button }} />;
