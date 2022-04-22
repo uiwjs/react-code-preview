@@ -19,9 +19,9 @@ npm install @uiw/react-code-preview --save
 
 ## Usage
 
-[![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?logo=codesandbox)](https://codesandbox.io/embed/polished-surf-t6ro9?fontsize=14&hidenavigation=1&theme=dark)
-
 ### In React 18
+
+[![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?logo=codesandbox)](https://codesandbox.io/embed/uiw-react-code-preview-react-18-1bmhhd?fontsize=14&hidenavigation=1&theme=dark)
 
 ```jsx
 import Button from '@uiw/react-button';
@@ -44,6 +44,8 @@ export default function App() {
 ```
 
 ### In React 17
+
+[![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?logo=codesandbox)](https://codesandbox.io/embed/uiw-react-code-preview-react-17-t6ro9?fontsize=14&hidenavigation=1&theme=dark)
 
 ```jsx
 import Button from '@uiw/react-button';
