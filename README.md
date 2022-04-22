@@ -127,6 +127,11 @@ interface CodePreviewProps extends SplitProps {
   btnText?: string;
   /** @default 'Hide Editor' */
   btnHideText?: string;
+  /**
+   * `light` / `dark` / `Extension` Defaults to `light`.
+   * @default light
+   */
+  theme?: ReactCodeMirrorProps['theme'];
 }
 ```
 
