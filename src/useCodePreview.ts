@@ -39,12 +39,12 @@ export function useCodePreview(props: CodePreviewProps) {
   /**  ------------------------   ***/
 
   const executeCode = (str: string) => {
-    const { React: _React, ReactDOM, ...otherDeps } = props.dependencies || {};
+    const { React: _React, ReactDOM, ReactDOMClient, ...otherDeps } = props.dependencies || {};
     try {
       const deps = {
         React: _React || React,
-        ReactDOMClient: ReactDOMRender,
         ...otherDeps,
+        ReactDOMClient: ReactDOMRender,
       } as any;
       // const args = ['context', 'React', 'ReactDOM', 'Component'];
       const args = [];
