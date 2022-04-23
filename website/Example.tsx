@@ -5,9 +5,9 @@ import * as UIW from 'uiw';
 
 const defaultCode = `
 import { Button, Divider, Icon } from 'uiw';
-import ReactDOMClient from 'react-dom/client';
+import ReactDOM from 'react-dom/client';
 
-ReactDOM.render(
+ReactDOM.createRoot(_mount_).render(
   <div>
     <Button type="primary">主要按钮</Button>
     <Button type="success">成功按钮</Button>
@@ -16,7 +16,6 @@ ReactDOM.render(
     <Button type="light">亮按钮</Button>
     <Button type="dark">暗按钮</Button>
   </div>,
-  _mount_
 );`;
 
 const Example = () => {
@@ -81,7 +80,7 @@ const Example = () => {
       html: '<div id="root"></div>',
       js: code.replace('_mount_', 'document.getElementById("root")'),
       css_external: 'https://unpkg.com/uiw@3.2.6/dist/uiw.min.css',
-      js_external: `https://unpkg.com/react@16.x/umd/react.development.js;https://unpkg.com/react-dom@16.x/umd/react-dom.development.js;https://unpkg.com/uiw@4.7.2/dist/uiw.min.js;https://unpkg.com/@uiw/codepen-require-polyfill@1.0.12/index.js`,
+      js_external: `https://unpkg.com/react@18.x/umd/react.development.js;https://unpkg.com/react-dom@18.x/umd/react-dom.development.js;https://unpkg.com/uiw@4.7.2/dist/uiw.min.js;https://unpkg.com/@uiw/codepen-require-polyfill@1.0.12/index.js`,
     },
   });
   function handleChange(keyName: string, e: React.ChangeEvent<HTMLInputElement>) {
