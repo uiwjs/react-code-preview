@@ -28,14 +28,13 @@ import Button from '@uiw/react-button';
 import CodePreview from '@uiw/react-code-preview';
 
 const code = `import Button from '@uiw/react-button';
-import ReactDOMClient from 'react-dom/client';
+import ReactDOM from 'react-dom/client';
 
-ReactDOM.render(
+ReactDOM.createRoot(_mount_).render(
   <div>
     <Button type="primary">主要按钮</Button>
     <Button type="success">成功按钮</Button>
   </div>,
-  _mount_
 );`;
 
 export default function App() {
@@ -52,14 +51,13 @@ import Button from '@uiw/react-button';
 import CodePreview from '@uiw/react-code-preview';
 
 const code = `import Button from '@uiw/react-button';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 
-ReactDOM.render(
+ReactDOM.createRoot(_mount_).render(
   <div>
     <Button type="primary">主要按钮</Button>
     <Button type="success">成功按钮</Button>
   </div>,
-  _mount_
 );`;
 
 export default function App() {
