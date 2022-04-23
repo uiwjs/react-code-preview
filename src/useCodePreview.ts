@@ -1,10 +1,19 @@
 import React, { useEffect, useRef } from 'react';
-// @ts-ignore
-import ReactDOMClient from 'react-dom/client';
-import ReactDOM from 'react-dom';
 import { useState } from 'react';
 import { babelTransform } from './transform';
 import { CodePreviewProps } from './';
+import ReactDOM from 'react-dom';
+
+export const getReactDOMClient = () => {
+  let _ReactDOM;
+  try {
+    // 使用 require 解决 react v17 ts 报错问题
+    _ReactDOM = require('react-dom/client');
+  } catch (err) {
+    // console.warn(`如果使用的是react-dom小于v18的版本，可以忽略此警告：${err}`)
+  }
+  return _ReactDOM;
+};
 
 export function useCodePreview(props: CodePreviewProps) {
   const [demoDom, setDemoDom] = useState<HTMLDivElement>();
@@ -15,6 +24,10 @@ export function useCodePreview(props: CodePreviewProps) {
   const [width, setWidth] = useState<number | string>(1);
   const [copied, setCopied] = useState(false);
   const [code, setCode] = useState(props.code || '');
+
+  const ReactDOMClient = React.useMemo(() => {
+    return getReactDOMClient();
+  }, []);
 
   /** 通过缓存的方式 解决 react v18 中 的报错   ***/
   // @ts-ignore
@@ -51,9 +64,9 @@ export function useCodePreview(props: CodePreviewProps) {
       ReactDOMClient: _ReactDOMClient,
       ...otherDeps
     } = props.dependencies || {};
-    const V18ReactDOM = _ReactDOMClient || ReactDOMClient || _ReactDOM || ReactDOM;
+    let V18ReactDOM = _ReactDOMClient || ReactDOMClient || _ReactDOM || ReactDOM;
     // 判断是否是 react v18版本
-    const isV18 = Reflect.has(V18ReactDOM || {}, 'createRoot');
+    const isV18 = Reflect.has(V18ReactDOM, 'createRoot');
     const NewReactDOM = isV18 ? ReactDOMRender(V18ReactDOM) : V18ReactDOM;
 
     try {
