@@ -26,7 +26,7 @@ export function useCodePreview(props: CodePreviewProps) {
   const [code, setCode] = useState(props.code || '');
 
   const ReactDOMClient = React.useMemo(() => {
-    return getReactDOMClient();
+    return window.ReactDOM ? window.ReactDOM : getReactDOMClient();
   }, []);
 
   /** 通过缓存的方式 解决 react v18 中 的报错   ***/
@@ -88,7 +88,7 @@ export function useCodePreview(props: CodePreviewProps) {
         // react < v18 中写法替换
         str = str.replace('ReactDOM.render', `ReactDOM.createRoot("${playerId.current}").render`);
         // react v18 中写法替换
-        str = str.replace(`ReactDOMClient.createRoot(_mount_)`, `ReactDOM.createRoot("${playerId.current}")`);
+        str = str.replace(`ReactDOM.createRoot(_mount_)`, `ReactDOM.createRoot("${playerId.current}")`);
         str = str.replace('_mount_', ``);
       } else {
         str = str.replace('_mount_', `document.getElementById('${playerId.current}')`);
