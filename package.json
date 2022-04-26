@@ -69,7 +69,7 @@
     "react-test-renderer": "~18.0.0",
     "source-map-explorer": "~2.5.2",
     "tsbb": "~3.7.2",
-    "uiw": "~4.13.6"
+    "uiw": "~4.21.0"
   },
   "dependencies": {
     "@babel/core": "~7.17.5",
