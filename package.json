@@ -60,7 +60,7 @@
     "@uiw/reset.css": "~1.0.6",
     "@wcj/dark-mode": "^1.0.14",
     "compile-less-cli": "~1.8.11",
-    "husky": "~7.0.4",
+    "husky": "~8.0.0",
     "kkt": "~7.1.5",
     "lint-staged": "~12.3.5",
     "prettier": "~2.5.1",
