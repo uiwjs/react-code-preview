@@ -5,10 +5,10 @@ import '@wcj/dark-mode';
 import DocumentStr from '../README.md';
 import styles from './App.module.less';
 import Example from './Example';
+import pkgJson from '../package.json';
 
 export default function App() {
-  // @ts-ignore
-  const version = VERSION;
+  const version = pkgJson.version;
   let DocumentStrSource = DocumentStr;
   if (DocumentStrSource) DocumentStrSource = DocumentStr.replace(/([\s\S]*)<!--dividing-->/, '');
   return (
