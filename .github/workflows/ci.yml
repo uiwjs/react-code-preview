@@ -37,7 +37,7 @@ jobs:
       # - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./package.json
 
       - run: npm publish --access public --provenance
-        name: 📦 @uiw/react-json-view publish to NPM
+        name: 📦 @uiw/react-code-preview publish to NPM
         continue-on-error: true
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
