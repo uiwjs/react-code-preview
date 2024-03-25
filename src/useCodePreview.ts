@@ -20,7 +20,7 @@ export function useCodePreview(props: CodePreviewProps) {
   const playerId = useRef(`${parseInt(String(Math.random() * 1e9), 10).toString(36)}`);
   const [fullScreen, setFullScreen] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const [showEdit, setShowEdit] = useState(false);
+  const [showEdit, setShowEdit] = useState(props.sourceState === 'shown');
   const [width, setWidth] = useState<number | string>(1);
   const [copied, setCopied] = useState(false);
   const [code, setCode] = useState(props.code || '');
