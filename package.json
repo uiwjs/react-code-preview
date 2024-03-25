@@ -59,7 +59,7 @@
     "@uiw/react-markdown-preview": "~4.0.6",
     "@uiw/reset.css": "~1.0.6",
     "@wcj/dark-mode": "^1.0.14",
-    "compile-less-cli": "~1.8.11",
+    "compile-less-cli": "~1.9.0",
     "husky": "~7.0.4",
     "kkt": "^7.5.5",
     "lint-staged": "~12.3.5",
