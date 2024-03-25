@@ -10,6 +10,9 @@ env:
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -32,21 +35,6 @@ jobs:
           filter-author: (renovate\[bot\]|renovate-bot|dependabot\[bot\])
           output: build/CONTRIBUTORS.svg
           avatarSize: 42
-
-      # - run: npm install @jsdevtools/npm-publish -g
-      # - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./package.json
-
-      - run: npm publish --access public --provenance
-        name: 📦 @uiw/react-code-preview publish to NPM
-        continue-on-error: true
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      # - name: 📦 📦 @uiw/react-code-preview 📦 📦
-      #   uses: JS-DevTools/npm-publish@v1
-      #   with:
-      #     token: ${{ secrets.NPM_TOKEN }}
-      #     package: package.json
 
       - name: Create Tag
         id: create_tag
@@ -94,3 +82,21 @@ jobs:
             ```
 
             ${{ steps.changelog.outputs.changelog }}
+      - name: package.json info
+        uses: jaywcjlove/github-action-package@main
+        with:
+          unset: scripts,lint-staged,eslintConfig,browserslist
+      # - run: npm install @jsdevtools/npm-publish -g
+      # - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./package.json
+
+      - run: npm publish --access public --provenance
+        name: 📦 @uiw/react-code-preview publish to NPM
+        continue-on-error: true
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+
+      # - name: 📦 📦 @uiw/react-code-preview 📦 📦
+      #   uses: JS-DevTools/npm-publish@v1
+      #   with:
+      #     token: ${{ secrets.NPM_PUBLISH_TOKEN }}
+      #     package: package.json
