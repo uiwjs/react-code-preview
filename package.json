@@ -1,12 +1,12 @@
 {
   "name": "@uiw/react-code-preview",
-  "version": "5.1.2",
+  "version": "5.2.0",
   "description": "Code edit preview for React.",
   "author": "Kenny Wang <wowohoo@qq.com>",
   "main": "cjs/index.js",
   "module": "esm/index.js",
   "scripts": {
-    "prepare": "husky install && npm run build",
+    "prepare": "husky && npm run build",
     "released": "npm run build && npm run doc",
     "doc": "kkt build --app-src ./website",
     "start": "kkt start --app-src ./website",
@@ -23,7 +23,7 @@
   "homepage": "https://uiwjs.github.io/react-code-preview",
   "repository": {
     "type": "git",
-    "url": "https://github.com/uiwjs/react-code-preview"
+    "url": "git+https://github.com/uiwjs/react-code-preview.git"
   },
   "files": [
     "src",
@@ -56,17 +56,17 @@
     "@types/react-dom": "^18.2.22",
     "@types/react-test-renderer": "~18.0.0",
     "@uiw/react-github-corners": "~1.5.14",
-    "@uiw/react-markdown-preview": "~4.2.0",
+    "@uiw/react-markdown-preview": "^5.1.1",
     "@uiw/reset.css": "~1.0.6",
     "@wcj/dark-mode": "^1.0.14",
     "compile-less-cli": "~1.9.0",
-    "husky": "~7.0.4",
+    "husky": "^9.0.11",
     "kkt": "^7.5.5",
-    "lint-staged": "~12.3.5",
-    "prettier": "~2.8.0",
-    "react": "~18.0.0",
-    "react-dom": "~18.0.0",
-    "react-test-renderer": "~18.0.0",
+    "lint-staged": "^15.2.2",
+    "prettier": "~3.2.0",
+    "react": "~18.2.0",
+    "react-dom": "~18.2.0",
+    "react-test-renderer": "~18.2.0",
     "source-map-explorer": "~2.5.2",
     "tsbb": "^4.2.5",
     "uiw": "~4.13.6"
@@ -81,7 +81,7 @@
     "@uiw/react-codemirror": "~4.21.0",
     "@uiw/react-codepen": "~1.0.2",
     "@uiw/react-codesandbox": "~1.1.4",
-    "@uiw/react-split": "~5.8.7",
+    "@uiw/react-split": "~5.9.0",
     "babel-plugin-transform-remove-imports": "~1.7.0"
   },
   "eslintConfig": {
