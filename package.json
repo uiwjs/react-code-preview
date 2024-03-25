@@ -56,7 +56,7 @@
     "@types/react-dom": "^18.2.22",
     "@types/react-test-renderer": "~18.0.0",
     "@uiw/react-github-corners": "~1.5.14",
-    "@uiw/react-markdown-preview": "~4.0.6",
+    "@uiw/react-markdown-preview": "~4.2.0",
     "@uiw/reset.css": "~1.0.6",
     "@wcj/dark-mode": "^1.0.14",
     "compile-less-cli": "~1.9.0",
