@@ -72,10 +72,10 @@
     "uiw": "~4.13.6"
   },
   "dependencies": {
-    "@babel/core": "~7.17.5",
-    "@babel/plugin-transform-classes": "~7.16.7",
-    "@babel/runtime": "~7.17.2",
-    "@babel/standalone": "~7.17.6",
+    "@babel/core": "~7.24.0",
+    "@babel/plugin-transform-classes": "~7.24.0",
+    "@babel/runtime": "~7.24.0",
+    "@babel/standalone": "~7.24.0",
     "@codemirror/lang-javascript": "^0.20.0",
     "@uiw/copy-to-clipboard": "~1.0.12",
     "@uiw/react-codemirror": "~4.7.0",
