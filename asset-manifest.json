@@ -7,7 +7,7 @@
     "codemirror-vendors.js": "/react-code-preview/static/js/codemirror-vendors.66e75ab1.js",
     "uiwjs-vendors.css": "/react-code-preview/static/css/uiwjs-vendors.515cd463.css",
     "uiwjs-vendors.js": "/react-code-preview/static/js/uiwjs-vendors.b48cc1cd.js",
-    "react-vendors.js": "/react-code-preview/static/js/react-vendors.35b8004c.js",
+    "react-vendors.js": "/react-code-preview/static/js/react-vendors.f1f024a0.js",
     "static/js/499.25d3fdb3.js": "/react-code-preview/static/js/499.25d3fdb3.js",
     "index.html": "/react-code-preview/index.html",
     "main.8036ca4a.css.map": "/react-code-preview/static/css/main.8036ca4a.css.map",
@@ -17,7 +17,7 @@
     "codemirror-vendors.66e75ab1.js.map": "/react-code-preview/static/js/codemirror-vendors.66e75ab1.js.map",
     "uiwjs-vendors.515cd463.css.map": "/react-code-preview/static/css/uiwjs-vendors.515cd463.css.map",
     "uiwjs-vendors.b48cc1cd.js.map": "/react-code-preview/static/js/uiwjs-vendors.b48cc1cd.js.map",
-    "react-vendors.35b8004c.js.map": "/react-code-preview/static/js/react-vendors.35b8004c.js.map",
+    "react-vendors.f1f024a0.js.map": "/react-code-preview/static/js/react-vendors.f1f024a0.js.map",
     "499.25d3fdb3.js.map": "/react-code-preview/static/js/499.25d3fdb3.js.map"
   },
   "entrypoints": [
@@ -26,7 +26,7 @@
     "static/js/codemirror-vendors.66e75ab1.js",
     "static/css/uiwjs-vendors.515cd463.css",
     "static/js/uiwjs-vendors.b48cc1cd.js",
-    "static/js/react-vendors.35b8004c.js",
+    "static/js/react-vendors.f1f024a0.js",
     "static/js/499.25d3fdb3.js",
     "static/css/main.8036ca4a.css",
     "static/js/main.be9fe940.js"
