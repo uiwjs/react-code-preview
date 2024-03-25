@@ -1,4 +1,3 @@
-import React from 'react';
 import GitHubCorners from '@uiw/react-github-corners';
 import Markdown from '@uiw/react-markdown-preview';
 import '@wcj/dark-mode';
