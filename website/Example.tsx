@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import CodePreview from '../';
 import { Switch } from 'uiw';
 import * as UIW from 'uiw';
