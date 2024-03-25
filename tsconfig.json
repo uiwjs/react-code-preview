@@ -19,8 +19,8 @@
     "noUnusedLocals": true,
     "experimentalDecorators": true,
     "removeComments": false,
-    "noEmit": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "emitDeclarationOnly": true
   },
   "include": ["src"]
 }
