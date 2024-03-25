@@ -1,8 +1,3 @@
-/**
- * @jest-environment jsdom
- */
-/* eslint-disable jest/no-conditional-expect */
-// @ts-ignore
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
 import CodePreview from '../';
