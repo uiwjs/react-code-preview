@@ -22,5 +22,5 @@
     "noEmit": true,
     "esModuleInterop": true
   },
-  "include": ["src", "website", ".kktrc.ts"]
+  "include": ["src"]
 }

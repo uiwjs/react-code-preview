@@ -10,10 +10,10 @@
     "released": "npm run build && npm run doc",
     "doc": "kkt build --app-src ./website",
     "start": "kkt start --app-src ./website",
-    "watch": "tsbb watch & npm run css:watch",
-    "build": "tsbb build && npm run css:build && npm run css:build:dist",
-    "test": "tsbb test --env=jsdom",
-    "coverage": "tsbb test --env=jsdom --coverage --bail",
+    "watch": "tsbb watch \"src/*.{ts,tsx}\" --use-babel --cjs cjs & npm run css:watch",
+    "build": "tsbb build \"src/*.{ts,tsx}\" --use-babel --cjs cjs && npm run css:build && npm run css:build:dist",
+    "test": "tsbb test",
+    "coverage": "tsbb test --coverage --bail",
     "css:build": "compile-less -d src -o esm",
     "css:watch": "compile-less -d src -o esm --watch",
     "css:build:dist": "compile-less -d src --combine dist.css --rm-global",
@@ -68,7 +68,7 @@
     "react-dom": "~18.0.0",
     "react-test-renderer": "~18.0.0",
     "source-map-explorer": "~2.5.2",
-    "tsbb": "~3.7.2",
+    "tsbb": "^4.2.5",
     "uiw": "~4.13.6"
   },
   "dependencies": {
