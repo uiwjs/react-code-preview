@@ -131,6 +131,10 @@ interface CodePreviewProps extends SplitProps {
    * @default light
    */
   theme?: ReactCodeMirrorProps['theme'];
+  /**
+   * Specifies the initial state of the source panel.
+   */
+  sourceState?: 'hidden' | 'shown';
 }
 ```
 

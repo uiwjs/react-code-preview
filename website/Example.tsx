@@ -27,6 +27,7 @@ const Example = () => {
     noScroll: false,
     noPreview: false,
     bordered: true,
+    sourceState: false,
     codeSandbox: {
       files: {
         'sandbox.config.json': {
@@ -105,6 +106,7 @@ const Example = () => {
         noScroll={state.noScroll}
         bgWhite={state.bgWhite}
         noCode={state.noCode}
+        sourceState={state.sourceState ? 'shown' : 'hidden'}
         editProps={{
           onChange: (value) => {
             setState({
@@ -164,6 +166,10 @@ const Example = () => {
           onChange={handleChange.bind(this, 'noScroll')}
         >
           是否显示滚动条 `noScroll={state.noScroll.toString()}`
+        </Switch>
+        <br />
+        <Switch checked={state.sourceState} onChange={handleChange.bind(this, 'sourceState')}>
+          是否显示源码 `sourceState={state.sourceState ? 'shown' : 'hidden'}`
         </Switch>
         <br />
         <Switch checked={state.bordered} onChange={handleChange.bind(this, 'bordered')}>
