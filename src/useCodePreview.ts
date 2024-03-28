@@ -16,13 +16,12 @@ export const getReactDOMClient = () => {
 };
 
 export function useCodePreview(props: CodePreviewProps) {
-  const isShowEdit = props.sourceState === 'shown';
   const [demoDom, setDemoDom] = useState<HTMLDivElement>();
   const playerId = useRef(`${parseInt(String(Math.random() * 1e9), 10).toString(36)}`);
   const [fullScreen, setFullScreen] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const [showEdit, setShowEdit] = useState(isShowEdit);
-  const [width, setWidth] = useState<number | string>(isShowEdit ? '50%' : 1);
+  const [showEdit, setShowEdit] = useState(false);
+  const [width, setWidth] = useState<number | string>(1);
   const [copied, setCopied] = useState(false);
   const [code, setCode] = useState(props.code || '');
 

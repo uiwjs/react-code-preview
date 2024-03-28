@@ -109,6 +109,7 @@ const CodePreview = React.forwardRef<CodePreviewRef, CodePreviewProps>((props, r
     noPreview = false,
     noScroll = false,
     bgWhite = false,
+    sourceState,
     ...otherProps
   } = props;
   const {
@@ -183,6 +184,13 @@ const CodePreview = React.forwardRef<CodePreviewRef, CodePreviewProps>((props, r
     setWidth(width === 1 ? '50%' : 1);
     setShowEdit(true);
   };
+  // 通过状态props属性判断是否切换源码
+  const isShown = sourceState === 'shown';
+  useEffect(() => {
+    setWidth(isShown ? '50%' : 1);
+    setShowEdit(isShown);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isShown]);
   const onCopyCode = () => {
     copyTextToClipboard(code || '', (isCopy) => setCopied(isCopy));
     setTimeout(() => setCopied(false), 2000);
@@ -196,7 +204,7 @@ const CodePreview = React.forwardRef<CodePreviewRef, CodePreviewProps>((props, r
   };
   return (
     <Split data-color-mode={theme} visiable={visiable} className={cls} style={{ flex: 1, ...style }} {...otherProps}>
-      {!noPreview && !onlyEdit && (
+      {!onlyEdit && (
         <div
           className={[
             `${prefixCls}-demo`,
@@ -208,6 +216,7 @@ const CodePreview = React.forwardRef<CodePreviewRef, CodePreviewProps>((props, r
             .trim()}
           style={{
             flex: 1,
+            display: !noPreview ? 'unset' : 'none',
             ...(width === 1 ? { width: '100%' } : {}),
           }}
         >
