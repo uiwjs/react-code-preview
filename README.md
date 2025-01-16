@@ -21,7 +21,9 @@ npm install @uiw/react-code-preview --save
 
 ### In React 18
 
-[![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?logo=codesandbox)](https://codesandbox.io/embed/uiw-react-code-preview-react-18-1bmhhd?fontsize=14&hidenavigation=1&theme=dark)
+[![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?logo=codesandbox)](https://codesandbox.io/embed/uiw-react-code-preview-react-18-1bmhhd?fontsize=14&hidenavigation=1&theme=dark) [![Open in Codeanywhere](https://img.shields.io/badge/Open%20in-Codeanywhere-blue?style=flat-square&logo=codeanywhere)](https://app.codeanywhere.com/#https://github.com/uiwjs/react-code-preview/)
+
+
 
 ```jsx
 import Button from '@uiw/react-button';
