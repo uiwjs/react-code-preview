@@ -14,10 +14,10 @@ jobs:
       contents: write
       id-token: write
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
-          node-version: 20
+          node-version: 24
           registry-url: 'https://registry.npmjs.org'
 
       - run: npm install
@@ -47,7 +47,7 @@ jobs:
         uses: jaywcjlove/changelog-generator@main
 
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           commit_message: ${{steps.tag_version.outputs.tag}} ${{ github.event.head_commit.message }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -68,6 +68,7 @@ jobs:
         uses: ncipollo/release-action@v1
         if: steps.create_tag.outputs.successful
         with:
+          allowUpdates: true
           token: ${{ secrets.GITHUB_TOKEN }}
           name: ${{ steps.create_tag.outputs.version }}
           tag: ${{ steps.create_tag.outputs.version }}
@@ -89,11 +90,9 @@ jobs:
       # - run: npm install @jsdevtools/npm-publish -g
       # - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./package.json
 
-      - run: npm publish --access public --provenance
+      - run: NODE_AUTH_TOKEN="" npm publish --access public --provenance
         name: 📦 @uiw/react-code-preview publish to NPM
         continue-on-error: true
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
 
       # - name: 📦 📦 @uiw/react-code-preview 📦 📦
       #   uses: JS-DevTools/npm-publish@v1
