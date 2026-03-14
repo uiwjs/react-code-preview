@@ -24,7 +24,6 @@ jobs:
       - run: npm run build
       - run: npm run coverage
       - run: npm run doc
-      - run: npm run map
 
       - uses: jaywcjlove/coverage-badges-cli@main
       - run: cp -rp coverage build
